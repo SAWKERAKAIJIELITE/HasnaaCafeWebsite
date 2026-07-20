@@ -1,0 +1,18 @@
+---
+import { heroSlides } from "@/data/hero";
+import HeroSlide from "./HeroSlide.astro";
+---
+
+<div class="embla" id="hero-slider">
+  <div class="embla__viewport">
+    <div class="embla__container">
+      {heroSlides.map((slide) => <HeroSlide slide={slide} />)}
+    </div>
+  </div>
+</div>
+<!-- <script type="module" src="/src/scripts/hero-slider.ts"></script> -->
+<!-- <script src="/src/scripts/main.ts">
+  // import { initHeroSlider } from "@/scripts/main";
+
+  // initHeroSlider();
+</script> -->

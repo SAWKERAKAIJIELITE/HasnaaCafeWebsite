@@ -1,0 +1,60 @@
+---
+import Section from "@/components/ui/Section.astro";
+import HeroSlider from "@/components/hero/HeroSlider.astro";
+// import { heroSlides } from "@/data/hero";
+// const hero = heroSlides[1];
+---
+
+<Section id="home" spacing="none" class="relative overflow-hidden">
+  <HeroSlider />
+</Section>
+<!-- <section id="home">
+  <HeroSlider />
+</section> -->
+
+<!-- <section
+  id="home"
+  class="relative flex min-h-screen items-center overflow-hidden"
+>
+  <img
+    src={hero.media}
+    alt={hero.title}
+    class="absolute inset-0 h-full w-full object-cover"
+  />
+
+  <div class="absolute inset-0 bg-black/55"></div>
+
+  <div class="relative z-10 mx-auto flex w-full max-w-7xl px-6">
+    <div class="max-w-3xl">
+      <p
+        class="mb-4 text-lg font-semibold uppercase tracking-[0.35em] text-amber-400"
+      >
+        Welcome
+      </p>
+
+      <h1 class="text-5xl font-black leading-tight text-white md:text-7xl">
+        {hero.title}
+      </h1>
+
+      <p class="mt-8 text-xl leading-9 text-slate-200">
+        {hero.subtitle}
+      </p>
+
+      <div class="mt-12 flex flex-wrap gap-5">
+        <a
+          href={hero.primaryButton.href}
+          class="rounded-lg bg-amber-500 px-8 py-4 font-semibold text-white transition hover:bg-amber-600"
+        >
+          {hero.primaryButton.label}
+        </a>
+
+        <a
+          href={hero.secondaryButton.href}
+          class="rounded-lg border border-white px-8 py-4 font-semibold text-white transition hover:bg-white hover:text-black"
+        >
+          {hero.secondaryButton.label}
+        </a>
+      </div>
+    </div>
+  </div>
+</section> -->

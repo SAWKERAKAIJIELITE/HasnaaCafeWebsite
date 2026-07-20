@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    /* @apply bg-white text-slate-900 antialiased; */
+    background: white;
+    color: rgb(15 23 42);
+    font-family: Inter, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button {
+    cursor: pointer;
+}
