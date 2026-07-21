@@ -15,3 +15,112 @@
     flex: 0 0 100%;
     min-width: 0;
 }
+
+.hero-dots {
+    position: absolute;
+
+    bottom: 2rem;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    gap: .75rem;
+}
+
+.hero-dot {
+    width: 12px;
+    height: 12px;
+
+    border-radius: 999px;
+
+    background: rgb(255 255 255 / .4);
+
+    transition: .35s;
+}
+
+.hero-dot.is-active {
+    width: 34px;
+
+    background: #f59e0b;
+}
+
+.hero-arrow {
+
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 999px;
+
+    border: 1px solid rgb(255 255 255 /.15);
+
+    background: rgb(255 255 255 /.08);
+
+    backdrop-filter: blur(18px);
+
+    color: white;
+
+    transition:
+        background .25s,
+        transform .25s,
+        border-color .25s;
+
+    z-index: 30;
+}
+
+.hero-arrow:hover {
+    background: rgb(245 158 11);
+
+    border-color: rgb(245 158 11);
+
+    transform: translateY(-50%) scale(1.08);
+}
+
+.hero-arrow--prev {
+    left: 2rem;
+}
+
+.hero-arrow--next {
+    right: 2rem;
+}
+
+.hero-progress {
+    position: absolute;
+
+    left: 50%;
+    bottom: 5rem;
+
+    transform: translateX(-50%);
+
+    width: 220px;
+    height: 4px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background: rgb(255 255 255 /.18);
+
+    z-index: 40;
+}
+
+.hero-progress__bar {
+    height: 100%;
+    width: 0;
+
+    background: #f59e0b;
+
+    transform-origin: left;
+}

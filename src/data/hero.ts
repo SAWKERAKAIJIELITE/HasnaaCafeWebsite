@@ -7,7 +7,7 @@ export interface HeroSlide
     id: number;
     title: string;
     subtitle: string;
-    media: string;
+    media: ImageMetadata;
     type: "image" | "video";
 
     primaryButton: {

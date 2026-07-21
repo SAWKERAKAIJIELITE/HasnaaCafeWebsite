@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () =>
 {
     const slider = new HeroCarousel("#hero-slider");
     slider.init();
+    // slider.startProgress();
 });
 // export function initHeroSlider()
 // {

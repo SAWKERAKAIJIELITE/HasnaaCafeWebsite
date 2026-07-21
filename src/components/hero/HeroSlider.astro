@@ -1,6 +1,7 @@
 ---
 import { heroSlides } from "@/data/hero";
 import HeroSlide from "./HeroSlide.astro";
+import { ChevronLeft, ChevronRight } from "lucide-astro";
 ---
 
 <div class="embla" id="hero-slider">
@@ -9,6 +10,25 @@ import HeroSlide from "./HeroSlide.astro";
       {heroSlides.map((slide) => <HeroSlide slide={slide} />)}
     </div>
   </div>
+  <button
+    class="hero-arrow hero-arrow--prev"
+    data-prev
+    aria-label="Previous slide"
+  >
+    <!-- ← -->
+    <ChevronLeft size={26} strokeWidth={2.5} />
+  </button>
+
+  <button class="hero-arrow hero-arrow--next" data-next aria-label="Next slide">
+    <!-- → -->
+    <ChevronRight size={26} strokeWidth={2.5} />
+  </button>
+
+  <div class="hero-progress">
+    <div class="hero-progress__bar" data-progress></div>
+  </div>
+
+  <div class="hero-dots" data-dots></div>
 </div>
 <!-- <script type="module" src="/src/scripts/hero-slider.ts"></script> -->
 <!-- <script src="/src/scripts/main.ts">

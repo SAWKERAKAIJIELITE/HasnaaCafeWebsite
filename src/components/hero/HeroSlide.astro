@@ -11,15 +11,23 @@ interface Props {
 const { slide } = Astro.props;
 ---
 
-<!-- <div class="relative h-screen w-full shrink-0"> -->
+<!-- // widths={[640, 1024, 1440, 1920]}
+// sizes="100vw" --><!-- // src={slide.media} --><!-- <div class="relative h-screen w-full shrink-0"> --><!-- // src={slide.id === 1 ? slide.media : ""}
+  // data-src={slide.media} --><!-- src={slide.media}
+  alt={slide.title}
+  width="1920"
+  height="1080" -->
 <div class="embla__slide relative min-h-screen">
   {
     slide.type === "image" && (
-      <Image
-        src={slide.media}
+      <img
+        src={slide.media.src}
         alt={slide.title}
-        widths={[640, 1024, 1440, 1920]}
-        sizes="100vw"
+        width={slide.media.width}
+        height={slide.media.height}
+        loading={slide.id === 1 ? "eager" : "lazy"}
+        fetchpriority={slide.id === 1 ? "high" : "auto"}
+        decoding="async"
         class="absolute inset-0 h-full w-full object-cover"
       />
     )
