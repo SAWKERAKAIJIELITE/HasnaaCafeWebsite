@@ -1,0 +1,58 @@
+---
+import { Image } from "astro:assets";
+import { about } from "@/data/about";
+
+import Section from "@/components/ui/Section.astro";
+import Container from "@/components/ui/Container.astro";
+import SectionHeading from "@/components/ui/SectionHeading.astro";
+import FeatureList from "@/components/ui/FeatureList.astro";
+import Button from "@/components/ui/Button.astro";
+import StatCard from "@/components/ui/StatCard.astro";
+---
+
+<Section id="about">
+  <Container>
+    <div class="grid items-center gap-20 lg:grid-cols-2">
+      <div class="reveal-left">
+        <SectionHeading
+          eyebrow={about.eyebrow}
+          title={about.title}
+          description={about.description}
+        />
+
+        <div class="mt-10">
+          <FeatureList items={about.features} />
+        </div>
+
+        <div class="mt-10">
+          <Button href={about.button.href}>
+            {about.button.label}
+          </Button>
+        </div>
+      </div>
+
+      <div class="relative reveal-right">
+        <Image
+          src={about.image}
+          alt={about.title}
+          widths={[640, 900, 1200]}
+          sizes="(max-width:1024px) 100vw, 50vw"
+          class="rounded-3xl shadow-2xl"
+        />
+
+        <!-- <div
+          class="absolute -bottom-8 -left-8 hidden gap-4 lg:flex reveal-scale"
+        > -->
+        <div
+          class="mt-12 grid grid-cols-2 gap-4 lg:absolute lg:-bottom-8 lg:left-0 lg:flex lg:gap-6 lg:mt-0"
+        >
+          {
+            about.stats.map((stat) => (
+              <StatCard value={stat.value} label={stat.label} />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </Container>
+</Section>

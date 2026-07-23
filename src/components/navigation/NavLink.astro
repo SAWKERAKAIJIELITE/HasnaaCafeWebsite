@@ -1,0 +1,16 @@
+---
+interface Props {
+  href: string;
+  label: string;
+}
+
+const { href, label } = Astro.props;
+---
+
+<a
+  href={href}
+  class="nav-link relative py-2 font-medium transition-colors duration-300"
+  data-nav-link
+>
+  {label}
+</a>

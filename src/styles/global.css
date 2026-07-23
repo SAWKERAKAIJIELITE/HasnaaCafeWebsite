@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "./animations.css";
+@import "./components/mobile-menu.css";
 
 html {
     scroll-behavior: smooth;
@@ -25,4 +27,40 @@ img {
 
 button {
     cursor: pointer;
+}
+
+.nav-link {
+    position: relative;
+
+    color: white;
+
+    transition: color .3s ease;
+}
+
+.nav-link::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -6px;
+
+    width: 0;
+    height: 2px;
+
+    background: #f59e0b;
+
+    transition: width .3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: #f59e0b;
+}
+
+.nav-link.active::after {
+    width: 100%;
 }

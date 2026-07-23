@@ -1,0 +1,22 @@
+---
+import logo from "@/assets/demo/logo.jpg";
+
+interface Props {
+  light?: boolean;
+}
+
+const { light = false } = Astro.props;
+---
+
+<!-- class={`text-2xl font-black tracking-wide ${
+    light ? "text-white" : "text-slate-900"
+  }`} -->
+<a href="#home" class="inline-flex items-center">
+  <img
+    src={logo.src}
+    alt="Hasnaa Coffee"
+    width={1000}
+    height={1000}
+    class:list={["h-12 w-auto", light && "brightness-0 invert"]}
+  />
+</a>

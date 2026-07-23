@@ -1,0 +1,22 @@
+---
+import { navigation } from "@/data/navigation";
+
+import NavLink from "./NavLink.astro";
+import CTAButton from "./CTAButton.astro";
+---
+
+<!-- class="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300" -->
+<div id="mobile-menu" class="fixed inset-0 z-40 mobile-menu">
+
+    <!-- Overlay -->
+  <div id="mobile-overlay" class="mobile-menu__panel"></div>
+
+  <!-- Panel -->
+  <!-- class="absolute top-0 left-0 right-0 -translate-y-full bg-white transition-transform duration-300 shadow-xl" -->
+  <div id="mobile-panel" class="mobile-menu__panel">
+    <nav class="flex flex-col gap-6 p-8">
+      {navigation.map((item) => <NavLink {...item} />)}
+      <CTAButton />
+    </nav>
+  </div>
+</div>
