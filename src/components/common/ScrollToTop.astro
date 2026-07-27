@@ -1,0 +1,64 @@
+---
+import { ArrowUp } from "lucide-astro";
+---
+
+<!-- bg-amber-500 -->
+<button
+  id="scroll-to-top"
+  type="button"
+  aria-label="Scroll back to top"
+  title="Back to top"
+  class="scroll-top"
+>
+  <svg
+    class="scroll-top__svg"
+    width="56"
+    height="56"
+    viewBox="0 0 56 56"
+    aria-hidden="true"
+  >
+    <circle class="scroll-top__track" cx="28" cy="28" r="24"></circle>
+
+    <circle
+      id="scroll-progress"
+      class="scroll-top__progress"
+      cx="28"
+      cy="28"
+      r="24"></circle>
+  </svg>
+
+  <span class="scroll-top__icon">
+    <ArrowUp size={20} />
+  </span>
+  <!-- <ArrowUp size={24} /> -->
+</button>
+<!-- class="fixed
+backdrop-blur-md
+bg-white/15
+border
+border-white/20
+      bottom-8
+      right-8
+      z-50
+      flex
+      h-14
+      w-14
+      items-center
+      justify-center
+      rounded-full
+      text-white
+      shadow-xl
+      opacity-0
+      pointer-events-none
+      translate-y-6
+      scale-90
+      transition-all
+      duration-300
+      ease-out
+      hover:-translate-y-1
+      hover:bg-amber-500
+      hover:scale-110
+      hover:shadow-2xl
+      focus-visible:outline-none
+      focus-visible:ring-4
+      focus-visible:ring-amber-300" -->

@@ -1,0 +1,49 @@
+---
+import { contactItems } from "@/data/footer";
+---
+
+<div>
+  <h3 class="mb-6 text-lg font-bold text-white">Contact</h3>
+
+  <ul class="space-y-5">
+    {
+      contactItems.map((item) => {
+        const Icon = item.icon;
+        return (
+          <li class="flex items-start gap-4">
+            <div
+              class="flex
+                                h-10
+                                w-10
+                                shrink-0
+                                items-center
+                                justify-center
+
+                                rounded-full
+
+                                bg-white/5
+
+                                transition-colors
+                                duration-300
+
+                                group-hover:bg-amber-500/20
+                            "
+            >
+              <Icon size={18} class="text-amber-400" />
+            </div>
+
+            <div>
+              <p class="text-sm text-slate-500">
+                {item.label}
+              </p>
+
+              <a href={item.href} class="text-slate-300 transition-colors duration-300 hover:text-white">
+                {item.value}
+              </a>
+            </div>
+          </li>
+        );
+      })
+    }
+  </ul>
+</div>

@@ -23,10 +23,15 @@ export class NavbarController
 
     private update()
     {
-        const scrolled = window.scrollY > 50;
+        // const scrolled = window.scrollY > 50;
 
-        this.navbar.classList.toggle("bg-white/95",scrolled);
-        this.navbar.classList.toggle("backdrop-blur",scrolled);
-        this.navbar.classList.toggle("shadow-lg",scrolled);
+        // this.navbar.classList.toggle("bg-white/95",scrolled);
+        // this.navbar.classList.toggle("backdrop-blur",scrolled);
+        // this.navbar.classList.toggle("shadow-lg",scrolled);
+
+        const solid = window.scrollY > 20;
+
+        this.navbar.classList.toggle("navbar--solid",solid);
+        this.navbar.classList.toggle("navbar--transparent",!solid);
     }
 }

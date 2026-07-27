@@ -2,14 +2,19 @@
 interface Props {
   href: string;
   label: string;
+  mobile?: boolean;
 }
 
-const { href, label } = Astro.props;
+const { mobile = false, href, label } = Astro.props;
 ---
 
+<!-- class="nav-link relative py-2 font-medium transition-colors duration-300" -->
 <a
   href={href}
-  class="nav-link relative py-2 font-medium transition-colors duration-300"
+class:list={[
+"nav-link relative font-medium transition-colors duration-300",
+mobile && "nav-link--mobile",
+]}
   data-nav-link
 >
   {label}

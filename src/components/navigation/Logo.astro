@@ -1,5 +1,5 @@
 ---
-import logo from "@/assets/demo/logo.jpg";
+import logo from "@/assets/demo/logo.png";
 
 interface Props {
   light?: boolean;
@@ -11,12 +11,43 @@ const { light = false } = Astro.props;
 <!-- class={`text-2xl font-black tracking-wide ${
     light ? "text-white" : "text-slate-900"
   }`} -->
-<a href="#home" class="inline-flex items-center">
+<a href="#home" class="inline-flex items-center gap-3 shrink-0">
   <img
     src={logo.src}
     alt="Hasnaa Coffee"
     width={1000}
     height={1000}
-    class:list={["h-12 w-auto", light && "brightness-0 invert"]}
+    class:list={[
+      "overflow-visible h-26 w-auto object-contain -my-4",
+      light && "brightness-0 invert",
+    ]}
   />
+
+  <!-- <span
+    class="mt-1
+            text-xs
+            font-medium
+            tracking-wide
+            text-slate-600"
+  >
+    من أرقى مزارع البن في العالم
+  </span> -->
+
+  <div class="hidden md:flex flex-col leading-tight">
+    <span
+      class="text-lg font-lack text-[#005826]"
+      style="font-family:'Arslan Wessam B';"
+      dir="rtl"
+    >
+      من أرقى مزارع البن في العالم
+    </span>
+
+    <!-- <span
+      class="text-sm font-medium tracking-wide text-[#3c9339]"
+      style="font-family:'Arslan Wessam B';"
+      dir="rtl"
+    >
+      في العالم
+    </span> -->
+  </div>
 </a>

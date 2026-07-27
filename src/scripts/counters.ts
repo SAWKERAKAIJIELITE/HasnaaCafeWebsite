@@ -4,26 +4,51 @@ export class CounterController
 
     init()
     {
-        this.observer = new IntersectionObserver(
-            (entries) =>
+        // this.observer = new IntersectionObserver(
+        //     (entries) =>
+        //     {
+        //         entries.forEach((entry) =>
+        //         {
+        //             if (!entry.isIntersecting)
+        //                 return;
+
+        //             this.animate(entry.target as HTMLElement);
+
+        //             this.observer.unobserve(entry.target);
+        //         });
+        //     },
+        //     { threshold: 0.5 }
+        // );
+
+        // document.querySelectorAll<HTMLElement>(".counter").forEach((counter) =>
+        // {
+        //     this.observer.observe(counter);
+        // });
+
+        const section = document.querySelector<HTMLElement>(".data-counter-section");
+
+        if (!section)
+            return;
+
+        this.observer = new IntersectionObserver((entries) =>
+        {
+            const entry = entries[0];
+
+            if (!entry.isIntersecting)
+                return;
+
+            setTimeout(() =>
             {
-                entries.forEach((entry) =>
-                {
-                    if (!entry.isIntersecting)
-                        return;
-
-                    this.animate(entry.target as HTMLElement);
-
-                    this.observer.unobserve(entry.target);
+            section.querySelectorAll<HTMLElement>(".counter").forEach((counter) => {
+                    this.animate(counter); 
                 });
-            },
-            { threshold: 0.5 }
+            }, 1500);
+
+            this.observer.disconnect();
+        }, { threshold: 0.7 }
         );
 
-        document.querySelectorAll<HTMLElement>(".counter").forEach((counter) =>
-        {
-            this.observer.observe(counter);
-        });
+        this.observer.observe(section);
     }
 
     destroy()

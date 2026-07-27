@@ -1,0 +1,20 @@
+---
+import { about } from "@/data/about";
+import FoundationCard from "./FoundationCard.astro";
+---
+
+<section class="pt-10 lg:pt-15">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mx-auto mb-16 max-w-3xl text-center" data-animate="fade-up">
+      <p class="mb-4 font-semibold uppercase tracking-[0.3em] text-amber-600">
+        Our Foundation
+      </p>
+
+      <h2 class="text-4xl font-black text-slate-900">Guided by Purpose</h2>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-3">
+      {about.foundation.map((item) => <FoundationCard {...item} />)}
+    </div>
+  </div>
+</section>

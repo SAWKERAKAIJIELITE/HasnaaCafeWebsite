@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "./animations.css";
 @import "./components/mobile-menu.css";
+@import "./components/navbar.css";
+@import "./components/scroll-top.css";
 
 html {
     scroll-behavior: smooth;
@@ -32,9 +34,35 @@ button {
 .nav-link {
     position: relative;
 
-    color: white;
+    /* color: white; */
+    /* color: #023F07; */
 
-    transition: color .3s ease;
+    text-decoration: none;
+
+    transition: color .25s ease;
+}
+
+.navbar--transparent .nav-link:not(.nav-link--mobile) {
+    /* transition: color .3s ease;
+    position: relative; */
+    color: white;
+}
+
+.navbar--transparent .nav-link:hover,
+.navbar--transparent .nav-link.active {
+    color: rgb(251 191 36);
+}
+
+.navbar--solid .nav-link:not(.nav-link--mobile) {
+    /* transition: color .3s ease;
+    position: relative; */
+    color: rgb(15 23 42);
+    /* slate-900 */
+}
+
+.navbar--solid .nav-link:hover,
+.navbar--solid .nav-link.active {
+    color: rgb(217 119 6);
 }
 
 .nav-link::after {
@@ -48,7 +76,8 @@ button {
     width: 0;
     height: 2px;
 
-    background: #f59e0b;
+    /* background: #f59e0b; */
+    background: rgb(217 119 6);
 
     transition: width .3s ease;
 }
@@ -57,10 +86,43 @@ button {
     width: 100%;
 }
 
-.nav-link.active {
+/* .nav-link.active {
     color: #f59e0b;
-}
+} */
 
 .nav-link.active::after {
     width: 100%;
+}
+
+@keyframes growLine {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@font-face {
+    font-family: "Arslan Wessam B";
+
+    src: url("/src/assets/fonts/\(A\)\ Arslan\ Wessam\ B\ \(A\)\ Arslan\ Wessam\ B.ttf") format("truetype");
+
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "GE SS TV";
+
+    src: url("/src/assets/fonts/GE\ SS\ TV\ Medium.ttf") format("truetype");
+
+    font-display: swap;
+}
+
+:root {
+    --font-brand: "Arslan Wessam B";
+    --font-arabic: "GE SS TV";
+    --brand-green: #005826;
+    --brand-light-green: #3c9339;
+    --brand-gold: #fdb913;
 }

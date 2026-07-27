@@ -8,6 +8,8 @@ import SectionHeading from "@/components/ui/SectionHeading.astro";
 import FeatureList from "@/components/ui/FeatureList.astro";
 import Button from "@/components/ui/Button.astro";
 import StatCard from "@/components/ui/StatCard.astro";
+import AboutFoundation from "@/components/about/AboutFoundation.astro";
+import ChairmanQuote from "@/components/about/ChairmanQuote.astro";
 ---
 
 <Section id="about">
@@ -44,7 +46,9 @@ import StatCard from "@/components/ui/StatCard.astro";
           class="absolute -bottom-8 -left-8 hidden gap-4 lg:flex reveal-scale"
         > -->
         <div
-          class="mt-12 grid grid-cols-2 gap-4 lg:absolute lg:-bottom-8 lg:left-0 lg:flex lg:gap-6 lg:mt-0"
+          class="max-w-xl data-counter-section
+mx-auto
+lg:max-w-none mt-12 grid grid-cols-2 gap-4 lg:absolute lg:-bottom-8 lg:left-0 lg:flex lg:gap-6 lg:mt-0"
         >
           {
             about.stats.map((stat) => (
@@ -55,4 +59,6 @@ import StatCard from "@/components/ui/StatCard.astro";
       </div>
     </div>
   </Container>
+  <ChairmanQuote />
+  <AboutFoundation />
 </Section>

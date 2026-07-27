@@ -1,0 +1,50 @@
+---
+import { features } from "@/data/whyChoose";
+import FeatureCard from "@/components/why-choose-us/FeatureCard.astro";
+---
+
+<section id="why-us" class="relative overflow-hidden sm:pt-10 lg:pt-15">
+  <div
+    aria-hidden="true"
+    class="absolute -left-40 top-0 h-96 w-96 rounded-full bg-amber-200/20 blur-4xl"
+  >
+  </div>
+  <div
+    aria-hidden="true"
+    class="absolute -top-40 h-96 w-96 rounded-full bg-amber-200/20 blur-4xl"
+  >
+  </div>
+
+  <div
+    aria-hidden="true"
+    class="absolute -right-32 bottom-0 h-80 w-80 rounded-full bg-orange-200/20 blur-4xl"
+  >
+  </div>
+  <div
+    aria-hidden="true"
+    class="absolute -right-32 bottom-50 h-80 w-80 rounded-full bg-orange-200/20 blur-4xl"
+  >
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-6">
+    <div class="mx-auto mb-16 max-w-3xl text-center" data-animate="fade-up">
+      <p class="mb-4 font-semibold uppercase tracking-[0.3em] text-amber-600">
+        Why Choose Us
+      </p>
+
+      <h2 class="text-4xl font-black text-slate-900">
+        Your Trusted Coffee Partner
+      </h2>
+
+      <p class="mt-6 text-lg leading-8 text-slate-600">
+        We combine premium coffee products, reliable logistics, and dedicated
+        customer support to help cafés, restaurants, hotels, and retailers grow
+        with confidence.
+      </p>
+    </div>
+
+    <div class="grid gap-6 lg:gap-8 md:grid-cols-2 xl:grid-cols-4">
+      {features.map((feature) => <FeatureCard {...feature} />)}
+    </div>
+  </div>
+</section>

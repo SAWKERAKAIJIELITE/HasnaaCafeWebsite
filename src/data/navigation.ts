@@ -7,8 +7,8 @@ export interface NavigationItem
 export const navigation: NavigationItem[] = [
     { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
+    { label: "Why Choose Us", href: "#why-us" },
     { label: "Products", href: "#products" },
-    { label: "Gallery", href: "#gallery" },
-    { label: "Partners", href: "#partners" },
+    { label: "Offers", href: "#offers" },
     { label: "Contact", href: "#contact" },
 ];

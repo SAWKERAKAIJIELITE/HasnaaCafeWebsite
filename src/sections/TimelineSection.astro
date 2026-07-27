@@ -1,0 +1,41 @@
+---
+import { timeline } from "@/data/timeline";
+import TimelineItem from "@/components/about/TimelineItem.astro";
+---
+
+<section
+  id="timeline"
+  class="relative overflow-hidden bg-slate-50 py-20 lg:py-28"
+>
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 -z-10 opacity-5 pointer-events-none
+           bg-[radial-gradient(circle_at_top_right,#f59e0b,transparent_50%)]"
+  >
+  </div>
+
+  <div class="container mx-auto px-6">
+    <div class="mx-auto max-w-3xl text-center">
+      <p
+        class="text-sm font-semibold uppercase tracking-[0.3em] text-amber-600"
+      >
+        Our Journey
+      </p>
+
+      <h2 class="mt-4 text-4xl font-black text-slate-900">
+        A Journey Built on Passion & Quality
+      </h2>
+
+      <p class="mt-6 text-lg leading-8 text-slate-600">
+        Every milestone reflects our commitment to quality, innovation and
+        long-term partnerships.
+      </p>
+    </div>
+
+    <div
+      class="mt-24 flex flex-col lg:flex-row lg:justify-between relative"
+    >
+      {timeline.map((item) => <TimelineItem item={item} />)}
+    </div>
+  </div>
+</section>

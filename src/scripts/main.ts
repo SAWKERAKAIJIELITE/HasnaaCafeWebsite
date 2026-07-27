@@ -6,6 +6,7 @@ import { AnimationController } from "./animations";
 import { CounterController } from "./counters";
 import { ActiveSectionController } from "./active-section";
 import { MobileMenuController } from "./mobile-menu";
+import { ScrollToTopController } from "./scroll-to-top";
 
 
 document.addEventListener("DOMContentLoaded", () =>
@@ -16,12 +17,14 @@ document.addEventListener("DOMContentLoaded", () =>
     const counterController = new CounterController();
     const activeSectionController = new ActiveSectionController();
     const mobileMenuController = new MobileMenuController();
+    const scrollToTopController = new ScrollToTopController();
     slider.init();
     navbar.init();
     animationController.init();
     counterController.init();
     activeSectionController.init();
     mobileMenuController.init();
+    scrollToTopController.init();
 });
 // export function initHeroSlider()
 // {

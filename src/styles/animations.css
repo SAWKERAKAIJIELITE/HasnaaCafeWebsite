@@ -52,3 +52,14 @@
 
     transform: none;
 }
+
+.timeline-line {
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition: transform 1.6s cubic-bezier(.22, .61, .36, 1);
+}
+
+.timeline-line.timeline-line--active {
+    transform: scaleX(1);
+}

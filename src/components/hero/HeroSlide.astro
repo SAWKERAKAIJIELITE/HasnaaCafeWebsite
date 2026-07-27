@@ -28,7 +28,7 @@ const { slide } = Astro.props;
         loading={slide.id === 1 ? "eager" : "lazy"}
         fetchpriority={slide.id === 1 ? "high" : "auto"}
         decoding="async"
-        class="absolute inset-0 h-full w-full object-cover"
+        class="absolute inset-0 h-full w-full object-cover object-center"
       />
     )
   }
@@ -40,7 +40,7 @@ const { slide } = Astro.props;
         muted
         loop
         playsinline
-        class="absolute inset-0 h-full w-full object-cover"
+        class="absolute inset-0 h-full w-full object-cover object-center"
       >
         <source src={slide.media} />
       </video>
@@ -52,20 +52,43 @@ const { slide } = Astro.props;
   <div class="relative z-10 flex h-full items-center">
     <!-- <div class="mx-auto w-full max-w-7xl px-6"> -->
     <Container>
-      <div class="max-w-3xl">
+      <div class="max-w-3xl text-center lg:text-left">
         <p class="mb-5 uppercase tracking-[0.4em] text-amber-400 font-semibold">
           Welcome
         </p>
 
-        <h1 class="text-5xl md:text-7xl font-black text-white leading-tight">
+        <h1
+          class="text-4xl
+sm:text-5xl
+lg:text-7xl font-black text-white leading-tight"
+        >
           {slide.title}
         </h1>
 
-        <p class="mt-8 text-xl text-slate-200 leading-9">
+        <p
+          class="mt-8 text-slate-200 text-base
+leading-8
+sm:text-lg
+lg:text-xl
+lg:leading-9"
+        >
           {slide.subtitle}
         </p>
 
-        <div class="mt-12 flex flex-wrap gap-5">
+        <!-- <div class="mt-12 flex flex-wrap gap-5"> -->
+        <div class="mt-10
+
+flex
+
+flex-col
+
+sm:flex-row
+
+justify-center
+
+lg:justify-start
+
+gap-4">
           <!-- <a
             href={slide.primaryButton.href}
             class="rounded-lg bg-amber-500 px-8 py-4 font-semibold text-white hover:bg-amber-600 transition"

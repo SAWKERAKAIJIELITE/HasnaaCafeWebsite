@@ -1,0 +1,263 @@
+---
+import type { TimelineItem } from "@/types/timeline";
+
+interface Props {
+  item: TimelineItem;
+}
+
+const { item } = Astro.props;
+---
+
+<!-- ---
+import type { TimelineItem } from "@/types/timeline";
+
+interface Props {
+  item: TimelineItem;
+}
+
+const { item } = Astro.props;
+---
+
+<div class="relative flex flex-col items-center text-center group z-10">
+
+  <span class="text-3xl font-black text-amber-600">
+    {item.year}
+  </span>
+
+
+  <div
+    class="mt-6
+            flex
+            h-7
+            w-7
+            items-center
+            justify-center
+            rounded-full
+            border-[5px]
+            border-amber-500
+            bg-white
+            transition-all
+            duration-300
+            group-hover:scale-110
+            group-hover:bg-amber-500
+            shadow-lg"
+  >
+    {item.current && <div class="h-2 w-2 rounded-full bg-amber-500" />}
+  </div>
+    {
+      !item.current && (
+        <div class="absolute left-1/2 top-16 h-24 w-0.5 -translate-x-1/2 bg-amber-300 lg:hidden" />
+      )
+    }
+
+  Content
+  <div class="mt-10">
+    <h3 class="text-xl font-bold text-slate-900">
+      {item.title}
+    </h3>
+
+    <p class="mt-3 max-w-xs leading-7 text-slate-600">
+      {item.description}
+    </p>
+  </div>
+</div> -->
+<div
+    class="
+        relative
+
+        flex-1
+
+        pb-16
+
+        lg:pb-0
+
+        group
+    "
+
+    >
+    <!-- data-stagger -->
+
+    <!-- Mobile connector -->
+
+    {
+        !item.current && (
+
+            <div
+                class="
+                    absolute
+
+                    left-[15px]
+                    top-8
+
+                    h-full
+                    w-0.5
+
+                    bg-amber-300
+
+                    lg:hidden
+                "
+            />
+
+        )
+    }
+
+    <!-- Desktop connector -->
+
+    {
+        !item.current && (
+
+            <div
+                class="
+                    absolute
+
+                    left-8
+                    right-0
+
+                    top-[15px]
+
+                    hidden
+
+                    h-0.5
+
+                    bg-amber-300
+
+                    lg:block
+                "
+            />
+
+        )
+    }
+
+    <!-- Top Row -->
+
+    <div
+        class="
+            flex
+
+            items-center
+
+            lg:flex-col
+        "
+    >
+
+        <!-- Dot -->
+
+        <div
+            class="
+                z-10
+
+                flex
+
+                h-8
+                w-8
+
+                items-center
+                justify-center
+
+                rounded-full
+
+                border-4
+
+                border-amber-500
+
+                bg-white
+
+                transition-all
+                duration-300
+
+                group-hover:scale-110
+
+                shrink-0
+            "
+        >
+
+            {
+                item.current
+                    ? (
+                        <div
+                            class="
+                                h-3
+                                w-3
+
+                                rounded-full
+
+                                bg-amber-500
+                            "
+                        />
+                    )
+                    : (
+                        <div
+                            class="
+                                h-2
+                                w-2
+
+                                rounded-full
+
+                                bg-amber-500/30
+                            "
+                        />
+                    )
+            }
+
+        </div>
+
+        <!-- Year -->
+
+        <p
+            class="
+                ml-5
+
+                text-3xl
+                font-black
+
+                text-amber-600
+
+                lg:ml-0
+                lg:mt-6
+            "
+        >
+            {item.year}
+        </p>
+
+    </div>
+
+    <!-- Content -->
+
+    <div
+        class="
+            ml-14
+
+            mt-6
+
+            lg:ml-0
+            lg:text-center
+        "
+    >
+
+        <h3
+            class="
+                text-xl
+
+                font-bold
+
+                text-slate-900
+            "
+        >
+            {item.title}
+        </h3>
+
+        <p
+            class="
+                mt-3
+
+                leading-7
+
+                text-slate-600
+            "
+        >
+            {item.description}
+        </p>
+
+    </div>
+
+</div>

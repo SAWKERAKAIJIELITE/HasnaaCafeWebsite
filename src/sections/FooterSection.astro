@@ -1,0 +1,64 @@
+---
+import Logo from "@/components/navigation/Logo.astro";
+import FooterColumn from "@/components/footer/FooterColumn.astro";
+import FooterContact from "@/components/footer/FooterContact.astro";
+import FooterSocial from "@/components/footer/FooterSocial.astro";
+import FooterCTA from "@/components/footer/FooterCTA.astro";
+import FooterBottom from "@/components/footer/FooterBottom.astro";
+import {
+  footerDescription,
+  footerColumns,
+  //   contactItems,
+  socialLinks,
+} from "@/data/footer";
+---
+
+<footer class="bg-slate-950 text-white">
+  <div class="mx-auto max-w-7xl px-6 py-20">
+    <!-- <div class="-translate-y-24">
+      <FooterCTA />
+    </div> -->
+    <div class="grid gap-16 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <!-- Company -->
+      <div>
+        <Logo />
+
+        <p class="mt-8 max-w-sm leading-8 text-slate-300">
+          {footerDescription}
+        </p>
+        <FooterSocial />
+      </div>
+
+      <!-- Navigation -->
+      {footerColumns.map((column) => <FooterColumn column={column} />)}
+
+      <!-- Contact -->
+      <!-- <div>
+        <h3 class="mb-6 text-lg font-bold">Contact</h3>
+
+        <ul class="space-y-5">
+          {
+            contactItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <li class="flex items-start gap-4">
+                  <Icon class="mt-1 text-amber-400" size={18} />
+
+                  <a
+                    href={item.href}
+                    class="leading-7 text-slate-300 transition-colors hover:text-white"
+                  >
+                    {item.value}
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </div> -->
+
+      <FooterContact />
+    </div>
+    <FooterBottom/>
+  </div>
+</footer>

@@ -1,0 +1,72 @@
+---
+import { Image } from "astro:assets";
+import { about } from "@/data/about";
+
+const { chairman } = about;
+---
+
+<section class="py-10 lg:py-15" data-animate="fade-up">
+  <div
+    class="relative
+      mx-auto
+      max-w-7xl
+      overflow-hidden
+      rounded-[2rem]
+      bg-slate-50
+      px-8
+      py-12
+      shadow-sm
+      lg:px-16
+      lg:py-16"
+  >
+    <p
+      class="mb-6 uppercase tracking-[0.3em] text-sm font-semibold text-amber-600"
+    >
+      Chairman's Message
+    </p>
+    <!-- Decorative background -->
+    <div
+      aria-hidden="true"
+      class="absolute -left-10 top-6 text-[10rem] font-serif leading-none text-amber-100"
+    >
+      ❝
+    </div>
+
+    <div class="relative z-10 grid items-center gap-12 lg:grid-cols-[2fr_1fr]">
+      <!-- Quote -->
+      <div>
+        <p class="text-3xl font-light italic leading-relaxed text-slate-800">
+          {chairman.quote}
+        </p>
+
+        <Image
+          src={chairman.signature}
+          alt={`${chairman.name} signature`}
+          width={180}
+          class="mt-10 opacity-90"
+        />
+
+        <div class="mt-5">
+          <h3 class="text-xl font-bold text-slate-900">
+            {chairman.name}
+          </h3>
+
+          <p class="mt-1 uppercase tracking-[0.25em] text-amber-600">
+            {chairman.title}
+          </p>
+        </div>
+      </div>
+
+      <!-- Portrait -->
+      <div class="mx-auto max-w-sm">
+        <Image
+          src={chairman.photo}
+          alt={chairman.name}
+          widths={[400, 600]}
+          sizes="(min-width:1024px) 320px, 70vw"
+          class="rounded-[2rem] shadow-xl"
+        />
+      </div>
+    </div>
+  </div>
+</section>
