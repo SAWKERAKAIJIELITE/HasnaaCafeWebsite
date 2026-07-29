@@ -1,0 +1,37 @@
+<section class="mt-12 reveal">
+  <div class="grid gap-4 lg:grid-cols-[1fr_220px_220px]">
+    <div class="relative">
+      <input
+        type="text"
+        placeholder="Search products..."
+        data-product-search
+        class="w-full
+                    rounded-2xl
+                    border
+                    border-slate-200
+                    bg-white
+                    px-5
+                    py-4
+                    outline-none
+                    transition
+                    focus:border-[#005826]
+                    focus:ring-4
+                    focus:ring-[#005826]/10"
+      />
+    </div>
+
+    <select
+      data-origin-filter
+      class="rounded-2xl border border-slate-200 bg-white px-5 py-4"
+    >
+      <option value="all"> All Origins </option>
+    </select>
+
+    <select
+      data-roast-filter
+      class="rounded-2xl border border-slate-200 bg-white px-5 py-4"
+    >
+      <option value="all"> All Roasts </option>
+    </select>
+  </div>
+</section>

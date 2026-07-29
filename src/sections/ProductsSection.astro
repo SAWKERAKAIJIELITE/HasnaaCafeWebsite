@@ -1,0 +1,46 @@
+---
+import ProductsHeader from "@/components/products/ProductsHeader.astro";
+import CategoryNavigation from "@/components/products/CategoryNavigation.astro";
+import FeaturedProduct from "@/components/products/FeaturedProduct.astro";
+import ProductGrid from "@/components/products/ProductGrid.astro";
+import SectionCTA from "@/components/products/SectionCTA.astro";
+import ProductModal from "@/components/products/ProductModal.astro";
+import ProductFilters from "@/components/products/ProductFilters.astro";
+
+import { coffeeBeans } from "@/data/products/index";
+---
+
+<section id="products" class="relative overflow-hidden py-24 lg:py-32">
+  <!-- Background -->
+
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(253,185,19,.08),transparent_45%)]"
+  >
+  </div>
+
+  <div class="container mx-auto px-6">
+    <ProductsHeader />
+    <CategoryNavigation />
+    <ProductFilters />
+    <FeaturedProduct />
+    <div class="mt-24">
+      <p class="text-sm font-semibold uppercase tracking-[.3em] text-[#fdb913]">
+        Explore Collection
+      </p>
+
+      <h3 class="mt-3 text-3xl font-black text-slate-900">More Products</h3>
+
+      <p class="mt-4 max-w-2xl leading-8 text-slate-600">
+        Discover our complete selection of premium coffee, tea, chocolate, and
+        beverage solutions crafted for cafés, restaurants, hotels, retailers,
+        and wholesale partners.
+      </p>
+    </div>
+    <ProductGrid
+      products={coffeeBeans.filter((product) => !product.featured)}
+    />
+    <SectionCTA />
+  </div>
+</section>
+<ProductModal />

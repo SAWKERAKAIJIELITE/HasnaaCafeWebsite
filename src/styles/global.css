@@ -3,6 +3,9 @@
 @import "./components/mobile-menu.css";
 @import "./components/navbar.css";
 @import "./components/scroll-top.css";
+@import "./components/featured-product.css";
+@import "./components/product-category.css";
+
 
 html {
     scroll-behavior: smooth;
@@ -125,4 +128,41 @@ button {
     --brand-green: #005826;
     --brand-light-green: #3c9339;
     --brand-gold: #fdb913;
+}
+
+[data-modal-content]::-webkit-scrollbar {
+    width: 10px;
+}
+
+[data-modal-content]::-webkit-scrollbar-thumb {
+    background: #d4d4d4;
+    border-radius: 999px;
+}
+
+html[data-language="en"] {
+    --font-primary: "Inter", sans-serif;
+}
+
+html[data-language="ar"] {
+    --font-primary: "GE SS TV", sans-serif;
+}
+
+body {
+    font-family: var(--font-primary);
+}
+
+html[dir="rtl"] {
+    direction: rtl;
+}
+
+html[dir="rtl"] body {
+    text-align: right;
+}
+
+html[dir="ltr"] body {
+    text-align: left;
+}
+
+#hero-slider {
+    direction: ltr;
 }

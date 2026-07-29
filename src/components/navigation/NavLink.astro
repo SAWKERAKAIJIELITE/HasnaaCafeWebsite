@@ -3,9 +3,10 @@ interface Props {
   href: string;
   label: string;
   mobile?: boolean;
+  data_i18n: string;
 }
 
-const { mobile = false, href, label } = Astro.props;
+const { mobile = false, href, label,data_i18n } = Astro.props;
 ---
 
 <!-- class="nav-link relative py-2 font-medium transition-colors duration-300" -->
@@ -16,6 +17,7 @@ class:list={[
 mobile && "nav-link--mobile",
 ]}
   data-nav-link
+  data-i18n={data_i18n}
 >
   {label}
 </a>

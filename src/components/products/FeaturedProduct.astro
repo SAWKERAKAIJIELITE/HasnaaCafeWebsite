@@ -1,0 +1,140 @@
+---
+import { coffeeBeans } from "@/data/products/index";
+import PackageChip from "./PackageChip.astro";
+import ProductBadge from "./ProductBadge.astro";
+import ArrowLink from "./ArrowLink.astro";
+const featured = coffeeBeans.find((product) => product.featured)!;
+---
+
+<section class="mt-20 reveal" data-featured-product>
+  <div
+    data-featured-content
+    class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_30px_80px_rgba(0,0,0,.08)]"
+  >
+    <!-- <div class="grid min-h-[500px] lg:grid-cols-2"> -->
+    <div class="grid min-h-[420px] lg:h-[520px] lg:grid-cols-[48%_52%]">
+      <!-- Image -->
+      <div
+        class="relative overflow-hidden bg-slate-100 h-[320px] lg:h-full flex
+    items-center
+    justify-center"
+      >
+        <img
+          data-featured-image
+          src={featured.image}
+          alt={featured.title}
+          class="h-full w-full object-cover transition duration-700 hover:scale-105 object-center"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent"
+        >
+        </div>
+      </div>
+
+      <!-- Content -->
+      <!-- <div class="bg-white"></div> -->
+      <div class="flex flex-col justify-center p-8 lg:p-10">
+        <!-- <span
+          class="text-sm font-bold uppercase tracking-[.3em] text-[#fdb913]"
+        >
+          Featured Product
+        </span> -->
+        <ProductBadge label="Featured Product" />
+
+        <h3
+          data-featured-title
+          class="mt-5 lg:text-[2rem] text-3xl font-black text-slate-900"
+        >
+          {featured.title}
+        </h3>
+
+        <p
+          data-featured-description
+          class="mt-5 leading-7 line-clamp-3 text-slate-600"
+        >
+          {featured.description}
+        </p>
+
+        <div class="mt-10 grid gap-6 sm:grid-cols-2">
+          <div>
+            <p class="text-xs uppercase tracking-[.25em] text-slate-400">
+              Origin
+            </p>
+
+            <p data-featured-origin class="mt-2 font-semibold text-slate-800">
+              {featured.origin}
+            </p>
+          </div>
+
+          <!-- <div>
+            <p class="text-xs uppercase tracking-[.25em] text-slate-400">
+              Roast
+            </p>
+
+            <p data-featured-roast class="mt-2 font-semibold text-slate-800">
+              {featured.roastLevel}
+            </p>
+          </div> -->
+        </div>
+
+        <!-- Packages -->
+
+        <div class="mt-8">
+          <p class="mb-4 text-xs uppercase tracking-[.25em] text-slate-400">
+            Packaging
+          </p>
+
+          <div data-featured-packages class="flex flex-wrap gap-3">
+            {
+              featured.packages.map((pkg) => (
+                // <span class="rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700">
+                //   {pkg.weight}
+                // </span>
+                <PackageChip label={pkg.weight} />
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Applications -->
+
+        <!-- <div class="mt-10">
+          <p class="mb-4 text-xs uppercase tracking-[.25em] text-slate-400">
+            Applications
+          </p>
+
+          <div data-featured-applications class="flex flex-wrap gap-3">
+            {
+              featured.applications.map((application) => (
+                <span class="rounded-full border border-[#005826]/20 bg-[#005826]/5 px-4 py-2 text-sm font-medium text-[#005826]">
+                  {application}
+                </span>
+              ))
+            }
+          </div>
+        </div> -->
+
+        <!-- <a
+          href="#contact"
+          class="mt-12
+inline-flex
+w-fit
+items-center
+rounded-full
+bg-[#005826]
+px-8
+py-4
+font-bold
+text-white
+transition
+duration-300
+hover:-translate-y-1
+hover:bg-[#3c9339]"
+        >
+          Request Catalogue
+        </a> -->
+        <ArrowLink href="#contact" label="View Details →" />
+      </div>
+    </div>
+  </div>
+</section>

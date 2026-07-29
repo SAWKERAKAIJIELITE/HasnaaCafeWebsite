@@ -1,0 +1,42 @@
+---
+const categories = [
+  {
+    id: "coffee-beans",
+    icon: "☕",
+    title: "Coffee Beans",
+  },
+  {
+    id: "liquid-coffee",
+    icon: "🥤",
+    title: "Liquid Coffee",
+  },
+  {
+    id: "tea",
+    icon: "🍵",
+    title: "Tea",
+  },
+  {
+    id: "chocolate",
+    icon: "🍫",
+    title: "Chocolate",
+  },
+];
+---
+
+<div class="mt-20 flex flex-wrap justify-center gap-4">
+  <!-- <div class="h-14 w-40 rounded-full bg-slate-100"></div>
+  <div class="h-14 w-40 rounded-full bg-slate-100"></div>
+  <div class="h-14 w-40 rounded-full bg-slate-100"></div>
+  <div class="h-14 w-40 rounded-full bg-slate-100"></div> -->
+  {
+    categories.map((category) => (
+      <button class="product-category group"
+        data-category-button
+        data-category={category.id}
+      >
+        <span class="text-2xl">{category.icon}</span>
+        <span>{category.title}</span>
+      </button>
+    ))
+  }
+</div>

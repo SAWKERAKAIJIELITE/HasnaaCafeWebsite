@@ -1,0 +1,47 @@
+.featured-product {
+    transition:
+        transform .35s ease,
+        opacity .35s ease;
+}
+
+.featured-product--changing {
+    opacity: 0;
+    transform: scale(.985);
+}
+
+.featured-product img {
+    transition:
+        transform .6s ease,
+        opacity .35s ease;
+}
+
+.featured-product--enter img {
+    transform: scale(1.06);
+}
+
+.featured-product--enter {
+    animation: featuredFade .45s ease forwards;
+}
+
+@keyframes featuredFade {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.product-category.active {
+    background: #005826;
+
+    color: white;
+
+    border-color: #005826;
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 18px 40px rgb(0 88 38 /.18);
+}
