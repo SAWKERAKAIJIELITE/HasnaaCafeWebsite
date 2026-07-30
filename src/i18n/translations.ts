@@ -47,45 +47,73 @@ export const translations =
             Light:
             {
                 en: "Light",
-                ar: "شقراء"
+                ar: "تحميص خفيف"
             },
 
             Medium:
             {
                 en: "Medium",
-                ar: "وسط"
+                ar: "تحميص وسط"
             },
 
             Dark:
             {
                 en: "Dark",
-                ar: "سمراء"
+                ar: "تحميص داكن"
             }
         } satisfies Record<string, LocalizedText>,
     productApplication: {
         Retail: {
-            en:"Retail",
-            ar:"المفرق"
+            en: "Retail",
+            ar: "المفرق"
         },
         Hotels: {
-            en:"Hotels",
-            ar:"الفنادق"
+            en: "Hotels",
+            ar: "الفنادق"
         },
         Restaurants: {
-            en:"Restaurants",
-            ar:"المطاعم",
+            en: "Restaurants",
+            ar: "المطاعم",
         },
         Cafés: {
-            en:"Cafés",
-            ar:"المقاهي",
+            en: "Cafés",
+            ar: "المقاهي",
         },
         Wholesale: {
-            en:"Wholesale",
-            ar:"الجملة",
+            en: "Wholesale",
+            ar: "الجملة",
         },
         Office: {
-            en:"Office",
-            ar:"المكاتب",
+            en: "Office",
+            ar: "المكاتب",
         },
-    } satisfies Record<string, LocalizedText>
+    } satisfies Record<string, LocalizedText>,
+    productCategory: {
+        "coffee-beans": {
+            en: "coffee-beans",
+            ar: "بن"
+        },
+        "liquid-coffee": {
+            en: "liquid-coffee",
+            ar: "قهوة سائلة"
+        },
+        tea: {
+            en: "tea",
+            ar: "شاي",
+        },
+        chocolate: {
+            en: "chocolate",
+            ar: "شوكولا",
+        },
+    } satisfies Record<string, LocalizedText>,
+    filters: {
+        "allRoasts": {
+            en: "All Roasts",
+            ar: "كل أنواع التحميص"
+        },
+        "allOrigins": {
+            en: "All Origins",
+            ar: "كل أنواع المنشأ"
+        }
+    } satisfies Record<string, LocalizedText>,
 };

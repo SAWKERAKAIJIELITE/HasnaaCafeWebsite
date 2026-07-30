@@ -8,9 +8,9 @@ export const tea: Product[] = [
         title: "Premium Green Tea",
         shortDescription: "Fresh green tea leaves with a delicate aroma and refreshing taste.",
         description:"Carefully selected green tea sourced from renowned tea gardens, offering a naturally refreshing flavor suitable for cafés, hotels, and retail markets.",
-        image:"src/assets/demo/photo-1544787219-7f47ccb76574.jpg",
+        image:"src/assets/demo/552652030_17986571240907279_2493131455731955691_n.webp",
         gallery: [
-            "src/assets/demo/photo-1495474472287-4d71bcdd2085.jpg",
+            "src/assets/demo/552652030_17986571240907279_2493131455731955691_n.webp",
         ],
         packages: [
             {
@@ -41,7 +41,7 @@ export const tea: Product[] = [
         title: "Earl Grey",
         shortDescription:"Classic black tea blended with natural bergamot flavor.",
         description:"A premium Earl Grey tea offering an elegant citrus aroma and full-bodied taste for refined tea experiences.",
-        image:"src/assets/demo/photo-1515823064-d6e0c04616a7.jpg",
+        image:"src/assets/demo/552652030_17986571240907279_2493131455731955691_n.webp",
         gallery: [],
         packages: [
             {
@@ -65,7 +65,7 @@ export const tea: Product[] = [
         title: "Mint Tea",
         shortDescription: "Refreshing herbal tea blended with natural mint leaves.",
         description:"A soothing herbal infusion with refreshing mint flavor, ideal for cafés and hospitality environments.",
-        image:"src/assets/demo/photo-1597481499750-3e6b22637e12.jpg",
+        image:"src/assets/demo/552652030_17986571240907279_2493131455731955691_n.webp",
         gallery: [],
         packages: [
             {

@@ -1,5 +1,6 @@
 import { productStore } from "./product-store";
-
+import { localize } from "@/i18n/localize";
+import { translations } from "@/i18n/translations";
 
 export class ProductFilterController
 {
@@ -36,7 +37,7 @@ export class ProductFilterController
             this.notify();
         });
 
-        document.addEventListener("products:filters-rebuild",() => this.rebuildFilters());
+        document.addEventListener("products:filters-rebuild", () => this.rebuildFilters());
         // document.addEventListener("products:category-changed",() => this.rebuildFilters());
 
         this.rebuildFilters();
@@ -58,13 +59,19 @@ export class ProductFilterController
 
         this.origin.innerHTML = origins.map(origin => `
             <option value="${origin}">
-                ${origin === "all" ? "All Origins" : origin}
+                ${origin === "all"
+            ? localize(translations.filters.allOrigins)
+            : origin
+            }
             </option>
         `).join("");
 
         this.roast.innerHTML = roasts.map(roast => `
             <option value="${roast}">
-                ${roast === "all" ? "All Roasts" : roast}
+                ${roast === "all"
+                ? localize(translations.filters.allRoasts)
+                : localize(translations.roast[roast as keyof typeof translations.roast])
+            }
             </option>
         `).join("");
 

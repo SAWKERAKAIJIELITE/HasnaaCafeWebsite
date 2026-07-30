@@ -1,5 +1,6 @@
 import { productMap } from "@/data/products/index";
-
+import { localize } from "@/i18n/localize";
+import { translations } from "@/i18n/translations";
 import type { Product, ProductCategory } from "@/types/product";
 
 
@@ -49,11 +50,11 @@ export class ProductStore
             products = products.filter(product =>
             {
                 return (
-                    product.title.toLowerCase().includes(this.search) ||
-                    product.description.toLowerCase().includes(this.search) ||
-                    product.origin?.toLowerCase().includes(this.search) ||
+                    localize(product.title).toLowerCase().includes(this.search) ||
+                    localize(product.description).toLowerCase().includes(this.search) ||
+                    product.origin && localize(product.origin).toLowerCase().includes(this.search) ||
                     product.applications.some(a =>
-                        a.toLowerCase().includes(this.search)
+                        localize(translations.productApplication[a]).toLowerCase().includes(this.search)
                     )
                 );
             });
@@ -61,7 +62,7 @@ export class ProductStore
 
         if (this.origin !== "all")
         {
-            products = products.filter(p => p.origin === this.origin);
+            products = products.filter(p => p.origin && localize(p.origin) === this.origin);
         }
 
         if (this.roast !== "all")
@@ -74,12 +75,15 @@ export class ProductStore
 
     getOrigins()
     {
-        return ["all",...new Set(productMap[this.category].map(p => p.origin)),];
+        return [
+            "all",
+            ...new Set(productMap[this.category].map(p => p.origin).filter(Boolean).map(origin => localize(origin!)))
+        ];
     }
 
     getRoasts()
     {
-        return ["all",...new Set(productMap[this.category].map(p => p.roastLevel)),];
+        return ["all", ...new Set(productMap[this.category].map(p => p.roastLevel)),];
     }
 
     getProduct(id: string)

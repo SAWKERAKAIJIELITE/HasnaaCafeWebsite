@@ -1,6 +1,7 @@
 import { productMap } from "@/data/products/index";
 import type { Product } from "@/types/product";
-
+import { localize } from "@/i18n/localize";
+import { translations } from "@/i18n/translations";
 import type { ProductCategory } from "@/types/product";
 
 export function productGridTemplate(products: Product[])
@@ -18,9 +19,9 @@ export function productGridTemplate(products: Product[])
                 <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
             </div>
             <div class="p-7">
-                <span class="inline-flex w-fit items-center rounded-full bg-[#005826]/10 px-3 py-1 text-xs font-bold uppercase tracking-[.18em] text-[#005826]"> ${product.category.replace("-", " ")} </span>
-                <h3 class="mt-5 text-2xl font-black text-slate-900"> ${product.title} </h3>
-                <p class="mt-4 line-clamp-3 leading-7 text-slate-600"> ${product.description} </p>
+                <span class="inline-flex w-fit items-center rounded-full bg-[#005826]/10 px-3 py-1 text-xs font-bold uppercase tracking-[.18em] text-[#005826]"> ${localize(translations.productCategory[product.category])} </span>
+                <h3 class="mt-5 text-2xl font-black text-slate-900"> ${localize(product.title) } </h3>
+                <p class="mt-4 line-clamp-3 leading-7 text-slate-600"> ${localize(product.description)} </p>
                 <div class="mt-6 flex flex-wrap gap-2">
                     ${product.packages.map(pkg => `
                         <span class="inline-flex items-center rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700"> ${pkg.weight} </span>

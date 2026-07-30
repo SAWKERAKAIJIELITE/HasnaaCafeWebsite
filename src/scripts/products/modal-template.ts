@@ -1,4 +1,6 @@
 import type { Product } from "@/types/product";
+import { localize } from "@/i18n/localize";
+import { translations } from "@/i18n/translations";
 
 
 export function productModalTemplate(product: Product)
@@ -16,23 +18,23 @@ export function productModalTemplate(product: Product)
     <div class="flex flex-col lg:max-h-[85vh]
 lg:overflow-y-auto sm:p-8 justify-center p-6">
         <span class="inline-flex w-fit rounded-full bg-[#005826]/10 px-3 py-1 text-xs font-bold uppercase tracking-[.2em] text-[#005826]">
-            ${product.category.replace("-", " ")}
+            ${localize(translations.productCategory[product.category])}
         </span>
         <h2 class="mt-6 text-3xl lg:text-[2rem] font-black text-slate-900"> 
-            ${product.title}
+            ${localize(product.title)}
         </h2>
         <p class="mt-6 leading-8 text-slate-600">
-            ${product.description}
+            ${localize(product.description)}
         </p>
         <div class="mt-10 grid gap-8 sm:grid-cols-2">
             <div>
                 <p class="text-xs uppercase tracking-[.25em] text-slate-400"> Origin </p>
-                <p class="mt-2 font-semibold text-slate-800"> ${product.origin ?? "-"} </p>
+                <p class="mt-2 font-semibold text-slate-800"> ${product.origin ? localize(product.origin) : "-"} </p>
             </div>
             <div>
                 <p class="text-xs uppercase tracking-[.25em] text-slate-400"> Roast </p>
                 <p class="mt-2 font-semibold text-slate-800">
-                    ${product.roastLevel ?? "-"}
+                    ${product.roastLevel ? localize(translations.roast[product.roastLevel]) : "-"}
                 </p>
             </div>
         </div>
@@ -51,7 +53,7 @@ lg:overflow-y-auto sm:p-8 justify-center p-6">
             <div class="flex flex-wrap gap-3">
                 ${product.applications.map(app => `
                     <span class="rounded-full border border-[#005826]/20 bg-[#005826]/5 px-4 py-2 text-sm font-medium text-[#005826]">
-                        ${app}
+                        ${localize(translations.productApplication[app]) }
                     </span>
                 `).join("")}
             </div>

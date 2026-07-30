@@ -1,4 +1,6 @@
 import type { Product } from "@/types/product";
+import { localize } from "@/i18n/localize";
+import { translations } from "@/i18n/translations";
 
 
 const packageChipClass = "inline-flex items-center rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 transition duration-300 hover:bg-[#005826] hover:text-white";
@@ -23,12 +25,12 @@ export function featuredTemplate(product: Product)
         </div>
         <div class="flex flex-col justify-center p-8 lg:p-10">
             <span class="text-sm font-bold uppercase tracking-[.3em] text-[#fdb913]"> Featured Product </span>
-            <h3 class="mt-5 text-3xl lg:text-4xl font-black text-slate-900"> ${product.title} </h3>
-            <p class="mt-5 leading-7 line-clamp-3 text-slate-600"> ${product.description} </p>
+            <h3 class="mt-5 text-3xl lg:text-4xl font-black text-slate-900"> ${localize(product.title) } </h3>
+            <p class="mt-5 leading-7 line-clamp-3 text-slate-600"> ${localize(product.description) } </p>
             <div class="mt-10 grid gap-6 sm:grid-cols-2">
                 <div>
                     <p class="text-xs uppercase tracking-[.25em] text-slate-400"> Origin </p>
-                    <p class="mt-2 font-semibold text-slate-800"> ${product.origin ?? "-"} </p>
+                    <p class="mt-2 font-semibold text-slate-800"> ${product.origin ? localize(product.origin): "-"} </p>
                 </div>
                 </div>
                 <div class="mt-8">

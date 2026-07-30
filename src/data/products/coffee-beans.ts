@@ -6,27 +6,35 @@ export const coffeeBeans: Product[] =
             id: "cb-1",
             slug: "premium-arabica",
             category: "coffee-beans",
-            title: "Premium Arabica",
-            shortDescription: "Carefully selected Arabica beans with a balanced aroma.",
-            description: "Premium Arabica beans sourced from high-altitude farms to deliver a smooth, rich, and aromatic cup suitable for cafés, restaurants, and premium retailers.",
-            image: "src/assets/demo/photo-1447933601403-0c6688de566e.jpg",
+            title: {
+                en:"Premium Arabica",
+                ar:"أرابيكا فاخرة"
+            },
+            shortDescription: {
+                en:"Carefully selected Arabica beans with a balanced aroma.",
+                ar:"حبوب أرابيكا منتقاة بعناية ذات عبق متوازن"
+            },
+            description: {
+                en:"Premium Arabica beans sourced from high-altitude farms to deliver a smooth, rich, and aromatic cup suitable for cafés, restaurants, and premium retailers.",
+                ar:"حبوب أرابيكا فاخرة مستمدة من مزارع تقع على ارتفاعات شاهقة، لتقدم كوباً يتميز بمذاق سلس وغني ونكهة عطرية، مما يجعلها خياراً مثالياً للمقاهي والمطاعم ومتاجر التجزئة الراقية."},
+            image: "src/assets/demo/552652030_17986571240907279_2493131455731955691_n.webp",
             gallery: [
-                "src/assets/demo/photo-1495474472287-4d71bcdd2085.jpg",
-                "src/assets/demo/photo-1511920170033-f8396924c348.jpg",
+                "src/assets/demo/552652030_17986571240907279_2493131455731955691_n.webp",
+                "src/assets/demo/552652030_17986571240907279_2493131455731955691_n.webp",
             ],
-            origin: "Brazil",
+            origin: {en:"Brazil",ar:"البرازيل"},
             roastLevel: "Medium",
             packages: [
                 {
-                    label: "Retail",
+                    label: {en:"Retail",ar:"المفرق"},
                     weight: "250g",
                 },
                 {
-                    label: "Retail",
+                    label: { en: "Retail", ar: "المفرق" },
                     weight: "500g",
                 },
                 {
-                    label: "Wholesale",
+                    label: { en: "wholesale", ar: "الجملة" },
                     weight: "1kg",
                 },
             ],
@@ -46,7 +54,7 @@ export const coffeeBeans: Product[] =
             title: "Espresso Blend",
             shortDescription: "Rich crema with deep chocolate notes.",
             description: "Crafted for espresso lovers seeking full body, balanced acidity, and long-lasting crema.",
-            image: "src/assets/demo/photo-1459755486867-b55449bb39ff.jpg",
+            image: "src/assets/demo/552652030_17986571240907279_2493131455731955691_n.webp",
             gallery: [],
             origin: "Colombia",
             roastLevel: "Dark",
