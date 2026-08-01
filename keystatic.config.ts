@@ -3,9 +3,13 @@ import { config, singleton, fields, collection } from "@keystatic/core";
 
 export default config({
     storage: {
-        // kind: "local"
-        kind: 'github',
-        repo: 'SAWKERAKAIJIELITE/HasnaaCafeWebsite'
+        // kind: "local",
+        kind:"cloud"
+        // kind: 'github',
+        // repo: 'SAWKERAKAIJIELITE/HasnaaCafeWebsite'
+    },
+    cloud: {
+        project: 'hanaa-coffee/hasnaacafewebsite',
     },
 
     collections: {
