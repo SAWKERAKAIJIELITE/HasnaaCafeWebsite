@@ -1,5 +1,8 @@
 ---
-import { heroSlides } from "@/data/hero";
+// import { heroSlides } from "@/data/hero";
+import { getHero } from "@/services/home/hero.service";
+
+const slides = await getHero();
 import HeroSlide from "./HeroSlide.astro";
 import { ChevronLeft, ChevronRight } from "lucide-astro";
 ---
@@ -7,7 +10,8 @@ import { ChevronLeft, ChevronRight } from "lucide-astro";
 <div class="embla" id="hero-slider">
   <div class="embla__viewport">
     <div class="embla__container">
-      {heroSlides.map((slide) => <HeroSlide slide={slide} />)}
+      <!-- {slides.map((slide,index) => <HeroSlide slide={slide} index={index} />)} -->
+      {slides.map((slide, index) => <HeroSlide slide={slide} index={index} />)}
     </div>
   </div>
   <button

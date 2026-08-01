@@ -9,7 +9,7 @@ import { MobileMenuController } from "./mobile-menu";
 import { ScrollToTopController } from "./scroll-to-top";
 import { ProductCategoryController } from "./products/category-controller";
 import { FeaturedProductController } from "./products/featured-controller";
-import { ProductImagePreloader } from "@/scripts/products/image-preloader";
+// import { ProductImagePreloader } from "@/scripts/products/image-preloader";
 import { ProductGridController } from "@/scripts/products/product-grid-controller";
 import { ProductModalController } from "@/scripts/products/product-modal-controller";
 import { ProductFilterController } from "@/scripts/products/filter-controller";
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () =>
     const scrollToTopController = new ScrollToTopController();
     const productCategory = new ProductCategoryController();
     const featuredProductController = new FeaturedProductController();
-    const imagePreloader = new ProductImagePreloader();
+    // const imagePreloader = new ProductImagePreloader();
     const productGridController = new ProductGridController();
     const productModalController = new ProductModalController();
     const productFilterController = new ProductFilterController();
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () =>
     scrollToTopController.init();
     productCategory.init();
     featuredProductController.init();
-    imagePreloader.init();
+    // imagePreloader.init();
     productGridController.init();
     productModalController.init();
     productFilterController.init();

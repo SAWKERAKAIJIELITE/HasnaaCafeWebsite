@@ -4,11 +4,14 @@ import hero3 from "@/assets/demo/photo-1509042239860-f550ce710b93.jpg";
 
 export interface HeroSlide
 {
-    id: number;
+    // id: number;
     title: string;
     subtitle: string;
-    media: ImageMetadata;
-    type: "image" | "video";
+    // media: ImageMetadata;
+    media: string;
+    mediaType: "image" | "video";
+
+    enabled: boolean;
 
     primaryButton: {
         label: string;
@@ -28,7 +31,7 @@ export const heroSlides: HeroSlide[] = [
         title: "Premium Coffee Solutions",
         subtitle:
             "Delivering exceptional coffee products with quality, innovation, and passion.",
-        type: "image",
+        mediaType: "image",
         media:
             hero1,
         primaryButton: {
@@ -45,7 +48,7 @@ export const heroSlides: HeroSlide[] = [
         title: "Freshly Roasted Every Day",
         subtitle:
             "We deliver premium coffee beans for cafés, restaurants and retailers.",
-        type: "image",
+        mediaType: "image",
         media:
             hero2,
         primaryButton: {
@@ -63,7 +66,7 @@ export const heroSlides: HeroSlide[] = [
         title: "Trusted By Coffee Professionals",
         subtitle:
             "Helping businesses create exceptional coffee experiences.",
-        type: "image",
+        mediaType: "image",
         media:
             hero3,
         primaryButton: {

@@ -1,0 +1,10 @@
+---
+import { getHero } from "@/services/home/hero.service";
+import HeroSlide from "@components/hero/HeroSlide.astro";
+
+const hero = await getHero();
+---
+
+<pre>
+ {hero.map((slide) => <HeroSlide slide={slide} />)}
+</pre>

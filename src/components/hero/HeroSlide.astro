@@ -6,9 +6,10 @@ import { Image } from "astro:assets";
 
 interface Props {
   slide: HeroSlideType;
+  index:number;
 }
 
-const { slide } = Astro.props;
+const { slide, index } = Astro.props;
 ---
 
 <!-- // widths={[640, 1024, 1440, 1920]}
@@ -19,14 +20,14 @@ const { slide } = Astro.props;
   height="1080" -->
 <div class="embla__slide relative min-h-screen">
   {
-    slide.type === "image" && (
+    slide.mediaType === "image" && (
       <img
-        src={slide.media.src}
+        src={slide.media}
         alt={slide.title}
-        width={slide.media.width}
-        height={slide.media.height}
-        loading={slide.id === 1 ? "eager" : "lazy"}
-        fetchpriority={slide.id === 1 ? "high" : "auto"}
+        // width={slide.media.width}
+        // height={slide.media.height}
+        loading={index === 0 ? "eager" : "lazy"}
+        fetchpriority={index === 0 ? "high" : "auto"}
         decoding="async"
         class="absolute inset-0 h-full w-full object-cover object-center"
       />
@@ -34,7 +35,7 @@ const { slide } = Astro.props;
   }
 
   {
-    slide.type === "video" && (
+    slide.mediaType === "video" && (
       <video
         autoplay
         muted
@@ -76,19 +77,15 @@ lg:leading-9"
         </p>
 
         <!-- <div class="mt-12 flex flex-wrap gap-5"> -->
-        <div class="mt-10
-
+        <div
+          class="mt-10
 flex
-
 flex-col
-
 sm:flex-row
-
 justify-center
-
 lg:justify-start
-
-gap-4">
+gap-4"
+        >
           <!-- <a
             href={slide.primaryButton.href}
             class="rounded-lg bg-amber-500 px-8 py-4 font-semibold text-white hover:bg-amber-600 transition"
