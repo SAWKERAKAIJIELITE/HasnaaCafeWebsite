@@ -1,9 +1,9 @@
 slides:
-  - enabled: false
+  - enabled: true
     title: شركة بن الحسناء
     subtitle: من أرقى مزارع البن في العالم
     mediaType: image
-    media: /images/slides/0/media.jpg
+    media: /images/slides/0/media.png
     primaryButton:
       label: المنتجات المميزة
       href: '#products'
