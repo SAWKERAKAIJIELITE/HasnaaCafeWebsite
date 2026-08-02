@@ -1,28 +1,28 @@
 slides:
-  - enabled: true
-    title: شركة بن الحسناء
-    subtitle: من أرقى مزارع البن في العالم
-    mediaType: image
-    media: /images/slides/0/media.jpg
-    primaryButton:
-      label: المنتجات المميزة
-      href: '#products'
-    secondaryButton:
-      label: نبذة عنا
-      href: '#about'
-  - enabled: true
+  - enabled: false
     title: Premium Coffee Solutions
     subtitle: >-
       Delivering exceptional coffee products with quality, innovation, and
       passion.
     mediaType: image
-    media: /images/slides/1/media.jpg
+    media: /images/slides/0/media.jpg
     primaryButton:
       label: View Products
       href: '#products'
     secondaryButton:
       label: Contact Us
       href: '#contact'
+  - enabled: true
+    title: شركة بن الحسناء
+    subtitle: من أرقى مزارع البن في العالم
+    mediaType: image
+    media: /images/slides/1/media.jpg
+    primaryButton:
+      label: المنتجات المميزة
+      href: '#products'
+    secondaryButton:
+      label: نبذة عنا
+      href: '#about'
   - enabled: true
     title: Freshly Roasted Every Day
     subtitle: We deliver premium coffee beans for cafés, restaurants and retailers.
