@@ -6,5 +6,7 @@ const hero = await getHero();
 ---
 
 <pre>
- {hero.map((slide) => <HeroSlide slide={slide} />)}
+    <!-- {...hero.loader} -->
+       {hero.map((slide, index) => <HeroSlide slide={slide} index={index} />)}
+
 </pre>

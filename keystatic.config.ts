@@ -87,7 +87,7 @@ export default config({
     singletons: {
         hero: singleton({
             label: "Hero",
-            path: "content/hero",
+            path: "src/content/hero",
             schema: {
                 slides: fields.array(
                     fields.object({
