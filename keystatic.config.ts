@@ -3,14 +3,14 @@ import { config, singleton, fields, collection } from "@keystatic/core";
 
 export default config({
     storage: {
-        kind: "local",
-        // kind:"cloud"
+        // kind: "local",
+        kind:"cloud"
         // kind: 'github',
         // repo: 'SAWKERAKAIJIELITE/HasnaaCafeWebsite'
     },
-    // cloud: {
-    //     project: 'hanaa-coffee/hasnaacafewebsite',
-    // },
+    cloud: {
+        project: 'hanaa-coffee/hasnaacafewebsite',
+    },
 
     collections: {
         products: collection({
