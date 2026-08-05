@@ -1,0 +1,41 @@
+---
+import type { socials } from "@/types/contact";
+
+import { Facebook, Instagram, Linkedin } from "lucide-astro";
+
+interface Props {
+  socials: socials;
+}
+
+const { socials } = Astro.props;
+console.log(socials);
+const social = [
+  {
+    href: socials.find((s) => s.type == "facebook").link,
+    icon: Facebook,
+  },
+  {
+    href: socials.find((s) => s.type == "instagram").link,
+    icon: Instagram,
+  },
+  {
+    href: socials.find((s) => s.type == "linkedin").link,
+    icon: Linkedin,
+  },
+];
+---
+
+<div class="flex gap-4">
+  {
+    social.map(({ href, icon: Icon }) => (
+      <a
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        class="flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 transition hover:bg-[#005826] hover:text-white"
+      >
+        <Icon size={20} />
+      </a>
+    ))
+  }
+</div>

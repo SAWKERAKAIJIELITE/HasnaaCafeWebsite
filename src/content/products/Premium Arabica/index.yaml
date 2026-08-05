@@ -1,0 +1,20 @@
+available: true
+featured: false
+name: Premium Arabica
+category: coffee-beans
+description: >-
+  Premium Arabica beans sourced from high-altitude farms to deliver a smooth,
+  rich, and aromatic cup suitable for cafés, restaurants, and premium retailers.
+thumbnail: thumbnail.webp
+gallery:
+  - gallery/0.jpg
+  - gallery/1.jpg
+origin: Brazil
+roastLevel: medium
+packaging:
+  - amount: 250
+    unit: g
+  - amount: 500
+    unit: g
+flavor: []
+specifications: []

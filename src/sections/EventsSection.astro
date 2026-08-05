@@ -1,0 +1,342 @@
+---
+// NewsEventsSection.astro
+// Drop into src/components/ and use in a page: <NewsEventsSection />
+//
+// Data now comes from the "newsEvents" Content Collection (see the
+// keystatic.config.ts / content.config.ts snippets shared alongside this
+// file), sorted newest/soonest first by its `date` field. The calendar-leaf
+// day/month shown on each card is derived from that same date, so there's
+// one source of truth instead of separately-typed day/month strings.
+//
+// Fonts: assumes font-serif -> Fraunces, font-sans -> Manrope,
+// font-mono -> IBM Plex Mono, matching the rest of the site.
+
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import "@/styles/global.css";
+const entries = await getCollection("event", ({ data }) => data.published);
+const items = entries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf(),);
+
+// Format as UTC explicitly — these are date-only values (no time component),
+// so formatting in the reader's local timezone can shift the day by one.
+function formatDateParts(date: Date) {
+  const day = date.toLocaleDateString("en-US", {
+    day: "2-digit",
+    timeZone: "UTC",
+  });
+  const month = date
+    .toLocaleDateString("en-US", { month: "short", timeZone: "UTC" })
+    .toUpperCase();
+  return { day, month };
+}
+---
+
+<!-- ---
+// NewsEventsSection.astro
+// Drop into src/components/ and use in a page: <NewsEventsSection />
+//
+// Front-end only for now, per request — data is a local array below.
+// When this moves into Keystatic it maps cleanly onto a collection:
+// type, date (day/month), title, excerpt, image, imageAlt, meta, href.
+//
+// Fonts: assumes font-serif -> Fraunces, font-sans -> Manrope,
+// font-mono -> IBM Plex Mono, matching the rest of the site.
+import "@/styles/global.css";
+
+interface NewsItem {
+  type: "news" | "event";
+  day: string;
+  month: string;
+  title: string;
+  excerpt: string;
+  meta: string;
+  href: string;
+  image: string;
+  imageAlt: string;
+}
+
+// Swap these picsum.photos placeholders for real photography when available.
+const items: NewsItem[] = [
+  {
+    type: "event",
+    day: "14",
+    month: "AUG",
+    title: "Cupping Night: Ethiopia Harvest",
+    excerpt:
+      "Taste the newest lot straight off the boat alongside our head roaster — three washed lots, side by side.",
+    meta: "Downtown Roastery · 7:00 PM",
+    href: "/events/cupping-night-ethiopia",
+    image: "https://picsum.photos/seed/news-cupping/900/560",
+    imageAlt: "Cups lined up for a coffee cupping session",
+  },
+  {
+    type: "news",
+    day: "02",
+    month: "AUG",
+    title: "Hasnaa Opens Its Second Location",
+    excerpt:
+      "Six years after the first cup, we're opening doors two blocks from the old textile market.",
+    meta: "Company news",
+    href: "/news/second-location",
+    image: "https://picsum.photos/seed/news-newstore/900/560",
+    imageAlt: "Storefront of a new coffee shop location",
+  },
+  {
+    type: "event",
+    day: "22",
+    month: "AUG",
+    title: "Latte Art Workshop for Beginners",
+    excerpt:
+      "Hands-on practice with steamed milk, pouring angles, and the patience it takes to get a decent heart.",
+    meta: "Main Bar · 10:00 AM",
+    href: "/events/latte-art-workshop",
+    image: "https://picsum.photos/seed/news-latteart/900/560",
+    imageAlt: "Barista pouring latte art into a cup",
+  },
+  {
+    type: "news",
+    day: "28",
+    month: "JUL",
+    title: "New Seasonal Blend: Autumn Harvest",
+    excerpt:
+      "A washed Yirgacheffe and a natural Sidamo, blended to lean into stone fruit and dark chocolate.",
+    meta: "Product launch",
+    href: "/news/autumn-harvest-blend",
+    image: "https://picsum.photos/seed/news-blend/900/560",
+    imageAlt: "Bag of the new Autumn Harvest coffee blend",
+  },
+  {
+    type: "event",
+    day: "05",
+    month: "SEP",
+    title: "Roastery Tour & Tasting",
+    excerpt:
+      "A walk through the roasting floor, from green bean intake to first crack, ending with a guided tasting.",
+    meta: "Roastery · 4:00 PM",
+    href: "/events/roastery-tour",
+    image: "https://picsum.photos/seed/news-roastery/900/560",
+    imageAlt: "Coffee roasting machine on the roastery floor",
+  },
+  {
+    type: "news",
+    day: "15",
+    month: "JUL",
+    title: "Featured in Coffee Weekly",
+    excerpt:
+      "A short profile on how we've kept sourcing relationships direct for almost a decade.",
+    meta: "Press",
+    href: "/news/coffee-weekly-feature",
+    image: "https://picsum.photos/seed/news-press/900/560",
+    imageAlt: "Magazine spread featuring the coffee brand",
+  },
+];
+---
+
+<section
+  id="news"
+  class="relative scroll-mt-24 overflow-hidden bg-[#1C1410] px-6 py-20 md:py-28"
+>
+  <div
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(172,135,89,0.10),_transparent_60%)]"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative mx-auto max-w-6xl">
+    <div
+      class="mb-14 flex flex-col gap-4 md:mb-20 md:flex-row md:items-end md:justify-between"
+    >
+      <div class="max-w-xl">
+        <p class="font-mono text-xs uppercase tracking-[0.25em] text-[#AC8759]">
+          From the Roastery
+        </p>
+        <h2
+          class="mt-4 font-serif text-4xl leading-tight text-[#F2E8D8] md:text-5xl"
+        >
+          What's <em class="text-[#AC8759] not-italic">brewing</em> lately.
+        </h2>
+        <p class="mt-4 font-sans text-base leading-relaxed text-[#F2E8D8]/70">
+          Product launches, press, and the odd excuse to get the whole
+          neighborhood in one room.
+        </p>
+      </div>
+    </div>
+
+    <ul class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        items.map((item) => {
+          const isEvent = item.type === "event";
+          const ctaLabel = isEvent ? "RSVP" : "Read the story";
+          const typeClasses = isEvent
+            ? "bg-[#8C3B2E] text-[#F2E8D8]"
+            : "bg-[#AC8759] text-[#1C1410]";
+          return (
+            <li class="list-none">
+              <article class="group flex h-full flex-col overflow-hidden rounded-lg border border-[#AC8759]/15 bg-[#241A14] shadow-[0_18px_40px_-24px_rgba(0,0,0,0.7)] transition-transform duration-300 hover:-translate-y-1 motion-reduce:transition-none">
+                <div class="relative aspect-[16/10] overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.imageAlt}
+                    loading="lazy"
+                    decoding="async"
+                    width="900"
+                    height="560"
+                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                  />
+                  <div
+                    class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1C1410]/50 via-transparent to-transparent"
+                    aria-hidden="true"
+                  />
+
+                  {/* torn-calendar-leaf date tag, pinned to the photo */}
+                  <div class="absolute left-3 top-3 rotate-[-5deg] rounded-sm bg-[#F2E8D8] px-3 py-2 text-center shadow-lg">
+                    <span
+                      class="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rounded-full bg-[#8C3B2E]"
+                      aria-hidden="true"
+                    />
+                    <p class="font-serif text-2xl font-bold leading-none text-[#1C1410]">
+                      {item.day}
+                    </p>
+                    <p class="mt-0.5 font-mono text-[10px] uppercase tracking-widest text-[#1C1410]/60">
+                      {item.month}
+                    </p>
+                  </div>
+
+                  <span
+                    class={`absolute right-3 top-3 rounded-full px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest ${typeClasses}`}
+                  >
+                    {item.type}
+                  </span>
+                </div>
+
+                <div class="flex flex-1 flex-col gap-3 px-6 pb-6 pt-5">
+                  <h3 class="line-clamp-2 font-serif text-lg font-semibold leading-snug text-[#F2E8D8]">
+                    {item.title}
+                  </h3>
+                  <p class="line-clamp-3 flex-1 font-sans text-sm leading-relaxed text-[#F2E8D8]/70">
+                    {item.excerpt}
+                  </p>
+                  <div class="mt-auto flex items-center justify-between gap-3 border-t border-[#AC8759]/15 pt-3">
+                    <span class="font-mono text-[11px] uppercase tracking-wide text-[#F2E8D8]/50">
+                      {item.meta}
+                    </span>
+                    <a
+                      href={item.href}
+                      class="inline-flex items-center gap-1 whitespace-nowrap font-sans text-sm font-medium text-[#AC8759] transition-colors hover:text-[#F2E8D8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AC8759]"
+                    >
+                      {ctaLabel}
+                      <span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</section> -->
+<section
+  id="news"
+  class="relative scroll-mt-24 overflow-hidden bg-[#1C1410] px-6 py-20 md:py-28"
+>
+  <div
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(172,135,89,0.10),_transparent_60%)]"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative mx-auto max-w-6xl">
+    <div
+      class="mb-14 flex flex-col gap-4 md:mb-20 md:flex-row md:items-end md:justify-between"
+    >
+      <div class="max-w-xl">
+        <p class="font-mono text-xs uppercase tracking-[0.25em] text-[#AC8759]">
+          From the Roastery
+        </p>
+        <h2
+          class="mt-4 font-serif text-4xl leading-tight text-[#F2E8D8] md:text-5xl"
+        >
+          What's <em class="text-[#AC8759] not-italic">brewing</em> lately.
+        </h2>
+        <p class="mt-4 font-sans text-base leading-relaxed text-[#F2E8D8]/70">
+          Product launches, press, and the odd excuse to get the whole
+          neighborhood in one room.
+        </p>
+      </div>
+    </div>
+
+    <ul class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        items.map((item) => {
+          const isEvent = item.data.type === "event";
+          const ctaLabel = isEvent ? "RSVP" : "Read the story";
+          const typeClasses = isEvent
+            ? "bg-[#8C3B2E] text-[#F2E8D8]"
+            : "bg-[#AC8759] text-[#1C1410]";
+          const { day, month } = formatDateParts(item.data.date);
+          return (
+            <li class="list-none">
+              <article class="group flex h-full flex-col overflow-hidden rounded-lg border border-[#AC8759]/15 bg-[#241A14] shadow-[0_18px_40px_-24px_rgba(0,0,0,0.7)] transition-transform duration-300 hover:-translate-y-1 motion-reduce:transition-none">
+                <div class="relative aspect-[16/10] overflow-hidden">
+                  <img
+                    src={`src/content/news-events/${item.id}/${item.data.image}`}
+                    alt={item.data.title}
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                  />
+                  <div
+                    class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1C1410]/50 via-transparent to-transparent"
+                    aria-hidden="true"
+                  />
+
+                  {/* torn-calendar-leaf date tag, pinned to the photo */}
+                  <div class="absolute left-3 top-3 rotate-[-5deg] rounded-sm bg-[#F2E8D8] px-3 py-2 text-center shadow-lg">
+                    <span
+                      class="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rounded-full bg-[#8C3B2E]"
+                      aria-hidden="true"
+                    />
+                    <p class="font-serif text-2xl font-bold leading-none text-[#1C1410]">
+                      {day}
+                    </p>
+                    <p class="mt-0.5 font-mono text-[10px] uppercase tracking-widest text-[#1C1410]/60">
+                      {month}
+                    </p>
+                  </div>
+
+                  <span
+                    class={`absolute right-3 top-3 rounded-full px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest ${typeClasses}`}
+                  >
+                    {item.data.type}
+                  </span>
+                </div>
+
+                <div class="flex flex-1 flex-col gap-3 px-6 pb-6 pt-5">
+                  <h3 class="line-clamp-2 font-serif text-lg font-semibold leading-snug text-[#F2E8D8]">
+                    {item.data.title}
+                  </h3>
+                  <p class="line-clamp-3 flex-1 font-sans text-sm leading-relaxed text-[#F2E8D8]/70">
+                    {item.data.excerpt}
+                  </p>
+                  <div class="mt-auto flex items-center justify-between gap-3 border-t border-[#AC8759]/15 pt-3">
+                    <span class="font-mono text-[11px] uppercase tracking-wide text-[#F2E8D8]/50">
+                      {item.data.meta}
+                    </span>
+                    <a
+                      href={item.data.href}
+                      class="inline-flex items-center gap-1 whitespace-nowrap font-sans text-sm font-medium text-[#AC8759] transition-colors hover:text-[#F2E8D8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AC8759]"
+                    >
+                      {ctaLabel}
+                      <span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</section>

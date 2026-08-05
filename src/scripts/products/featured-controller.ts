@@ -1,7 +1,8 @@
-import { getFeaturedProduct } from "@/data/products/index";
+// import { getFeaturedProduct } from "@/data/products/index";
 import type { ProductCategory } from "@/types/product";
 import { featuredTemplate } from "./templates";
-import { productStore } from './product-store'
+import { productState } from "./product-state";
+// import { productStore } from './product-store'
 
 export class FeaturedProductController
 {
@@ -11,6 +12,7 @@ export class FeaturedProductController
     init()
     {
         this.root = document.querySelector("[data-featured-content]")!;
+        console.log(this.root);
 
         this.render();
 
@@ -21,27 +23,27 @@ export class FeaturedProductController
 
     private async render()
     {
+        console.log('this.changing');
+
         if (this.changing)
             return;
 
         this.changing = true;
 
-        const product = productStore.getFeatured();
+        const product = await productState.getFeatured();
 
         if (!product)
         {
             this.root.innerHTML = `
-        <div class="rounded-[2rem] border border-dashed border-slate-300 bg-slate-50 p-12 text-center">
-            <h3 class="text-2xl font-bold text-slate-700">
-                No featured product found
-            </h3>
+                <div class="rounded-[2rem] border border-dashed border-slate-300 bg-slate-50 p-12 text-center">
+                    <h3 class="text-2xl font-bold text-slate-700">
+                        No featured product found
+                    </h3>
 
-            <p class="mt-4 text-slate-500">
-                Try changing your search or filters.
-            </p>
-        </div>
-    `;
-
+                    <p class="mt-4 text-slate-500">
+                        Try changing your search or filters.
+                    </p>
+                </div>`;
             this.changing = false;
             return;
         }

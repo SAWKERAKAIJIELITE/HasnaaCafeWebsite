@@ -1,0 +1,19 @@
+title: Let's Build Something Together
+subtitle: ' Whether you''re a distributor, café, supermarket, or hotel, we''d love to discuss how our products can help your business.'
+image: image.png
+phone: '0994057213'
+email: yesmajbesh@gmail.com
+address: Quodsaya
+googleMaps: none
+workingHours:
+  - day: Sat-Fri
+    time: 10AM-8PM
+socials:
+  - type: facebook
+    link: hasnaa
+  - type: whatsapp
+    link: '0994057213'
+  - type: instagram
+    link: https://www.instagram.com/alhassnacoffee/?hl=en
+  - type: linkedin
+    link: hhhasnaa

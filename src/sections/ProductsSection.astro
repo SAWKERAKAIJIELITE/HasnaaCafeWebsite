@@ -7,7 +7,14 @@ import SectionCTA from "@/components/products/SectionCTA.astro";
 import ProductModal from "@/components/products/ProductModal.astro";
 import ProductFilters from "@/components/products/ProductFilters.astro";
 
-import { coffeeBeans } from "@/data/products/index";
+import { getProducts } from "@/services/products/products.service";
+
+const products = await getProducts();
+const coffeeProducts = products.filter((p) => p.category === "coffee-beans");
+
+const featured = coffeeProducts.find((p) => p.featured)??coffeeProducts[0];
+
+// const grid = coffeeProducts.filter((p) => !p.featured);
 ---
 
 <section id="products" class="relative overflow-hidden py-24 lg:py-32">
@@ -23,7 +30,7 @@ import { coffeeBeans } from "@/data/products/index";
     <ProductsHeader />
     <CategoryNavigation />
     <ProductFilters />
-    <FeaturedProduct />
+    <FeaturedProduct featured={featured} />
     <div class="mt-24">
       <p class="text-sm font-semibold uppercase tracking-[.3em] text-[#fdb913]">
         Explore Collection
@@ -37,9 +44,8 @@ import { coffeeBeans } from "@/data/products/index";
         and wholesale partners.
       </p>
     </div>
-    <ProductGrid
-      products={coffeeBeans.filter((product) => !product.featured)}
-    />
+    <!-- products={coffeeBeans.filter((product) => !product.featured)} -->
+    <ProductGrid products={coffeeProducts} />
     <SectionCTA />
   </div>
 </section>

@@ -4,41 +4,52 @@ export type ProductCategory =
     | "coffee-beans"
     | "liquid-coffee"
     | "tea"
-    | "chocolate";
+    | "chocolate"
+    | "instant-coffee";
 
 export type RoastLevel =
-    | "Light"
-    | "Medium"
-    | "Dark";
-
-export type ProductApplication =
-    | "Retail"
-    | "Hotels"
-    | "Restaurants"
-    | "Cafés"
-    | "Wholesale"
-    | "Office";
+    | "light"
+    | "medium"
+    | "dark";
 
 export interface ProductPackage
 {
-    label: LocalizedText;
-    weight: string;
+    amount: number;
+    unit: string;
+}
+
+export interface Specifications
+{
+    name: number;
+    value: string;
 }
 
 export interface Product
 {
     id: string;
-    slug: string;
     category: ProductCategory;
-    title: LocalizedText;
-    shortDescription: LocalizedText;
-    description: LocalizedText;
-    image: string;
+    name: string;
+    description: string;
+    thumbnail: string;
     gallery: string[];
-    origin?: LocalizedText;
+    origin?: string;
     roastLevel?: RoastLevel;
-    packages: ProductPackage[];
-    applications: ProductApplication[];
+    packaging: ProductPackage[];
+    flavor?: string[];
+    specifications?: Specifications[];
     featured: boolean;
     available: boolean;
+}
+
+export interface ProductSummary
+{
+    id: string;
+    name: string;
+    category: ProductCategory;
+    description: string;
+    thumbnail: string;
+    featured: boolean;
+    flavor?: string[];
+    origin?: string;
+    roastLevel?: RoastLevel;
 }

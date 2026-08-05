@@ -1,0 +1,26 @@
+---
+import { contactRepository } from "@/services/home/contact.service";
+
+import ContactHeader from "@/components/contact/ContactHeader.astro";
+import ContactInfo from "@/components/contact/ContactInfo.astro";
+import ContactForm from "@/components/contact/ContactForm.astro";
+// import GoogleMap from "@/components/contact/GoogleMap.astro";
+
+const contact = await contactRepository.get();
+---
+
+<section id="contact" class="py-32 relative overflow-hidden">
+  <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(253,185,19,.08),transparent_45%)]"></div>
+
+  <div class="container mx-auto px-6">
+    <ContactHeader contact={contact} />
+
+    <div class="mt-20 grid gap-10 lg:grid-cols-[38%_62%]">
+      <ContactInfo contact={contact} />
+
+      <ContactForm />
+    </div>
+
+    <!-- <GoogleMap contact={contact} /> -->
+  </div>
+</section>

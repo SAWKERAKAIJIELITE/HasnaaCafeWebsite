@@ -1,0 +1,19 @@
+available: true
+featured: true
+name: Premium Green Tea
+category: tea
+description: >-
+  Carefully selected green tea sourced from renowned tea gardens, offering a
+  naturally refreshing flavor suitable for cafés, hotels, and retail markets.
+thumbnail: thumbnail.jpg
+gallery:
+  - gallery/0.jpg
+origin: Ceylon
+packaging:
+  - amount: 100
+    unit: g
+  - amount: 1
+    unit: Kg
+specifications:
+  - name: Amount
+    value: limited

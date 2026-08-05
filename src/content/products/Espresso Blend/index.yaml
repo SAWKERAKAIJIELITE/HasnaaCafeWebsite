@@ -1,0 +1,14 @@
+available: true
+featured: false
+name: Espresso Blend
+category: coffee-beans
+description: >-
+  Crafted for espresso lovers seeking full body, balanced acidity, and
+  long-lasting crema.
+thumbnail: thumbnail.png
+gallery: []
+origin: Colombia
+roastLevel: dark
+packaging:
+  - amount: 1
+    unit: Kg

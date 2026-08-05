@@ -1,0 +1,32 @@
+timestamps:
+  - enabled: true
+    title: Company Founded
+    year: '2012'
+    description: >-
+      Started as a family-owned coffee supplier dedicated to quality and
+      service.
+    current: false
+  - enabled: true
+    title: Factory Expansion
+    year: '2016'
+    description: Expanded production capacity to meet increasing customer demand..
+    current: false
+  - enabled: true
+    title: Regional Partnerships
+    year: '2020'
+    description: >-
+      Built strong partnerships with cafés, hotels, and restaurants across the
+      region.
+    current: false
+  - enabled: true
+    title: Trusted Coffee Supplier
+    year: Today
+    description: >-
+      Continuing to deliver premium coffee products with innovation and
+      reliability.
+    current: true
+  - enabled: false
+    title: The Journey Continues
+    year: Future
+    description: Every partnership we build today is another step toward tomorrow.
+    current: false

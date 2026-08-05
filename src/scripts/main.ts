@@ -15,6 +15,7 @@ import { ProductModalController } from "@/scripts/products/product-modal-control
 import { ProductFilterController } from "@/scripts/products/filter-controller";
 import { LanguageController } from "./language-controller";
 import { TranslationController } from "./translation-controller";
+import { ContactController } from "./contact/contact-controller";
 
 
 document.addEventListener("DOMContentLoaded", () =>
@@ -32,8 +33,9 @@ document.addEventListener("DOMContentLoaded", () =>
     const productGridController = new ProductGridController();
     const productModalController = new ProductModalController();
     const productFilterController = new ProductFilterController();
-    const languageController = new LanguageController();
-    const translationController = new TranslationController();
+    // const languageController = new LanguageController();
+    // const translationController = new TranslationController();
+    const contactController = new ContactController();
 
     slider.init();
     navbar.init();
@@ -48,54 +50,7 @@ document.addEventListener("DOMContentLoaded", () =>
     productGridController.init();
     productModalController.init();
     productFilterController.init();
-    languageController.init();
-    translationController.init();
+    // languageController.init();
+    // translationController.init();
+    contactController.init();
 });
-// export function initHeroSlider()
-// {
-//     const root = document.querySelector<HTMLElement>("#hero-slider");
-
-//     if (!root) return;
-
-//     const viewport = root.querySelector<HTMLElement>(".embla__viewport");
-
-//     if (!viewport) return;
-
-//     EmblaCarousel(viewport, {
-//         loop: true,
-//         // align: "start",
-//         duration: 50,
-//     }, [
-//         Autoplay({
-//             delay: 5000,
-//             stopOnMouseEnter: true,
-//             stopOnInteraction: false,
-//         }),
-//     ]);
-// }
-// console.log("root");
-// const root = document.querySelector("#hero-slider");
-// console.log("root + ", root);
-// document.addEventListener("astro:page-load", () =>
-// document.addEventListener("DOMContentLoaded", () =>
-// {
-//     const root = document.querySelector("#hero-slider");
-//     // console.log("root22");
-//     if (!root) return;
-
-//     const viewport = root.querySelector(".embla__viewport");
-//     if (!viewport) return;
-
-//     EmblaCarousel(viewport, {
-//         loop: true,
-//         // align: "start",
-//         duration: 50,
-//     }, [
-//         Autoplay({
-//             delay: 5000,
-//             stopOnMouseEnter: true,
-//             stopOnInteraction: false,
-//         }),
-//     ]);
-
-// });

@@ -1,0 +1,42 @@
+---
+import type { Contact } from "@/types/contact";
+
+import { Phone, Mail, MapPin } from "lucide-astro";
+
+import ContactCard from "./ContactCard.astro";
+import BusinessHours from "./BusinessHours.astro";
+import SocialLinks from "./SocialLinks.astro";
+
+interface Props {
+  contact: Contact;
+}
+
+const { contact } = Astro.props;
+---
+
+<div class="space-y-8 reveal">
+  <ContactCard
+    icon={Phone}
+    title="Phone"
+    value={contact.phone}
+    href={`tel:${contact.phone}`}
+  />
+
+  <ContactCard
+    icon={Mail}
+    title="Email"
+    value={contact.email}
+    href={`mailto:${contact.email}`}
+  />
+
+  <ContactCard
+    icon={MapPin}
+    title="Address"
+    value={contact.address}
+    href={contact.googleMaps}
+  />
+
+  <BusinessHours hours={contact.workingHours} />
+
+  <SocialLinks socials={contact.socials} />
+</div>

@@ -24,28 +24,20 @@ export interface AboutData
 
 export const about: AboutData = {
     eyebrow: "ABOUT US",
-
-    // title: "Delivering Premium Coffee Experiences Since 2010",
     title: "Passionate About Exceptional Coffee",
-
-    // description: "We partner with cafés, restaurants, hotels and retailers to supply carefully selected coffee products with consistent quality and exceptional service.",
     description: "Hasnaa Coffee is dedicated to delivering premium coffee products and reliable solutions for cafés, restaurants, hotels, and retailers. Through quality, innovation, and trusted partnerships, we help businesses create memorable coffee experiences.",
-
     image: aboutImage,
-
     foundation: [
         {
             title: "Vision",
             icon: Eye,
             description: "To become the region's most trusted partner for premium coffee solutions, recognized for quality, innovation, and long-term relationships.",
         },
-
         {
             title: "Mission",
             icon: Target,
             description: "To provide outstanding coffee products and dependable service while helping our customers grow their businesses with confidence.",
         },
-
         {
             title: "Core Values",
             icon: Gem,
@@ -58,19 +50,13 @@ export const about: AboutData = {
             ],
         },
     ],
-
     features: [
         "Premium Coffee Beans",
         "Professional Equipment",
         "Nationwide Distribution",
         "Dedicated Customer Support",
     ],
-
-    button: {
-        label: "Learn More",
-        href: "#products",
-    },
-
+    button: {label: "Learn More",href: "#products",},
     stats: [
         {
             value: 15,
@@ -88,7 +74,6 @@ export const about: AboutData = {
             label: "Coffee Products",
         },
     ],
-
     chairman: {
         name: "Chairman's Name",
         title: "Chairman & Founder",

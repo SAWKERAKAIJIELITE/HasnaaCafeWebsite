@@ -29,8 +29,8 @@ const { product } = Astro.props;
   <!-- Image -->
   <div class="relative overflow-hidden bg-slate-100">
     <img
-      src={product.image}
-      alt={product.title}
+      src={`src/content/products/${product.name}/${product.thumbnail}`}
+      alt={product.name}
       class="h-72 w-full object-cover transition-transform duration-700 group-hover:scale-110"
     />
 
@@ -43,7 +43,7 @@ const { product } = Astro.props;
     <ProductBadge label={getCategoryLabel(product.category)} />
 
     <h3 class="mt-5 text-2xl font-black text-slate-900">
-      {product.title}
+      {product.name}
     </h3>
 
     <p class="mt-4 line-clamp-3 leading-7 text-slate-600">
@@ -51,12 +51,17 @@ const { product } = Astro.props;
     </p>
 
     <div class="mt-6 flex flex-wrap gap-2">
-      {product.packages.map((pkg) => <PackageChip label={pkg.weight} />)}
+      {
+        product.packaging.map((pkg) => (
+          <PackageChip label={`${pkg.amount} ${pkg.unit}`} />
+        ))
+      }
     </div>
 
     <div class="mt-8">
       <!-- <ArrowLink href="#" label="View Details" /> -->
-      <button class="group
+      <button
+        class="group
         inline-flex
         items-center
         gap-2
@@ -66,7 +71,11 @@ const { product } = Astro.props;
         data-product-open
       >
         <span> View Details </span>
-        <span class="transition-transform duration-300 group-hover:translate-x-1"> → </span>
+        <span
+          class="transition-transform duration-300 group-hover:translate-x-1"
+        >
+          →
+        </span>
       </button>
     </div>
   </div>

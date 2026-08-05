@@ -10,7 +10,6 @@ import { ChevronLeft, ChevronRight } from "lucide-astro";
 <div class="embla" id="hero-slider">
   <div class="embla__viewport">
     <div class="embla__container">
-      <!-- {slides.map((slide,index) => <HeroSlide slide={slide} index={index} />)} -->
       {slides.map((slide, index) => <HeroSlide slide={slide} index={index} />)}
     </div>
   </div>
@@ -34,9 +33,3 @@ import { ChevronLeft, ChevronRight } from "lucide-astro";
 
   <div class="hero-dots" data-dots></div>
 </div>
-<!-- <script type="module" src="/src/scripts/hero-slider.ts"></script> -->
-<!-- <script src="/src/scripts/main.ts">
-  // import { initHeroSlider } from "@/scripts/main";
-
-  // initHeroSlider();
-</script> -->

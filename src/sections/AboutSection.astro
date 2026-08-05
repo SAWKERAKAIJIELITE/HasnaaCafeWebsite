@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import { about } from "@/data/about";
+// import { about } from "@/data/about";
+import { getAbout } from "@/services/home/about.service";
+const about = await getAbout();
 
 import Section from "@/components/ui/Section.astro";
 import Container from "@/components/ui/Container.astro";
@@ -34,10 +36,10 @@ import ChairmanQuote from "@/components/about/ChairmanQuote.astro";
       </div>
 
       <div class="relative reveal-right">
-        <Image
+        <!-- widths={[640, 900, 1200]} -->
+        <img
           src={about.image}
           alt={about.title}
-          widths={[640, 900, 1200]}
           sizes="(max-width:1024px) 100vw, 50vw"
           class="rounded-3xl shadow-2xl"
         />
@@ -51,14 +53,14 @@ mx-auto
 lg:max-w-none mt-12 grid grid-cols-2 gap-4 lg:absolute lg:-bottom-8 lg:left-0 lg:flex lg:gap-6 lg:mt-0"
         >
           {
-            about.stats.map((stat) => (
-              <StatCard value={stat.value} label={stat.label} />
-            ))
+            about.stats
+              .filter((stat) => stat.enabled)
+              .map((stat) => <StatCard value={stat.value} label={stat.label} />)
           }
         </div>
       </div>
     </div>
   </Container>
-  <ChairmanQuote />
+  {about.chairman.enabled&&<ChairmanQuote chairman={about.chairman}/>}
   <AboutFoundation />
 </Section>

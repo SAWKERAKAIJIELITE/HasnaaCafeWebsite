@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import { about } from "@/data/about";
+// import { about } from "@/data/about";
 
-const { chairman } = about;
+const { chairman } = Astro.props;
 ---
 
 <section class="py-10 lg:py-15" data-animate="fade-up">
@@ -39,10 +39,10 @@ const { chairman } = about;
           {chairman.quote}
         </p>
 
-        <Image
+        <!-- width={180} -->
+        <img
           src={chairman.signature}
           alt={`${chairman.name} signature`}
-          width={180}
           class="mt-10 opacity-90"
         />
 
@@ -52,17 +52,18 @@ const { chairman } = about;
           </h3>
 
           <p class="mt-1 uppercase tracking-[0.25em] text-amber-600">
-            {chairman.title}
+            <!-- {chairman.title} -->
+            Chairman & Founder
           </p>
         </div>
       </div>
 
       <!-- Portrait -->
       <div class="mx-auto max-w-sm">
-        <Image
+        <!-- widths={[400, 600]} -->
+        <img
           src={chairman.photo}
           alt={chairman.name}
-          widths={[400, 600]}
           sizes="(min-width:1024px) 320px, 70vw"
           class="rounded-[2rem] shadow-xl"
         />

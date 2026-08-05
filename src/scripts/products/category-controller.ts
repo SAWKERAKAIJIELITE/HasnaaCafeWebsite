@@ -1,6 +1,6 @@
-import { productStore } from './product-store'
+// import { productStore } from './product-store'
 import type { ProductCategory } from "@/types/product";
-
+import { productState } from "./product-state";
 
 export class ProductCategoryController
 {
@@ -15,7 +15,7 @@ export class ProductCategoryController
 
     init()
     {
-        productStore.setCategory(this.active);
+        productState.setCategory(this.active);
         this.update();
 
         this.buttons.forEach(button =>
@@ -29,8 +29,8 @@ export class ProductCategoryController
 
                 this.active = category;
 
-                productStore.setCategory(category);
-                productStore.setSearch("");
+                productState.setCategory(category);
+                productState.setSearch("");
 
                 const search = document.querySelector<HTMLInputElement>("[data-product-search]");
 

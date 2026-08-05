@@ -1,4 +1,4 @@
-import { productMap } from "@/data/products/index";
+// import { productMap } from "@/data/products/index";
 import { localize } from "@/i18n/localize";
 import { translations } from "@/i18n/translations";
 import type { Product, ProductCategory } from "@/types/product";
@@ -7,12 +7,16 @@ import type { Product, ProductCategory } from "@/types/product";
 export class ProductStore
 {
     private category: ProductCategory = "coffee-beans";
+    private products: Product[] = [];
 
     private search = "";
-
     private origin = "all";
-
     private roast = "all";
+
+    setProducts(products: Product[])
+    {
+        this.products = products;
+    }
 
     setSearch(value: string)
     {
@@ -42,27 +46,33 @@ export class ProductStore
 
     getProducts(): Product[]
     {
-        // return productMap[this.category];
-        let products = [...productMap[this.category]];
+        let products = this.products.filter(p => p.category === this.category);
 
         if (this.search)
         {
-            products = products.filter(product =>
-            {
-                return (
-                    localize(product.title).toLowerCase().includes(this.search) ||
-                    localize(product.description).toLowerCase().includes(this.search) ||
-                    product.origin && localize(product.origin).toLowerCase().includes(this.search) ||
-                    product.applications.some(a =>
-                        localize(translations.productApplication[a]).toLowerCase().includes(this.search)
-                    )
-                );
-            });
+            // products = products.filter(product =>
+            // {
+            //     return (
+            //         product.name.toLowerCase().includes(this.search) ||
+            //         product.description.toLowerCase().includes(this.search) ||
+            //         product.origin.toLowerCase().includes(this.search)
+            //         // product.applications.some(a =>
+            //         //     a.toLowerCase().includes(this.search)
+            //         // )
+            //         // localize(product.title).toLowerCase().includes(this.search) ||
+            //         // localize(product.description).toLowerCase().includes(this.search) ||
+            //         // product.origin && localize(product.origin).toLowerCase().includes(this.search) ||
+            //         // product.applications.some(a =>
+            //         //     localize(translations.productApplication[a]).toLowerCase().includes(this.search)
+            //         // )
+            //     );
+            // });
         }
 
         if (this.origin !== "all")
         {
-            products = products.filter(p => p.origin && localize(p.origin) === this.origin);
+            products = products.filter(p => p.origin === this.origin);
+            // products = products.filter(p => p.origin && localize(p.origin) === this.origin);
         }
 
         if (this.roast !== "all")
@@ -75,24 +85,30 @@ export class ProductStore
 
     getOrigins()
     {
-        return [
-            "all",
-            ...new Set(productMap[this.category].map(p => p.origin).filter(Boolean).map(origin => localize(origin!)))
-        ];
+        return ["all", ...new Set(
+            this.products.filter(p => p.category === this.category).map(p => p.origin).filter(Boolean)
+        ),];
+        // return [
+        //     "all",
+        //     ...new Set(productMap[this.category].map(p => p.origin).filter(Boolean).map(origin => localize(origin!)))
+        // ];
     }
 
     getRoasts()
     {
-        return ["all", ...new Set(productMap[this.category].map(p => p.roastLevel)),];
+        return ["all", ...new Set(
+            this.products.filter(p => p.category === this.category).map(p => p.roastLevel).filter(Boolean)
+        ),];
     }
 
     getProduct(id: string)
     {
-        return Object.values(productMap).flat().find(product => product.id === id);
+        return this.products.find(product => product.id === id);
     }
 
     getFeatured(): Product | null
     {
+        console.log('products')
         const products = this.getProducts();
 
         if (products.length === 0)

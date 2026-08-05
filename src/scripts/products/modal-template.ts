@@ -3,6 +3,13 @@ import { localize } from "@/i18n/localize";
 import { translations } from "@/i18n/translations";
 
 
+// ${localize(translations.productCategory[product.category])}
+// ${localize(product.title)}
+// ${localize(product.description)}
+// <p class="mt-2 font-semibold text-slate-800"> ${product.origin ? localize(product.origin) : "-"} </p>
+// ${product.roastLevel ? localize(translations.roast[product.roastLevel]) : "-"}
+// ${localize(translations.productApplication[app])}
+
 export function productModalTemplate(product: Product)
 {
     // <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -10,71 +17,43 @@ export function productModalTemplate(product: Product)
 <div class="grid lg:grid-cols-[45%_55%]">
     <div class="bg-slate-100 h-[280px] sm:h-[360px] lg:h-auto overflow-hidden relative">
         <img
-            src="${product.image}"
-            alt="${product.title}"
+            src="src/content/products/${product.name}/${product.thumbnail}"
+            alt="${product.name}"
             class="h-full w-full object-cover object-center"
         />
     </div>
     <div class="flex flex-col lg:max-h-[85vh]
 lg:overflow-y-auto sm:p-8 justify-center p-6">
         <span class="inline-flex w-fit rounded-full bg-[#005826]/10 px-3 py-1 text-xs font-bold uppercase tracking-[.2em] text-[#005826]">
-            ${localize(translations.productCategory[product.category])}
+            ${product.category}
         </span>
         <h2 class="mt-6 text-3xl lg:text-[2rem] font-black text-slate-900"> 
-            ${localize(product.title)}
+            ${product.name}
         </h2>
         <p class="mt-6 leading-8 text-slate-600">
-            ${localize(product.description)}
+            ${product.description}
         </p>
         <div class="mt-10 grid gap-8 sm:grid-cols-2">
             <div>
                 <p class="text-xs uppercase tracking-[.25em] text-slate-400"> Origin </p>
-                <p class="mt-2 font-semibold text-slate-800"> ${product.origin ? localize(product.origin) : "-"} </p>
+                <p class="mt-2 font-semibold text-slate-800"> ${product.origin ?? "-"} </p>
             </div>
             <div>
                 <p class="text-xs uppercase tracking-[.25em] text-slate-400"> Roast </p>
                 <p class="mt-2 font-semibold text-slate-800">
-                    ${product.roastLevel ? localize(translations.roast[product.roastLevel]) : "-"}
+                    ${product.roastLevel ?? "-"}
                 </p>
             </div>
         </div>
         <div class="mt-10">
             <p class="mb-4 text-xs uppercase tracking-[.25em] text-slate-400"> Packaging </p>
             <div class="flex flex-wrap gap-3">
-                ${product.packages.map(pkg => `
-                    <span class="rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700">
-                        ${pkg.weight}
-                    </span>
+                ${product.packaging.map(pkg => `
+                    <span class="rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700">${pkg.amount} ${pkg.unit}</span>
                 `).join("")}
             </div>
         </div>
-        <div class="mt-10">
-            <p class="mb-4 text-xs uppercase tracking-[.25em] text-slate-400">Applications</p>
-            <div class="flex flex-wrap gap-3">
-                ${product.applications.map(app => `
-                    <span class="rounded-full border border-[#005826]/20 bg-[#005826]/5 px-4 py-2 text-sm font-medium text-[#005826]">
-                        ${localize(translations.productApplication[app]) }
-                    </span>
-                `).join("")}
-            </div>
-        </div>
-        <a href="#contact"
-            class="
-                mt-12
-                inline-flex
-                w-fit
-                items-center
-                rounded-full
-                bg-[#005826]
-                px-8
-                py-4
-                font-bold
-                text-white
-                transition
-                duration-300
-                hover:-translate-y-1
-                hover:bg-[#3c9339]
-            ">
+        <a href="#contact" class="mt-12 inline-flex w-fit items-center rounded-full bg-[#005826] px-8 py-4 font-bold text-white transition duration-300 hover:-translate-y-1 hover:bg-[#3c9339]">
             Request Catalogue
         </a>
     </div>

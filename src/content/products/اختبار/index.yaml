@@ -1,0 +1,14 @@
+available: true
+featured: false
+name: اختبار
+category: coffee-beans
+description: لا يوجد
+thumbnail: thumbnail.png
+gallery: []
+origin: ''
+roastLevel: ''
+packaging:
+  - amount: 1000
+    unit: g
+flavor: []
+specifications: []

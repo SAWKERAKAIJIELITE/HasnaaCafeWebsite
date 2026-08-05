@@ -1,0 +1,41 @@
+---
+interface Props {
+  icon: any;
+  title: string;
+  value: string;
+  href?: string;
+}
+
+const { icon: Icon, title, value, href } = Astro.props;
+---
+
+<div
+  class="group flex items-start gap-5 rounded-3xl border border-slate-200 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-[#005826]/20 hover:shadow-xl"
+>
+  <div
+    class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#005826]/10 text-[#005826]"
+  >
+    <Icon size={26} />
+  </div>
+
+  <div class="min-w-0">
+    <p class="text-xs font-bold uppercase tracking-[.25em] text-slate-400">
+      {title}
+    </p>
+
+    {
+      href ? (
+        <a
+          href={href}
+          class="mt-2 block break-words font-semibold text-slate-900 hover:text-[#005826]"
+        >
+          {value}
+        </a>
+      ) : (
+        <p class="mt-2 whitespace-pre-line font-semibold text-slate-900">
+          {value}
+        </p>
+      )
+    }
+  </div>
+</div>

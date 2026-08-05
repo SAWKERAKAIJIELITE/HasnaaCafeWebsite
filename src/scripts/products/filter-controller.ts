@@ -1,4 +1,5 @@
-import { productStore } from "./product-store";
+// import { productStore } from "./product-store";
+import { productState } from "./product-state";
 import { localize } from "@/i18n/localize";
 import { translations } from "@/i18n/translations";
 
@@ -18,21 +19,21 @@ export class ProductFilterController
 
         this.search.addEventListener("input", () =>
         {
-            productStore.setSearch(this.search.value);
+            productState.setSearch(this.search.value);
 
             this.notify();
         });
 
         this.origin.addEventListener("change", () =>
         {
-            productStore.setOrigin(this.origin.value);
+            productState.setOrigin(this.origin.value);
 
             this.notify();
         });
 
         this.roast.addEventListener("change", () =>
         {
-            productStore.setRoast(this.roast.value);
+            productState.setRoast(this.roast.value);
 
             this.notify();
         });
@@ -48,30 +49,32 @@ export class ProductFilterController
         document.dispatchEvent(new CustomEvent("products:filter-change"));
     }
 
-    private rebuildFilters()
+    private async rebuildFilters()
     {
         // Reset the store
-        productStore.setOrigin("all");
-        productStore.setRoast("all");
+        productState.setOrigin("all");
+        productState.setRoast("all");
 
-        const origins = productStore.getOrigins();
-        const roasts = productStore.getRoasts();
+        const origins = await productState.getOrigins();
+        const roasts = await productState.getRoasts();
 
+        //     ${origin === "all"
+        // ? localize(translations.filters.allOrigins)
+        // : origin
+        // }
         this.origin.innerHTML = origins.map(origin => `
             <option value="${origin}">
-                ${origin === "all"
-            ? localize(translations.filters.allOrigins)
-            : origin
-            }
+            ${origin === "all" ? "All Origins" : origin}
             </option>
         `).join("");
 
+        // ${roast === "all"
+        // ? localize(translations.filters.allRoasts)
+        // : localize(translations.roast[roast as keyof typeof translations.roast])
+        // }
         this.roast.innerHTML = roasts.map(roast => `
             <option value="${roast}">
-                ${roast === "all"
-                ? localize(translations.filters.allRoasts)
-                : localize(translations.roast[roast as keyof typeof translations.roast])
-            }
+            ${roast === "all" ? "All Roasts" : roast}
             </option>
         `).join("");
 

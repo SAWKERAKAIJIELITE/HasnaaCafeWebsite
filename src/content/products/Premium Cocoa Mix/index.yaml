@@ -1,0 +1,16 @@
+available: true
+featured: true
+name: Premium Cocoa Mix
+category: chocolate
+description: >-
+  An easy-to-prepare cocoa beverage mix offering a creamy texture and balanced
+  sweetness for hospitality and retail markets.
+thumbnail: thumbnail.webp
+gallery: []
+origin: Brazil
+roastLevel: light
+packaging:
+  - amount: 500
+    unit: g
+flavor: []
+specifications: []

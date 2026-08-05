@@ -1,0 +1,18 @@
+available: true
+featured: false
+name: Vanilla Latte Base
+category: liquid-coffee
+description: >-
+  Designed for premium iced and hot vanilla coffee beverages with consistent
+  flavor and aroma.
+thumbnail: thumbnail.jpg
+gallery: []
+origin: Yemen
+roastLevel: medium
+packaging:
+  - amount: 1
+    unit: L
+flavor: []
+specifications:
+  - name: flavor
+    value: Vanilla

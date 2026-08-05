@@ -1,0 +1,143 @@
+---
+const services = [
+  "Coffee Beans",
+  "Instant Coffee",
+  "Tea",
+  "Chocolate",
+  "Liquid Coffee",
+];
+---
+
+<form id="contact-form" data-contact-form class="space-y-7">
+  <div class="grid gap-6 md:grid-cols-2">
+    <div>
+      <label class="mb-2 block text-sm font-semibold text-slate-700">
+        Full Name
+      </label>
+
+      <input
+        name="name"
+        required
+        type="text"
+        placeholder="John Smith"
+        class="w-full rounded-xl border border-slate-300 bg-white px-5 py-4 outline-none transition focus:border-[#005826] focus:ring-2 focus:ring-[#005826]/20"
+      />
+      <p data-error="name" class="mt-2 text-sm text-red-600"></p>
+    </div>
+
+    <div>
+      <label class="mb-2 block text-sm font-semibold text-slate-700">
+        Company
+      </label>
+
+      <input
+        name="company"
+        type="text"
+        placeholder="Company Name"
+        class="w-full rounded-xl border border-slate-300 bg-white px-5 py-4 outline-none transition focus:border-[#005826] focus:ring-2 focus:ring-[#005826]/20"
+      />
+      <p data-error="company" class="mt-2 text-sm text-red-600"></p>
+    </div>
+  </div>
+
+  <div class="grid gap-6 md:grid-cols-2">
+    <div>
+      <label class="mb-2 block text-sm font-semibold text-slate-700">
+        Email
+      </label>
+
+      <input
+        required
+        type="email"
+        name="email"
+        placeholder="john@company.com"
+        class="w-full rounded-xl border border-slate-300 bg-white px-5 py-4 outline-none transition focus:border-[#005826] focus:ring-2 focus:ring-[#005826]/20"
+      />
+      <p data-error="email" class="mt-2 text-sm text-red-600"></p>
+    </div>
+
+    <div>
+      <label class="mb-2 block text-sm font-semibold text-slate-700">
+        Phone
+      </label>
+
+      <input
+        type="tel"
+        name="phone"
+        placeholder="+1 555 000 000"
+        class="w-full rounded-xl border border-slate-300 bg-white px-5 py-4 outline-none transition focus:border-[#005826] focus:ring-2 focus:ring-[#005826]/20"
+      />
+    </div>
+    <p data-error="phone" class="mt-2 text-sm text-red-600"></p>
+  </div>
+
+  <div class="grid gap-6 md:grid-cols-2">
+    <div>
+      <label class="mb-2 block text-sm font-semibold text-slate-700">
+        Interested In
+      </label>
+
+      <select
+        name="service"
+        class="w-full rounded-xl border border-slate-300 bg-white px-5 py-4 outline-none transition focus:border-[#005826] focus:ring-2 focus:ring-[#005826]/20"
+      >
+        {services.map((service) => <option value={service}>{service}</option>)}
+      </select>
+      <p data-error="service" class="mt-2 text-sm text-red-600"></p>
+    </div>
+
+    <div>
+      <label class="mb-2 block text-sm font-semibold text-slate-700">
+        Country
+      </label>
+
+      <input
+        name="country"
+        type="text"
+        placeholder="United Kingdom"
+        class="w-full rounded-xl border border-slate-300 bg-white px-5 py-4 outline-none transition focus:border-[#005826] focus:ring-2 focus:ring-[#005826]/20"
+      />
+      <p data-error="country" class="mt-2 text-sm text-red-600"></p>
+    </div>
+  </div>
+
+  <div>
+    <label class="mb-2 block text-sm font-semibold text-slate-700">
+      Message
+    </label>
+
+    <textarea
+      required
+      rows="6"
+      name="message"
+      placeholder="Tell us about your business requirements..."
+      class="w-full resize-none rounded-xl border border-slate-300 bg-white px-5 py-4 outline-none transition focus:border-[#005826] focus:ring-2 focus:ring-[#005826]/20"
+    ></textarea>
+    <p data-error="message" class="mt-2 text-sm text-red-600"></p>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-4">
+    <button
+      type="submit"
+      data-contact-submit
+      class="rounded-full bg-[#005826] px-8 py-4 font-bold text-white transition hover:-translate-y-1 hover:bg-[#0b6b37]"
+    >
+      Send Message
+    </button>
+
+    <span data-contact-status class="text-sm font-medium text-slate-500"></span>
+  </div>
+  <div
+    data-contact-success
+    class="hidden mt-6 rounded-xl border border-green-200 bg-green-50 p-4 text-green-700"
+  >
+    ✅ Your message has been sent successfully.
+  </div>
+
+  <div
+    data-contact-error
+    class="hidden mt-6 rounded-xl border border-red-200 bg-red-50 p-4 text-red-700"
+  >
+    ❌ Something went wrong. Please try again.
+  </div>
+</form>

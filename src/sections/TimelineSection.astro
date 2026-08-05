@@ -1,5 +1,8 @@
 ---
-import { timeline } from "@/data/timeline";
+// import { timeline } from "@/data/timeline";
+import { getTimeline } from "@/services/home/timeline.service";
+
+const timeline = await getTimeline();
 import TimelineItem from "@/components/about/TimelineItem.astro";
 ---
 
@@ -32,9 +35,7 @@ import TimelineItem from "@/components/about/TimelineItem.astro";
       </p>
     </div>
 
-    <div
-      class="mt-24 flex flex-col lg:flex-row lg:justify-between relative"
-    >
+    <div class="mt-24 flex flex-col lg:flex-row lg:justify-between relative">
       {timeline.map((item) => <TimelineItem item={item} />)}
     </div>
   </div>

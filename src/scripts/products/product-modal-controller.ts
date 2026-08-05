@@ -1,5 +1,6 @@
-import { productStore } from "./product-store";
+// import { productStore } from "./product-store";
 import { productModalTemplate } from "./modal-template";
+import { productState } from "./product-state";
 
 
 export class ProductModalController
@@ -46,9 +47,9 @@ export class ProductModalController
         this.content =this.modal.querySelector("[data-modal-content]")!;
     }
 
-    private open(id: string)
+    private async open(id: string)
     {
-        const product = productStore.getProduct(id);
+        const product = await productState.getProduct(id);
 
         if (!product)
             return;

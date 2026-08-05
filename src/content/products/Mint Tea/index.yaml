@@ -1,0 +1,15 @@
+available: true
+featured: false
+name: Mint Tea
+category: tea
+description: >-
+  A soothing herbal infusion with refreshing mint flavor, ideal for cafés and
+  hospitality environments.
+thumbnail: thumbnail.jpg
+gallery: []
+origin: Ceylon
+packaging:
+  - amount: 150
+    unit: g
+flavor:
+  - Mint

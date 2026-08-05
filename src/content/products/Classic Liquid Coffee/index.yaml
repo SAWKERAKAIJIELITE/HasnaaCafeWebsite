@@ -1,0 +1,16 @@
+available: true
+featured: true
+name: Classic Liquid Coffee
+category: liquid-coffee
+description: >-
+  A premium liquid coffee concentrate developed for cafés, hotels, restaurants,
+  and beverage manufacturers. Delivers consistent taste while simplifying
+  beverage preparation.
+thumbnail: thumbnail.jpg
+gallery: []
+roastLevel: dark
+packaging:
+  - amount: 500
+    unit: mL
+  - amount: 1
+    unit: L

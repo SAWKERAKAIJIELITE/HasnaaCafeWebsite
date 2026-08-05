@@ -1,0 +1,18 @@
+available: true
+featured: false
+name: Dark Chocolate Powder
+category: chocolate
+description: >-
+  Made from high-quality cocoa beans to deliver an intense chocolate flavor,
+  perfect for cafés, bakeries, restaurants, and beverage preparation.
+thumbnail: thumbnail.jpg
+gallery: []
+origin: Colombia
+roastLevel: light
+packaging:
+  - amount: 500
+    unit: g
+  - amount: 2
+    unit: Kg
+flavor: []
+specifications: []

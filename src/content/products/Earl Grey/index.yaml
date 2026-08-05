@@ -1,0 +1,16 @@
+available: true
+featured: true
+name: Earl Grey
+category: tea
+description: >-
+  A premium Earl Grey tea offering an elegant citrus aroma and full-bodied taste
+  for refined tea experiences.
+thumbnail: thumbnail.jpg
+gallery: []
+origin: China
+roastLevel: ''
+packaging:
+  - amount: 250
+    unit: g
+flavor: []
+specifications: []

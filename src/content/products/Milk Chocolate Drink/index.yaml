@@ -1,0 +1,17 @@
+available: true
+featured: false
+name: Milk Chocolate Drink
+category: chocolate
+description: >-
+  A premium milk chocolate drink mix crafted for cafés and restaurants seeking a
+  smooth and indulgent chocolate experience.
+thumbnail: thumbnail.jpg
+gallery: []
+origin: Colombia
+roastLevel: light
+packaging:
+  - amount: 2
+    unit: Kg
+flavor:
+  - Milk
+specifications: []

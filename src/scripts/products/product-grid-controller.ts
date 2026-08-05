@@ -1,6 +1,6 @@
 import { productGridTemplate } from "./grid-template";
-import { productStore } from './product-store'
-
+// import { productStore } from './product-store'
+import { productState } from "./product-state";
 import type { ProductCategory } from "@/types/product";
 
 
@@ -32,7 +32,7 @@ export class ProductGridController
 
         await new Promise(resolve =>setTimeout(resolve, 180));
 
-        this.grid.innerHTML = productGridTemplate(productStore.getGridProducts());
+        this.grid.innerHTML = productGridTemplate(await productState.getProducts());
 
         this.grid.classList.remove("opacity-0");
 

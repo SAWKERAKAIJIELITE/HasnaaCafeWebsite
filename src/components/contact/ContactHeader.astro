@@ -1,0 +1,21 @@
+---
+import type { Contact } from "@/types/contact";
+
+interface Props {contact: Contact;}
+
+const { contact } = Astro.props;
+---
+
+<header class="mx-auto max-w-3xl text-center reveal">
+  <p class="text-sm font-bold uppercase tracking-[.35em] text-[#fdb913]">
+    Contact Us
+  </p>
+
+  <h2 class="mt-6 text-4xl font-black tracking-tight text-slate-900 lg:text-6xl">
+    {contact.title}
+  </h2>
+
+  <p class="mx-auto mt-8 max-w-2xl text-lg leading-8 text-slate-600">
+    {contact.subtitle}
+  </p>
+</header>

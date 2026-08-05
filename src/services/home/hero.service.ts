@@ -16,11 +16,9 @@ import { getEntry } from "astro:content";
 export async function getHero()
 {
     const hero = await getEntry("hero","hero");
-
     if (!hero)
     {
         throw new Error("Hero singleton not found.");
     }
-
     return hero.data.slides.filter(slide => slide.enabled);
 }

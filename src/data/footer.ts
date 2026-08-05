@@ -61,25 +61,3 @@ export const socialLinks: SocialLink[] = [
         icon: Linkedin,
     },
 ];
-
-// export const footer = {
-
-//     description: "Delivering premium coffee products and reliable solutions for cafés, restaurants, hotels, and retailers.",
-
-//     company: [
-
-//     ],
-
-//     products: [
-
-//     ],
-
-//     social: [
-
-//     ],
-
-//     contact: {
-
-//     }
-
-// }
