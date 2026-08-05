@@ -45,3 +45,14 @@ export interface ContactResponse
     success: boolean;
     message: string;
 }
+
+export interface ContactMessage
+{
+    name: string;
+    company?: string;
+    email: string;
+    phone?: string;
+    service: string;
+    country?: string;
+    message: string;
+}

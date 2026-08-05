@@ -8,9 +8,12 @@ description: >-
   beverage preparation.
 thumbnail: thumbnail.jpg
 gallery: []
+origin: Brazil
 roastLevel: dark
 packaging:
   - amount: 500
     unit: mL
   - amount: 1
     unit: L
+flavor: []
+specifications: []

@@ -1,0 +1,15 @@
+available: true
+featured: true
+name: شوكولامو
+category: chocolate
+description: شوكولا لبنانية
+thumbnail: thumbnail.jpg
+gallery: []
+origin: ''
+roastLevel: dark
+packaging:
+  - amount: 100
+    unit: g
+flavor:
+  - مو طيبة
+specifications: []

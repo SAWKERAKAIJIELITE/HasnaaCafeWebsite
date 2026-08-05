@@ -24,130 +24,18 @@
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
-const offers = await getCollection("offers",({ data }) => data.published,);
+const offers = await getCollection("offers", ({ data }) => data.published);
 // const offers = offerEntries.sort((a, b) => a.data.order - b.data.order);
+const imgs = import.meta.glob(
+  "/src/content/offers/**/*.{jpg,jpeg,png,gif,webp,avif}",
+  { eager: true, import: "default" },
+);
 import "@/styles/global.css";
----
-
-<!-- ---
-// OffersSection.astro
-// Drop into src/components/ and use in a page: <OffersSection />
-//
-// Fonts: this assumes your tailwind.config maps
-//   font-serif -> Fraunces, font-sans -> Manrope, font-mono -> IBM Plex Mono
-// (matching the type system already set up for the catalog/branding site).
-// If your config uses different keys, swap the font-serif/font-sans/font-mono
-// classes below, and make sure the fonts are loaded once in your root layout.
-
-interface Offer {
-  number: string;
-  stamp: string;
-  title: string;
-  description: string;
-  expiry: string;
-  href: string;
-  image: string;
-  imageAlt: string;
-}
-
-// Swap the `image` paths below for real product photography — e.g. put files
-// in src/assets/offers/ and import them, then use Astro's <Image> component
-// (astro:assets) for automatic optimization instead of a plain <img>.
-// The picsum.photos URLs here are only stand-ins so the layout is easy to preview.
-const offers: Offer[] = [
-  {
-    number: "No. 01",
-    stamp: "20% OFF",
-    title: "First Bag, On Us",
-    description:
-      "Start a subscription and get 20% off your first bag — any single-origin, delivered every 2 or 4 weeks.",
-    expiry: "Ends 08.31.26",
-    href: "/subscribe",
-    image: "https://picsum.photos/seed/offer-subscription/800/600",
-    imageAlt:
-      "Bag of single-origin coffee beans ready for subscription delivery",
-  },
-  {
-    number: "No. 02",
-    stamp: "3RD FREE",
-    title: "Buy Two, Brew Three",
-    description:
-      "Pick up any two 250g bags of the House Blend and we’ll drop a third one in the bag, free.",
-    expiry: "While stocks last",
-    href: "/shop/house-blend",
-    image: "https://picsum.photos/seed/offer-houseblend/800/600",
-    imageAlt: "Three bags of House Blend coffee lined up together",
-  },
-  {
-    number: "No. 03",
-    stamp: "15% OFF",
-    title: "Grinder & Bean Bundle",
-    description:
-      "Pair a hand grinder with any bag of beans and save 15% on the two together.",
-    expiry: "Ends 08.31.26",
-    href: "/shop/bundles",
-    image: "https://picsum.photos/seed/offer-grinder/800/600",
-    imageAlt: "Hand coffee grinder next to a bag of whole bean coffee",
-  },
-];
-
-const rotations = ["-rotate-2", "rotate-1", "-rotate-1"];
---- --><!-- ---
-// OffersSection.astro
-// Drop into src/components/ and use in a page: <OffersSection />
-//
-// Fonts: this assumes your tailwind.config maps
-//   font-serif -> Fraunces, font-sans -> Manrope, font-mono -> IBM Plex Mono
-// (matching the type system already set up for the catalog/branding site).
-// If your config uses different keys, swap the font-serif/font-sans/font-mono
-// classes below, and make sure the fonts are loaded once in your root layout.
-
-interface Offer {
-  number: string;
-  stamp: string;
-  title: string;
-  description: string;
-  expiry: string;
-  href: string;
-}
-
-const offers: Offer[] = [
-  {
-    number: "No. 01",
-    stamp: "20% OFF",
-    title: "First Bag, On Us",
-    description:
-      "Start a subscription and get 20% off your first bag — any single-origin, delivered every 2 or 4 weeks.",
-    expiry: "Ends 08.31.26",
-    href: "/subscribe",
-  },
-  {
-    number: "No. 02",
-    stamp: "3RD FREE",
-    title: "Buy Two, Brew Three",
-    description:
-      "Pick up any two 250g bags of the House Blend and we’ll drop a third one in the bag, free.",
-    expiry: "While stocks last",
-    href: "/shop/house-blend",
-  },
-  {
-    number: "No. 03",
-    stamp: "15% OFF",
-    title: "Grinder & Bean Bundle",
-    description:
-      "Pair a hand grinder with any bag of beans and save 15% on the two together.",
-    expiry: "Ends 08.31.26",
-    href: "/shop/bundles",
-  },
-];
-import "@/styles/global.css";
-
-const rotations = ["-rotate-2", "rotate-1", "-rotate-1"];
 ---
 
 <section
   id="offers"
-  class="relative scroll-mt-24 overflow-hidden bg-[#1C1410] px-6 py-20 md:py-28"
+  class="relative scroll-mt-24 overflow-hidden px-6 py-20 md:py-28"
 >
   <div
     class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(172,135,89,0.12),_transparent_60%)]"
@@ -156,217 +44,27 @@ const rotations = ["-rotate-2", "rotate-1", "-rotate-1"];
   </div>
 
   <div class="relative mx-auto max-w-6xl">
-    <div class="mb-14 max-w-xl md:mb-20">
-      <p class="font-mono text-xs uppercase tracking-[0.25em] text-[#AC8759]">
+    <div class="mb-10 max-w-xl md:mb-10">
+      <p class="text-xl uppercase tracking-[0.25em] text-[#3c9339]">
         At the Counter
       </p>
-      <h2
-        class="mt-4 text-4xl leading-tight text-[#F2E8D8] md:text-5xl"
-      >
-        Offers worth <em class="text-[#AC8759] not-italic">the stop</em>.
+      <h2 class="mt-4 text-4xl leading-tight text-[#005826] md:text-5xl">
+        Offers worth <em class="text-[#3c9339] not-italic">the stop</em>.
       </h2>
-      <p class="mt-4 font-sans text-base leading-relaxed text-[#F2E8D8]/70">
-        Three ways to drink better for less, this month only. Redeem in-store or
-        online — no code, just show up.
-      </p>
-    </div>
-
-    <ul class="grid gap-8 md:grid-cols-3">
-      {
-        offers.map((offer, i) => (
-          <li class="list-none">
-            <article
-              class:list={[
-                "group relative flex h-full flex-col bg-[#F2E8D8] shadow-[0_18px_40px_-20px_rgba(0,0,0,0.6)] transition-transform duration-300 motion-reduce:transition-none motion-reduce:rotate-0 hover:-translate-y-1 hover:rotate-0",
-                rotations[i % rotations.length],
-              ]}
-            >
-              {/* stub */}
-              <div class="flex items-start justify-between px-5 pt-5 pb-4">
-                <span class="font-mono text-xs tracking-widest text-[#1C1410]/50">
-                  {offer.number}
-                </span>
-                <span class="rounded-full border-[1.5px] border-[#8C3B2E] px-2.5 py-1 rotate-[-8deg] font-mono text-[11px] font-bold uppercase tracking-wide text-[#8C3B2E] opacity-90 mix-blend-multiply">
-                  {offer.stamp}
-                </span>
-              </div>
-
-              {/* perforation with ticket notches */}
-              <div
-                class="relative border-t-2 border-dashed border-[#1C1410]/20"
-                aria-hidden="true"
-              >
-                <span class="absolute -left-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-[#1C1410]" />
-                <span class="absolute -right-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-[#1C1410]" />
-              </div>
-
-              {/* body */}
-              <div class="flex flex-1 flex-col gap-3 px-5 pb-6 pt-5">
-                <h3 class=" text-xl font-semibold text-[#1C1410]">
-                  {offer.title}
-                </h3>
-                <p class="flex-1 font-sans text-sm leading-relaxed text-[#1C1410]/70">
-                  {offer.description}
-                </p>
-                <div class="mt-2 flex items-center justify-between border-t border-[#1C1410]/10 pt-4">
-                  <span class="font-mono text-[11px] uppercase tracking-wide text-[#1C1410]/50">
-                    {offer.expiry}
-                  </span>
-                  <a
-                    href={offer.href}
-                    class="rounded-full border border-[#1C1410] px-4 py-2 font-sans text-sm font-medium text-[#1C1410] transition-colors hover:bg-[#1C1410] hover:text-[#F2E8D8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AC8759]"
-                  >
-                    Redeem offer
-                  </a>
-                </div>
-              </div>
-            </article>
-          </li>
-        ))
-      }
-    </ul>
-
-    <p
-      class="mt-10 text-center font-mono text-[11px] uppercase tracking-widest text-[#F2E8D8]/40"
-    >
-      One offer per order · Cannot be combined · Prices in local currency
-    </p>
-  </div>
-</section> --><!-- <section
-  id="offers"
-  class="relative scroll-mt-24 overflow-hidden bg-[#1C1410] px-6 py-20 md:py-28"
->
-  <div
-    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(172,135,89,0.12),_transparent_60%)]"
-    aria-hidden="true"
-  >
-  </div>
-
-  <div class="relative mx-auto max-w-6xl">
-    <div class="mb-14 max-w-xl md:mb-20">
-      <p class="font-mono text-xs uppercase tracking-[0.25em] text-[#AC8759]">
-        At the Counter
-      </p>
-      <h2
-        class="mt-4 font-serif text-4xl leading-tight text-[#F2E8D8] md:text-5xl"
-      >
-        Offers worth <em class="text-[#AC8759] not-italic">the stop</em>.
-      </h2>
-      <p class="mt-4 font-sans text-base leading-relaxed text-[#F2E8D8]/70">
-        Three ways to drink better for less, this month only. Redeem in-store or
-        online — no code, just show up.
-      </p>
-    </div>
-
-    <ul class="grid gap-8 md:grid-cols-3">
-      {
-        offers.map((offer, i) => (
-          <li class="list-none">
-            <article
-              class:list={[
-                "group relative flex h-full flex-col overflow-hidden rounded-lg bg-[#F2E8D8] shadow-[0_18px_40px_-20px_rgba(0,0,0,0.6)] transition-transform duration-300 motion-reduce:transition-none motion-reduce:rotate-0 hover:-translate-y-1 hover:rotate-0 hover:shadow-[0_24px_50px_-18px_rgba(0,0,0,0.7)]",
-                rotations[i % rotations.length],
-              ]}
-            >
-              {/* photo */}
-              <div class="relative aspect-[4/3] overflow-hidden bg-[#1C1410]/10">
-                <img
-                  src={offer.image}
-                  alt={offer.imageAlt}
-                  loading="lazy"
-                  decoding="async"
-                  width="800"
-                  height="600"
-                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-                />
-                <div
-                  class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1C1410]/35 via-transparent to-transparent"
-                  aria-hidden="true"
-                />
-                <span class="absolute left-3 top-3 rounded-full bg-[#1C1410]/60 px-3 py-1 font-mono text-xs tracking-widest text-[#F2E8D8] backdrop-blur-sm">
-                  {offer.number}
-                </span>
-                <span class="absolute -right-2 -top-2 rotate-[-8deg] rounded-full border-[1.5px] border-[#8C3B2E] bg-[#F2E8D8] px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-wide text-[#8C3B2E] shadow-md">
-                  {offer.stamp}
-                </span>
-              </div>
-
-              {/* perforation with ticket notches */}
-              <div
-                class="relative border-t-2 border-dashed border-[#1C1410]/20"
-                aria-hidden="true"
-              >
-                <span class="absolute -left-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-[#1C1410]" />
-                <span class="absolute -right-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-[#1C1410]" />
-              </div>
-
-              {/* body */}
-              <div class="flex flex-1 flex-col gap-3 px-5 pb-6 pt-5">
-                <h3 class="font-serif text-xl font-semibold text-[#1C1410]">
-                  {offer.title}
-                </h3>
-                <p class="flex-1 font-sans text-sm leading-relaxed text-[#1C1410]/70">
-                  {offer.description}
-                </p>
-                <div class="mt-2 flex items-center justify-between border-t border-[#1C1410]/10 pt-4">
-                  <span class="font-mono text-[11px] uppercase tracking-wide text-[#1C1410]/50">
-                    {offer.expiry}
-                  </span>
-                  <a
-                    href={offer.href}
-                    class="rounded-full border border-[#1C1410] px-4 py-2 font-sans text-sm font-medium text-[#1C1410] transition-colors hover:bg-[#1C1410] hover:text-[#F2E8D8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AC8759]"
-                  >
-                    Redeem offer
-                  </a>
-                </div>
-              </div>
-            </article>
-          </li>
-        ))
-      }
-    </ul>
-
-    <p
-      class="mt-10 text-center font-mono text-[11px] uppercase tracking-widest text-[#F2E8D8]/40"
-    >
-      One offer per order · Cannot be combined · Prices in local currency
-    </p>
-  </div>
-</section> -->
-<section
-  id="offers"
-  class="relative scroll-mt-24 overflow-hidden bg-[#1C1410] px-6 py-20 md:py-28"
->
-  <div
-    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(172,135,89,0.12),_transparent_60%)]"
-    aria-hidden="true"
-  >
-  </div>
-
-  <div class="relative mx-auto max-w-6xl">
-    <div class="mb-14 max-w-xl md:mb-20">
-      <p class="font-mono text-xs uppercase tracking-[0.25em] text-[#AC8759]">
-        At the Counter
-      </p>
-      <h2
-        class="mt-4 font-serif text-4xl leading-tight text-[#F2E8D8] md:text-5xl"
-      >
-        Offers worth <em class="text-[#AC8759] not-italic">the stop</em>.
-      </h2>
-      <p class="mt-4 font-sans text-base leading-relaxed text-[#F2E8D8]/70">
+      <p class="mt-4 text-xl leading-relaxed text-[#005826]/70">
         Three ways to drink better for less, this month only. Flip a ticket to
         see the offer — redeem in-store or online, no code needed.
       </p>
     </div>
 
-    <ul class="grid gap-8 md:grid-cols-3">
+    <ul class="grid gap-8 md:grid-cols-2">
       {
         offers.map((offer, i) => {
           const ticketNumber = `No. ${String(i + 1).padStart(2, "0")}`;
           return (
             <li class="list-none">
               <div
-                class="flip-scene group relative aspect-[3/4] w-full cursor-pointer rounded-lg outline-none transition-transform duration-300 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#AC8759] motion-reduce:transition-none"
+                class="flip-scene group relative aspect-[3/4] w-full cursor-pointer rounded-lg outline-none transition-transform duration-300 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3c9339] motion-reduce:transition-none"
                 data-flip-scene
                 role="button"
                 tabindex="0"
@@ -378,17 +76,17 @@ const rotations = ["-rotate-2", "rotate-1", "-rotate-1"];
                   data-flip-card
                 >
                   {/* BACK — visible at rest */}
-                  <div class="flip-face flip-face--back absolute inset-0 flex h-full flex-col items-center justify-center gap-4 overflow-hidden rounded-lg bg-[#3B2A1F] p-6 text-center">
-                    <span class="font-mono text-xs tracking-widest text-[#F2E8D8]/50">
+                  <div class="flip-face flip-face--back absolute inset-0 flex h-full flex-col items-center justify-center gap-4 overflow-hidden rounded-lg bg-[#3c9339] p-6 text-center">
+                    <span class="font-mono text-6xl tracking-widest text-[#F2E8D8]/50">
                       {ticketNumber}
                     </span>
-                    <span class="flex h-24 w-24 rotate-[-6deg] items-center justify-center rounded-full border-2 border-[#8C3B2E] px-2 text-center font-mono text-base font-bold uppercase leading-tight tracking-wide text-[#F2E8D8]">
+                    <span class="flex h-54 w-54 rotate-[-6deg] items-center justify-center rounded-full border-2 border-[#6d1709] px-2 text-center font-mono text-7xl font-bold uppercase leading-tight tracking-wide text-[#F2E8D8]">
                       {offer.data.stamp}
                     </span>
-                    <p class="font-serif text-lg text-[#F2E8D8]">
+                    <p class="font-serif text-5xl text-[#F2E8D8]">
                       {offer.data.title}
                     </p>
-                    <span class="mt-1 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-[#AC8759]">
+                    <span class="mt-1 inline-flex items-center gap-1.5 font-mono text-[30px] uppercase tracking-[0.2em] text-[#AC8759]">
                       <svg
                         viewBox="0 0 24 24"
                         class="h-3 w-3"
@@ -411,9 +109,13 @@ const rotations = ["-rotate-2", "rotate-1", "-rotate-1"];
                   <article class="flip-face flip-face--front absolute inset-0 flex h-full flex-col overflow-hidden rounded-lg bg-[#F2E8D8]">
                     <div class="relative h-2/5 flex-none overflow-hidden bg-[#1C1410]/10">
                       <img
-                        src={`src/content/offers/${offer.id}/${offer.data.image}`}
+                        src={
+                          imgs[
+                            `/src/content/offers/${offer.id}/${offer.data.image}`
+                          ].src
+                        }
                         alt={offer.data.title}
-                        // widths={[400, 800]}
+                        widths={[400, 800]}
                         sizes="(min-width: 768px) 33vw, 100vw"
                         class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                       />
@@ -450,7 +152,7 @@ const rotations = ["-rotate-2", "rotate-1", "-rotate-1"];
                         </span>
                         <a
                           href={offer.data.href}
-                          class="rounded-full border border-[#1C1410] px-4 py-2 font-sans text-sm font-medium text-[#1C1410] transition-colors hover:bg-[#1C1410] hover:text-[#F2E8D8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AC8759]"
+                          class="rounded-full border border-[#3c9339] px-4 py-2 font-sans text-sm font-medium text-[#3c9339] transition-colors hover:bg-[#3c9339] hover:text-[#F2E8D8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AC8759]"
                         >
                           Redeem offer
                         </a>
@@ -466,7 +168,7 @@ const rotations = ["-rotate-2", "rotate-1", "-rotate-1"];
     </ul>
 
     <p
-      class="mt-10 text-center font-mono text-[11px] uppercase tracking-widest text-[#F2E8D8]/40"
+      class="mt-10 text-center font-mono text-[11px] uppercase tracking-widest text-[#005826]/40"
     >
       One offer per order · Cannot be combined · Prices in local currency
     </p>

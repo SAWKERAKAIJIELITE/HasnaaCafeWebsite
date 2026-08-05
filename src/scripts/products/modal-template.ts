@@ -1,7 +1,10 @@
 import type { Product } from "@/types/product";
 import { localize } from "@/i18n/localize";
 import { translations } from "@/i18n/translations";
-
+const imgs = import.meta.glob(
+    "/src/content/products/**/*.{jpg,jpeg,png,gif,webp,avif}",
+    { eager: true, import: "default" },
+);
 
 // ${localize(translations.productCategory[product.category])}
 // ${localize(product.title)}
@@ -17,7 +20,7 @@ export function productModalTemplate(product: Product)
 <div class="grid lg:grid-cols-[45%_55%]">
     <div class="bg-slate-100 h-[280px] sm:h-[360px] lg:h-auto overflow-hidden relative">
         <img
-            src="src/content/products/${product.name}/${product.thumbnail}"
+            src="${imgs[`/src/content/products/${product.id}/${product.thumbnail}`].src}"
             alt="${product.name}"
             class="h-full w-full object-cover object-center"
         />

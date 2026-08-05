@@ -7,9 +7,11 @@ description: >-
   hospitality environments.
 thumbnail: thumbnail.jpg
 gallery: []
-origin: Ceylon
+origin: ''
+roastLevel: light
 packaging:
   - amount: 150
     unit: g
 flavor:
   - Mint
+specifications: []

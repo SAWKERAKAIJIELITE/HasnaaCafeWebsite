@@ -9,11 +9,13 @@ thumbnail: thumbnail.jpg
 gallery:
   - gallery/0.jpg
 origin: Ceylon
+roastLevel: light
 packaging:
   - amount: 100
     unit: g
   - amount: 1
     unit: Kg
+flavor: []
 specifications:
   - name: Amount
     value: limited

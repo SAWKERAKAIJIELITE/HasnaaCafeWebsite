@@ -21,23 +21,23 @@ import EventsSection from "@/sections/EventsSection.astro";
 import HeroSlide from "@components/hero/HeroSlide.astro";
 import ProductsSection from "@/sections/ProductsSection.astro";
 
-const hero = await getHero();
-const about = await getAbout();
-const timeline = await productRepository.getCategory("coffee-beans");
-const products = await productRepository.getProduct(
-  timeline.map((product) => product.id)[0],
-);
+// const hero = await getHero();
+// const about = await getAbout();
+// const timeline = await productRepository.getCategory("coffee-beans");
+// const products = await productRepository.getProduct(
+//   timeline.map((product) => product.id)[0],
+// );
 // productRepository.clearAll();
 // const p =timeline.map((product) => product.id )[0]
 // const featured = getFeaturedProduct("coffee-beans");
 // const prs = [...productMap["coffee-beans"]];
 
-const productss = await getProducts();
-const coffeeProducts = productss.filter((p) => p.category === "coffee-beans");
+// const productss = await getProducts();
+// const coffeeProducts = productss.filter((p) => p.category === "coffee-beans");
 
-const featured = coffeeProducts.filter((p) => p.featured)[0];
+// const featured = coffeeProducts.filter((p) => p.featured)[0];
 
-const grid = coffeeProducts.filter((p) => !p.featured);
+// const grid = coffeeProducts.filter((p) => !p.featured);
 ---
 
 <!-- <OffersSection /> -->
@@ -57,5 +57,5 @@ const grid = coffeeProducts.filter((p) => !p.featured);
 <!-- {prs.map((product) => <ProductCard product={product} />)} -->
 <!-- <ProductGrid products={prs} /> -->
 <!-- <FeaturedProduct featured={featured} /> -->
- <EventsSection />
+ <!-- <Management /> -->
 <!-- <ProductGrid products={grid} /> -->

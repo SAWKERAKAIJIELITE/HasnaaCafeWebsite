@@ -9,7 +9,10 @@ import { getCategoryLabel } from "@/lib/products";
 interface Props {
   product: Product;
 }
-
+const imgs = import.meta.glob(
+  "/src/content/products/**/*.{jpg,jpeg,png,gif,webp,avif}",
+  { eager: true, import: "default" },
+);
 const { product } = Astro.props;
 ---
 
@@ -29,7 +32,7 @@ const { product } = Astro.props;
   <!-- Image -->
   <div class="relative overflow-hidden bg-slate-100">
     <img
-      src={`src/content/products/${product.name}/${product.thumbnail}`}
+      src={imgs[`/src/content/products/${product.id}/${product.thumbnail}`].src}
       alt={product.name}
       class="h-72 w-full object-cover transition-transform duration-700 group-hover:scale-110"
     />

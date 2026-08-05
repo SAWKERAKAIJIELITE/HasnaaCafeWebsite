@@ -5,6 +5,10 @@ import ProductBadge from "./ProductBadge.astro";
 import ArrowLink from "./ArrowLink.astro";
 // const featured = getFeaturedProduct("coffee-beans");
 
+const imgs = import.meta.glob(
+  "/src/content/products/**/*.{jpg,jpeg,png,gif,webp,avif}",
+  { eager: true, import: "default" },
+);
 const {featured}=Astro.props;
 ---
 
@@ -23,7 +27,7 @@ const {featured}=Astro.props;
       >
         <img
           data-featured-image
-          src={`src/content/products/${featured.name}/${featured.thumbnail}`}
+          src={imgs[`/src/content/products/${featured.id}/${featured.thumbnail}`].src}
           alt={featured.name}
           class="h-full w-full object-cover transition duration-700 hover:scale-105 object-center"
         />

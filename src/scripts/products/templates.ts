@@ -1,7 +1,10 @@
 import type { Product,ProductSummary } from "@/types/product";
 import { localize } from "@/i18n/localize";
 import { translations } from "@/i18n/translations";
-
+const imgs = import.meta.glob(
+    "/src/content/products/**/*.{jpg,jpeg,png,gif,webp,avif}",
+    { eager: true, import: "default" },
+);
 
 const packageChipClass = "inline-flex items-center rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 transition duration-300 hover:bg-[#005826] hover:text-white";
 
@@ -20,7 +23,7 @@ export function featuredTemplate(product: ProductSummary)
     <div class="grid min-h-[420px] lg:h-[520px]  lg:grid-cols-[48%_52%]">
         <div class="relative overflow-hidden bg-slate-100 h-[320px] lg:h-full ">
             <img
-                src="src/content/products/${product.name}/${product.thumbnail}"
+                src="${imgs[`/src/content/products/${product.id}/${product.thumbnail}`].src}"
                 alt="${product.name}"
                 class="h-full w-full object-cover transition duration-700 hover:scale-105 object-center"
             />
