@@ -1,3 +1,8 @@
+---
+import { localize } from "@/i18n/localize";
+import { navigation } from "@/data/navigation";
+---
+
 <a
   href="#contact"
   class="rounded-lg
@@ -8,7 +13,7 @@
         text-white
         transition
         hover:bg-amber-600"
-  data-i18n="navbar.contactUs"
 >
-  Contact Us
+  <!-- data-i18n="navbar.contactUs" -->
+  {localize(navigation.find(n=>n.label.en=="Contact").label, Astro.locals.language)}
 </a>

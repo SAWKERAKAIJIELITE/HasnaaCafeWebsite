@@ -2,7 +2,7 @@ import { ActionError, defineAction } from "astro:actions";
 import type { ContactMessage } from "src/types/contact";
 import { buildContactEmail } from "./email-template";
 import { Resend } from "resend";
-// import { env } from "cloudflare:worker"
+
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

@@ -33,8 +33,8 @@ document.addEventListener("DOMContentLoaded", () =>
     const productGridController = new ProductGridController();
     const productModalController = new ProductModalController();
     const productFilterController = new ProductFilterController();
-    // const languageController = new LanguageController();
-    // const translationController = new TranslationController();
+    const languageController = new LanguageController();
+    const translationController = new TranslationController();
     const contactController = new ContactController();
 
     slider.init();
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () =>
     productGridController.init();
     productModalController.init();
     productFilterController.init();
-    // languageController.init();
-    // translationController.init();
+    languageController.init();
+    translationController.init();
     contactController.init();
 });

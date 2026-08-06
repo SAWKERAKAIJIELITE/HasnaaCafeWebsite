@@ -1,4 +1,6 @@
 ---
+import { localize } from "@/i18n/localize";
+
 interface Props {
   href: string;
   label: string;
@@ -17,7 +19,7 @@ class:list={[
 mobile && "nav-link--mobile",
 ]}
   data-nav-link
-  data-i18n={data_i18n}
->
-  {label}
+  >
+  <!-- data-i18n={data_i18n} -->
+  {localize(label, Astro.locals.language)}
 </a>

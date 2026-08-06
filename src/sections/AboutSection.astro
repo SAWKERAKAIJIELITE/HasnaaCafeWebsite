@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-// import { about } from "@/data/about";
+import { localize } from "@/i18n/localize";
 import { getAbout } from "@/services/home/about.service";
 const about = await getAbout();
 
@@ -19,27 +19,27 @@ import ChairmanQuote from "@/components/about/ChairmanQuote.astro";
     <div class="grid items-center gap-20 lg:grid-cols-2">
       <div class="reveal-left">
         <SectionHeading
-          eyebrow={about.eyebrow}
-          title={about.title}
-          description={about.description}
+          eyebrow={localize({ ar: "من نحن", en: "ABOUT US" }, Astro.locals.language)}
+          title={localize(about.title, Astro.locals.language)}
+          description={localize(about.description, Astro.locals.language)}
         />
 
         <div class="mt-10">
           <FeatureList items={about.features} />
         </div>
 
-        <div class="mt-10">
+        <!-- <div class="mt-10">
           <Button href={about.button.href}>
             {about.button.label}
           </Button>
-        </div>
+        </div> -->
       </div>
 
       <div class="relative reveal-right">
         <!-- widths={[640, 900, 1200]} -->
         <img
           src={about.image}
-          alt={about.title}
+          alt={about.title.en}
           sizes="(max-width:1024px) 100vw, 50vw"
           class="rounded-3xl shadow-2xl"
         />
@@ -55,12 +55,12 @@ lg:max-w-none mt-12 grid grid-cols-2 gap-4 lg:absolute lg:-bottom-8 lg:left-0 lg
           {
             about.stats
               .filter((stat) => stat.enabled)
-              .map((stat) => <StatCard value={stat.value} label={stat.label} />)
+              .map((stat) => <StatCard suffix={stat.suffix} value={stat.value} label={stat.label} />)
           }
         </div>
       </div>
     </div>
   </Container>
-  {about.chairman.enabled&&<ChairmanQuote chairman={about.chairman}/>}
+  {about.chairman.enabled && <ChairmanQuote chairman={about.chairman} />}
   <AboutFoundation />
 </Section>

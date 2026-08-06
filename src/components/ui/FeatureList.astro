@@ -1,5 +1,6 @@
 ---
 import { Check } from "lucide-astro";
+import { localize } from "@/i18n/localize";
 
 interface Props {
   items: string[];
@@ -16,7 +17,9 @@ const { items } = Astro.props;
           <Check size={20} class="text-amber-600" />
         </div>
 
-        <span class="font-medium text-slate-700">{item}</span>
+        <span class="font-medium text-slate-700">
+          {localize(item, Astro.locals.language)}
+        </span>
       </li>
     ))
   }

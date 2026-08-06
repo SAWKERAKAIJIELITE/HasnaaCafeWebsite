@@ -1,9 +1,16 @@
-title: First Bag, On Us
-stamp: 20% OFF
-description: >-
-  Start a subscription and get 20% off your first bag — any single-origin,
-  delivered every 2 or 4 weeks.
-expiry: Ends 08.31.26
-href: /subscribe
+title: أول كيس, علينا
+title_en: First Bag, On Us
+stamp:
+  en: 20% OFF
+  ar: 20% خصم
+description:
+  en: >-
+    Start a subscription and get 20% off your first bag — any single-origin, delivered every 2 or 4 weeks.
+  ar: >-
+    ابدأ الاشتراك واحصل على خصم 20٪ على أول كيس لك - أي منشأ فردي ، يتم تسليمه كل أسبوعين أو 4 أسابيع.
+expiry:
+  en: Ends 08.31.26
+  ar: ينتهي في 08.31.26
+# href: /subscribe
 image: image.jpg
 published: true

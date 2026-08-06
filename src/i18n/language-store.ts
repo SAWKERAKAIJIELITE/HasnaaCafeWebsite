@@ -3,20 +3,33 @@ import type { Language } from "./types";
 
 class LanguageStore
 {
-    private language: Language = "en";
+    // private language: Language = "en";
+    private language!: Language;
 
     private listeners = new Set<(language: Language) => void>();
 
     init()
     {
+        const html = document.documentElement;
+
+        const serverLanguage = html.dataset.language as Language;
+
+        this.language = serverLanguage;
+
         const saved = localStorage.getItem("language") as Language | null;
 
-        if (saved === "en" || saved === "ar")
+        if (saved && (saved === "en" || saved === "ar") && saved !== serverLanguage)
         {
-            this.language = saved;
+            this.setLanguage(saved);
+            return
         }
 
         this.apply();
+    }
+
+    isRTL()
+    {
+        return this.language === "ar";
     }
 
     getLanguage()
@@ -37,12 +50,12 @@ class LanguageStore
 
         this.listeners.forEach(listener => listener(language));
 
-        document.dispatchEvent(new CustomEvent("language:change", {detail: language,}));
+        document.dispatchEvent(new CustomEvent("language:change", { detail: language, }));
     }
 
     toggle()
     {
-        this.setLanguage(this.language === "en"? "ar": "en");
+        this.setLanguage(this.language === "en" ? "ar" : "en");
     }
 
     subscribe(listener: (language: Language) => void)
@@ -56,7 +69,7 @@ class LanguageStore
     {
         document.documentElement.lang = this.language;
 
-        document.documentElement.dir =this.language === "ar"? "rtl": "ltr";
+        document.documentElement.dir = this.language === "ar" ? "rtl" : "ltr";
 
         document.documentElement.dataset.language = this.language;
     }

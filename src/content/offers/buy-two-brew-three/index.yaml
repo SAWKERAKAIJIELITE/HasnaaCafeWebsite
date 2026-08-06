@@ -1,9 +1,16 @@
-title: Buy Two, Brew Three
-stamp: 3RD FREE
-description: >-
-  Pick up any two 250g bags of the House Blend and we’ll drop a third one in the
-  bag, free.
-expiry: While stocks last
-href: /shop/house-blend
+title: اشتري اث اثنان و احصل على الثالث مجاناً
+title_en: Buy Two, Brew Three
+stamp:
+  en: 3RD FREE
+  ar: الثالث مجاناً
+description:
+  en: >-
+    Pick up any two 250g bags of the House Blend and we’ll drop a third one in the bag, free.
+  ar: >-
+    التقط أي كيسين من 250 جرام من House Blend وسنضع كيسًا ثالثًا في الحقيبة مجانًا.
+expiry:
+  en: While stocks last
+  ar: حتى نفاذ الكمية
+# href: /shop/house-blend
 image: image.webp
 published: true

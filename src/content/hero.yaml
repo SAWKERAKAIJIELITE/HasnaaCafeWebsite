@@ -1,36 +1,79 @@
 slides:
   - enabled: true
-    title: شركة بن الحسناء
-    subtitle: من أرقى مزارع البن في العالم
+    title:
+      en: Hasnaa Company
+      ar: شركة بن الحسناء
+    subtitle:
+      en: Best Farm around the world
+      ar: من أرقى مزارع البن في العالم
     mediaType: image
     media: /images/slides/0/media.png
     primaryButton:
-      label: المنتجات المميزة
+      label:
+        en: Premium Products
+        ar: المنتجات المميزة
       href: '#products'
     secondaryButton:
-      label: نبذة عنا
+      label:
+        en: About Us
+        ar: نبذة عنا
       href: '#about'
   - enabled: true
-    title: Premium Coffee Solutions
-    subtitle: >-
-      Delivering exceptional coffee products with quality, innovation, and
-      passion.
+    title:
+      en: Premium Coffee Solutions
+      ar: قهوةفاخرة
+    subtitle:
+      en: >-
+        Delivering exceptional coffee products with quality, innovation, and
+        passion.
+      ar: نقدم منتجات قهوة استثنائية مع الجودة والابتكار والشغف.
     mediaType: image
     media: /images/slides/1/media.jpg
     primaryButton:
-      label: View Products
+      label:
+        en: View Products
+        ar: عرض المنتجات
       href: '#products'
     secondaryButton:
-      label: Contact Us
+      label:
+        en: Contact Us
+        ar: اتصل بنا
       href: '#contact'
   - enabled: true
-    title: Freshly Roasted Every Day
-    subtitle: We deliver premium coffee beans for cafés, restaurants and retailers.
+    title:
+      en: Freshly Roasted Every Day
+      ar: تحميص طازج كل يوم
+    subtitle:
+      en: We deliver premium coffee beans for cafés, restaurants and retailers.
+      ar: نقدم منتجات قهوة استثنائية للمقاهي و المطاعم.
     mediaType: image
     media: /images/slides/2/media.jpg
     primaryButton:
-      label: Learn More
+      label:
+        en: Learn More
+        ar: تعرف أكثر
       href: '#products'
     secondaryButton:
-      label: About Us
+      label:
+        en: About Us
+        ar: نبذة عنا
       href: '#about'
+  - enabled: true
+    title:
+      en: Hello There
+      ar: أهليييييييين
+    subtitle:
+      en: Hasnaa for Beauties
+      ar: الحسناء للحسناوات
+    mediaType: image
+    media: /images/slides/3/media.jpg
+    primaryButton:
+      label:
+        en: Employees
+        ar: مجتمعنا
+      href: '#council'
+    secondaryButton:
+      label:
+        en: Best Offers
+        ar: آخر العروض
+      href: '#offers'

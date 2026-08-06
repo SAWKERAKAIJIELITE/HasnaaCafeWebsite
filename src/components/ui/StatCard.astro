@@ -4,8 +4,9 @@ interface Props {
   suffix?: string;
   label: string;
 }
+import { localize } from "@/i18n/localize";
 
-const { value, suffix = "", label } = Astro.props;
+const { value, suffix = "+", label } = Astro.props;
 ---
 
 <div
@@ -22,6 +23,6 @@ const { value, suffix = "", label } = Astro.props;
   <p
     class="mt-2 text-sm font-semibold uppercase tracking-widest text-slate-500"
   >
-    {label}
+    {localize(label, Astro.locals.language)}
   </p>
 </div>

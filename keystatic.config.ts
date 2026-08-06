@@ -122,17 +122,32 @@ export default config({
             slugField: "title",
             path: "src/content/offers/*/",
             schema: {
-                title: fields.slug({ name: { label: "Title" } }),
-                stamp: fields.text({
-                    label: "Stamp",
-                    description: "Short badge text, e.g. '20% OFF' or '3RD FREE'.",
-                }),
-                description: fields.text({ label: "Description", multiline: true }),
-                expiry: fields.text({
-                    label: "Expiry text",
-                    description: "e.g. 'Ends 08.31.26' or 'While stocks last'.",
-                }),
-                href: fields.url({ label: "Link", description: "Where 'Redeem offer' points to." }),
+                title: fields.slug({ name: { label: "العنوان بالعربي" } }),
+                title_en: fields.text( { label: "العنوان بالإنجليزية" } ),
+                stamp: fields.object({
+                    en: fields.text({
+                        label: "English",
+                        description: "Short badge text, e.g. '20% OFF' or '3RD FREE'.",
+                    }),
+                    ar: fields.text({
+                        label: "عربي",
+                        description: "عبارة قصيرة تسويقية مثل حسم 20بالمئة أو القطعة الثالثة مجاناً"
+                    }),
+                }, { label: "الطابع" }),
+                description: fields.object({
+                    en: fields.text({ label: "English", multiline: true }) ,
+                    ar: fields.text({ label: "عربي", multiline: true }),
+                }, { label: "الوصف" }), 
+                expiry: fields.object({
+                    en: fields.text({
+                        label: "English",
+                        description: "e.g. 'Ends 08.31.26' or 'While stocks last'.",
+                    }),
+                    ar: fields.text({
+                         label: "عربي",
+                        description:"مثل ينتهي في تاريخ 1/1/2027 أو حتى انتهاء الكمية" }),
+                }, { label: "مدة العرض" }), 
+                // href: fields.url({ label: "Link", description: "Where 'Redeem offer' points to." }),
                 image: fields.image({
                     label: "Photo",
                     // directory: "src/assets/images/offers",
@@ -210,11 +225,23 @@ export default config({
                             label: "Enabled",
                             defaultValue: true,
                         }),
-                        title: fields.text({ label: "Title" }),
-                        subtitle: fields.text({
-                            label: "Subtitle",
-                            multiline: true,
-                        }),
+                        title: fields.object({
+                            en: fields.text({ label: "English" }),
+                            ar: fields.text({ label: "عربي" }),
+                        }, { label: "العنوان" }),
+                        // title_ar: fields.text({ label: "العنوان الرئيسي" }),
+                        // subtitle: fields.text({
+                        //     label: "Subtitle",
+                        //     multiline: true,
+                        // }),
+                        subtitle: fields.object({
+                            en: fields.text({ label: "English" }),
+                            ar: fields.text({ label: "عربي" }),
+                        }, { label: "العنوان الفرعي" }),
+                        // subtitle_ar: fields.text({
+                        //     label: "العنوان الفرعي",
+                        //     multiline: true,
+                        // }),
                         mediaType: fields.select({
                             label: "Media Type",
                             options: [
@@ -229,33 +256,39 @@ export default config({
                             publicPath: "/images",
                         }),
                         primaryButton: fields.object({
-                            label: fields.text({ label: "Label" }),
+                            label: fields.object({
+                                en: fields.text({ label: "English" }),
+                                ar: fields.text({ label: "عربي" }),
+                            }, { label: "النص داخل الزر" }),
+                            // label_ar: fields.text({ label: "النص داخل الزر" }),
                             href: fields.select({
                                 label: "Link",
                                 options: [
-                                    { label: "Products", value: "#products", },
-                                    { label: "About", value: "#about", },
-                                    { label: "Articles", value: "#articles", },
-                                    { label: "Offers", value: "#offers", },
-                                    { label: "Contacts", value: "#contact", },
-                                    { label: "Management", value: "#management", },
+                                    { label: "المنتجات", value: "#products", },
+                                    { label: "من نحن", value: "#about", },
+                                    { label: "المقالات", value: "#news", },
+                                    { label: "العروض", value: "#offers", },
+                                    { label: "اتصل بنا", value: "#contact", },
+                                    { label: "الإدارة", value: "#council", },
                                 ],
                                 defaultValue: "#products",
                             }),
-                        }, {
-                            label: "Primary Button",
-                        }),
+                        }, { label: "Primary Button", }),
                         secondaryButton: fields.object({
-                            label: fields.text({ label: "Label" }),
+                            label: fields.object({
+                                en: fields.text({ label: "English" }),
+                                ar: fields.text({ label: "عربي" }),
+                            }, { label: "النص داخل الزر" }),
+                            // label_ar: fields.text({ label: "النص داخل الزر" }),
                             href: fields.select({
                                 label: "Link",
                                 options: [
-                                    { label: "Products", value: "#products", },
-                                    { label: "About", value: "#about", },
-                                    { label: "Articles", value: "#articles", },
-                                    { label: "Offers", value: "#offers", },
-                                    { label: "Contacts", value: "#contact", },
-                                    { label: "Management", value: "#management", },
+                                    { label: "المنتجات", value: "#products", },
+                                    { label: "من نحن", value: "#about", },
+                                    { label: "المقالات", value: "#news", },
+                                    { label: "العروض", value: "#offers", },
+                                    { label: "اتصل بنا", value: "#contact", },
+                                    { label: "الإدارة", value: "#council", },
                                 ],
                                 defaultValue: "#products",
                             }),
@@ -265,7 +298,7 @@ export default config({
                     }),
                     {
                         label: "Slides",
-                        itemLabel: item => `${item.fields.enabled.value && "enabled"} ${item.fields.title.value}`
+                        itemLabel: item => `${item.fields.enabled.value && "enabled"} ${item.fields.title.fields.en.value}`
                     }
                 ),
             },
@@ -275,8 +308,14 @@ export default config({
             path: "src/content/about",
             schema: {
                 eyebrow: fields.text({ label: "Eyebrow" }),
-                title: fields.text({ label: "Title" }),
-                description: fields.text({ label: "Description", multiline: true }),
+                title: fields.object({
+                    en: fields.text({ label: "English" }),
+                    ar: fields.text({ label: "عربي" }),
+                }, { label: "العنوان" }),
+                description: fields.object({
+                    en: fields.text({ label: "English", multiline: true }),
+                    ar: fields.text({ label: "عربي", multiline: true }),
+                }, { label: "الوصف" }),
                 image: fields.image({
                     label: "Image",
                     directory: "public/images/about",
@@ -289,16 +328,22 @@ export default config({
                             defaultValue: true,
                         }),
                         value: fields.text({ label: "Value" }),
-                        label: fields.text({ label: "Label" }),
+                        label: fields.object({
+                            en: fields.text({ label: "English" }),
+                            ar: fields.text({ label: "عربي" }),
+                        }, { label: "العلامة" }),
                     }),
                     {
                         label: "Statistics",
-                        itemLabel: item => `${item.fields.label.value}: ${item.fields.value.value}`
+                        itemLabel: item => `${item.fields.label.fields.ar.value}: ${item.fields.value.value}`
                     }
                 ),
                 features: fields.array(
-                    fields.text({ label: "Feature" }),
-                    { label: "Features", itemLabel: item => item.value }
+                    fields.object({
+                        en: fields.text({ label: "English" }),
+                        ar: fields.text({ label: "عربي" }),
+                    }, { label: "الميزات" }), 
+                    { label: "Features", itemLabel: item => item.fields.ar.value }
                 ),
                 button: fields.object({
                     label: fields.text({ label: "Label" }),
@@ -320,8 +365,14 @@ export default config({
                         label: "Enabled",
                         defaultValue: true,
                     }),
-                    name: fields.text({ label: "Name" }),
-                    quote: fields.text({ label: "Quote", multiline: true }),
+                    name: fields.object({
+                        en: fields.text({ label: "English" }),
+                        ar: fields.text({ label: "عربي" }),
+                    }, { label: "الاسم" }),
+                    quote: fields.object({
+                        en: fields.text({ label: "English", multiline: true }),
+                        ar: fields.text({ label: "عربي", multiline: true }),
+                    }, { label: "الاقتباس" }) ,
                     photo: fields.image({
                         label: "Photo",
                         directory: "public/images/about",

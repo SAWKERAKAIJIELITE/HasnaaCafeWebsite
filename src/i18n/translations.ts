@@ -62,32 +62,6 @@ export const translations =
                 ar: "تحميص داكن"
             }
         } satisfies Record<string, LocalizedText>,
-    productApplication: {
-        Retail: {
-            en: "Retail",
-            ar: "المفرق"
-        },
-        Hotels: {
-            en: "Hotels",
-            ar: "الفنادق"
-        },
-        Restaurants: {
-            en: "Restaurants",
-            ar: "المطاعم",
-        },
-        Cafés: {
-            en: "Cafés",
-            ar: "المقاهي",
-        },
-        Wholesale: {
-            en: "Wholesale",
-            ar: "الجملة",
-        },
-        Office: {
-            en: "Office",
-            ar: "المكاتب",
-        },
-    } satisfies Record<string, LocalizedText>,
     productCategory: {
         "coffee-beans": {
             en: "coffee-beans",

@@ -18,6 +18,7 @@ export class TranslationController
     private translate()
     {
         const language = languageStore.getLanguage();
+        // console.log(language);
 
         this.elements.forEach(element =>
         {

@@ -23,6 +23,7 @@
 
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
+import { localize } from "@/i18n/localize";
 
 const offers = await getCollection("offers", ({ data }) => data.published);
 // const offers = offerEntries.sort((a, b) => a.data.order - b.data.order);
@@ -81,10 +82,13 @@ import "@/styles/global.css";
                       {ticketNumber}
                     </span>
                     <span class="flex h-54 w-54 rotate-[-6deg] items-center justify-center rounded-full border-2 border-[#6d1709] px-2 text-center font-mono text-7xl font-bold uppercase leading-tight tracking-wide text-[#F2E8D8]">
-                      {offer.data.stamp}
+                      {localize(offer.data.stamp, Astro.locals.language)}
                     </span>
                     <p class="font-serif text-5xl text-[#F2E8D8]">
-                      {offer.data.title}
+                      {localize(
+                        { ar: offer.data.title, en: offer.data.title_en },
+                        Astro.locals.language,
+                      )}
                     </p>
                     <span class="mt-1 inline-flex items-center gap-1.5 font-mono text-[30px] uppercase tracking-[0.2em] text-[#AC8759]">
                       <svg
@@ -127,7 +131,7 @@ import "@/styles/global.css";
                         {ticketNumber}
                       </span>
                       <span class="absolute -right-2 -top-2 rotate-[-8deg] rounded-full border-[1.5px] border-[#8C3B2E] bg-[#F2E8D8] px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-wide text-[#8C3B2E] shadow-md">
-                        {offer.data.stamp}
+                        {localize(offer.data.stamp, Astro.locals.language)}
                       </span>
                     </div>
 
@@ -141,21 +145,27 @@ import "@/styles/global.css";
 
                     <div class="flex flex-1 flex-col gap-2 overflow-hidden px-5 pb-5 pt-4">
                       <h3 class="line-clamp-1 font-serif text-lg font-semibold leading-snug text-[#1C1410]">
-                        {offer.data.title}
+                        {localize(
+                          { ar: offer.data.title, en: offer.data.title_en },
+                          Astro.locals.language,
+                        )}
                       </h3>
                       <p class="line-clamp-3 flex-1 font-sans text-sm leading-relaxed text-[#1C1410]/70">
-                        {offer.data.description}
+                        {localize(
+                          offer.data.description,
+                          Astro.locals.language,
+                        )}
                       </p>
                       <div class="mt-auto flex items-center justify-between border-t border-[#1C1410]/10 pt-3">
                         <span class="font-mono text-[11px] uppercase tracking-wide text-[#1C1410]/50">
-                          {offer.data.expiry}
+                          {localize(offer.data.expiry, Astro.locals.language)}
                         </span>
-                        <a
+                        {/* <a
                           href={offer.data.href}
                           class="rounded-full border border-[#3c9339] px-4 py-2 font-sans text-sm font-medium text-[#3c9339] transition-colors hover:bg-[#3c9339] hover:text-[#F2E8D8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AC8759]"
                         >
                           Redeem offer
-                        </a>
+                        </a> */}
                       </div>
                     </div>
                   </article>
@@ -168,7 +178,7 @@ import "@/styles/global.css";
     </ul>
 
     <p
-      class="mt-10 text-center font-mono text-[11px] uppercase tracking-widest text-[#005826]/40"
+      class="mt-10 text-center font-mono text-[30px] uppercase tracking-widest text-[#005826]/40"
     >
       One offer per order · Cannot be combined · Prices in local currency
     </p>

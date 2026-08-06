@@ -2,28 +2,22 @@
 import type { HeroSlide as HeroSlideType } from "@/data/hero";
 import Container from "@/components/ui/Container.astro";
 import Button from "@/components/ui/Button.astro";
-import { Image } from "astro:assets";
+import { localize } from "@/i18n/localize";
 
 interface Props {
   slide: HeroSlideType;
-  index:number;
+  index: number;
 }
 
 const { slide, index } = Astro.props;
 ---
 
-<!-- // widths={[640, 1024, 1440, 1920]}
-// sizes="100vw" --><!-- // src={slide.media} --><!-- <div class="relative h-screen w-full shrink-0"> --><!-- // src={slide.id === 1 ? slide.media : ""}
-  // data-src={slide.media} --><!-- src={slide.media}
-  alt={slide.title}
-  width="1920"
-  height="1080" -->
 <div class="embla__slide relative min-h-screen">
   {
     slide.mediaType === "image" && (
       <img
         src={slide.media}
-        alt={slide.title}
+        alt={slide.title.en}
         // width={slide.media.width}
         // height={slide.media.height}
         loading={index === 0 ? "eager" : "lazy"}
@@ -33,7 +27,6 @@ const { slide, index } = Astro.props;
       />
     )
   }
-
   {
     slide.mediaType === "video" && (
       <video
@@ -63,7 +56,7 @@ const { slide, index } = Astro.props;
 sm:text-5xl
 lg:text-7xl font-black text-white leading-tight"
         >
-          {slide.title}
+          {localize(slide.title, Astro.locals.language)}
         </h1>
 
         <p
@@ -73,7 +66,7 @@ sm:text-lg
 lg:text-xl
 lg:leading-9"
         >
-          {slide.subtitle}
+          {localize(slide.subtitle, Astro.locals.language)}
         </p>
 
         <!-- <div class="mt-12 flex flex-wrap gap-5"> -->
@@ -93,7 +86,7 @@ gap-4"
             {slide.primaryButton.label}
           </a> -->
           <Button href={slide.primaryButton.href}>
-            {slide.primaryButton.label}
+            {localize(slide.primaryButton.label, Astro.locals.language)}
           </Button>
 
           <!-- <a
@@ -103,7 +96,7 @@ gap-4"
             {slide.secondaryButton.label}
           </a> -->
           <Button href={slide.secondaryButton.href} variant="secondary">
-            {slide.secondaryButton.label}
+            {localize(slide.secondaryButton.label, Astro.locals.language)}
           </Button>
         </div>
       </div>

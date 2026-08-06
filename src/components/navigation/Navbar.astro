@@ -48,7 +48,7 @@ import { navigation } from "@/data/navigation";
       {navigation.map((item) => <NavLink {...item} />)}
     </nav>
 
-    <!-- <button
+    <button
       data-language-toggle
       class="rounded-full
         border
@@ -61,8 +61,13 @@ import { navigation } from "@/data/navigation";
         hover:bg-[#005826]
         hover:text-white"
     >
-      العربية
-    </button> -->
+      <!-- العربية -->
+       {
+        Astro.locals.language === "en"
+            ? "العربية"
+            : "English"
+    }
+    </button>
 
     <!-- <a
       href="#contact"

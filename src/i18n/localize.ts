@@ -1,7 +1,15 @@
 import { languageStore } from "./language-store";
-import type { LocalizedText } from "./types";
+import type { LocalizedText, Language } from "./types";
 
-export function localize(text: LocalizedText)
+export function localize(text: LocalizedText, language: Language): string
 {
-    return text[languageStore.getLanguage()];
+    // console.log(language);
+    // if(cms)
+    // {
+    //     if (language=='en')
+    //         return text.en;
+    //     if (language=='ar')
+    //         return text.ar;
+    // }
+    return text[language] ?? text.en;
 }

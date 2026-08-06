@@ -1,34 +1,53 @@
 eyebrow: ABOUT US
-title: Passionate About Exceptional Coffee
-description: >-
-  Hasnaa Coffee is dedicated to delivering premium coffee products and reliable
-  solutions for cafés, restaurants, hotels, and retailers. Through quality,
-  innovation, and trusted partnerships, we help businesses create memorable
-  coffee experiences.
+title:
+  en: Passionate About Exceptional Coffee
+  ar: متحمس للاستثمار في القهوة الفاخرة
+description:
+  en: >-
+    Hasnaa Coffee is dedicated to delivering premium coffee products and reliable
+    solutions for cafés, restaurants, hotels, and retailers. Through quality,
+    innovation, and trusted partnerships, we help businesses create memorable
+    coffee experiences.
+  ar: >-
+    شركة هسنا كوفي مكرسة لتقديم منتجات القهوة الفاخرة والحلول الموثوقة للمقاهي والمقاهي والفنادق والمحلات. من خلال الجودة والابتكار والشراكات الموثوقة، نساعد الأعمال في إنشاء تجارب قهوة لا تُنسى.
 image: /images/about/image.png
 stats:
   - enabled: true
     value: '15'
-    label: Years Experience
+    label:
+      en: Years Experience
+      ar: سنوات من الخبرة
   - enabled: true
     value: '120'
-    label: Coffee Products
+    label:
+      en: Coffee Products
+      ar: منتجات القهوة
   - enabled: true
     value: '500'
-    label: Business Clients
+    label:
+      en: Business Clients
+      ar: عميل
 features:
-  - Premium Coffee Beans
-  - Nationwide Distribution
-  - Dedicated Customer Support
+  - en: Premium Coffee Beans
+    ar: حبوب القهوة الفاخرة
+  - en: Nationwide Distribution
+    ar: توزيع وطني
+  - en: Dedicated Customer Support
+    ar: دعم العملاء المخصص
 button:
   label: Learn More
   href: '#products'
 chairman:
   enabled: false
-  name: Chairman Name
-  quote: >-
-    Every great partnership begins with trust. Our promise is to deliver
-    exceptional coffee solutions while building lasting relationships founded on
-    quality, consistency and integrity.
+  name:
+    en: Chairman Name
+    ar: اسم الرئيس
+  quote:
+    en: >-
+      Every great partnership begins with trust. Our promise is to deliver
+      exceptional coffee solutions while building lasting relationships founded on
+      quality, consistency and integrity.
+    ar: >-
+      كل الشراكات العظيمة تبدأ بالثقة. وعدنا هو تسليم حلول قهوة استثنائية أثناء بناء علاقات دائمة مبنية على الجودة والثبات والنزاهة.
   photo: /images/about/chairman/photo.jpg
   signature: /images/about/chairman/signature.png
