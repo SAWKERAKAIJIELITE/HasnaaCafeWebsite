@@ -15,7 +15,7 @@ export class ProductRepository
         //     return cached;
         // }
 
-        const response = await fetch(`http://localhost:4321/api/products?category=${category}`);
+        const response = await fetch(`/api/products?category=${category}`);
         if (!response.ok)
         {
             throw new Error("Failed to load category");
@@ -36,7 +36,7 @@ export class ProductRepository
             return cached;
         }
 
-        const response = await fetch(`http://localhost:4321/api/product/${id}`);
+        const response = await fetch(`/api/product/${id}`);
 
         if (!response.ok)
         {
