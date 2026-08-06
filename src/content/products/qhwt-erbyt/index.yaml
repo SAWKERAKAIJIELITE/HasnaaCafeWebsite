@@ -1,0 +1,15 @@
+available: true
+featured: false
+name: قهوة عربية
+category: liquid-coffee
+description: فاخرة للأعياد
+thumbnail: thumbnail.jpg
+gallery: []
+origin: Arabic
+roastLevel: dark
+packaging:
+  - amount: 1
+    unit: L
+flavor:
+  - هيل
+specifications: []
