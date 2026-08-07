@@ -1,10 +1,13 @@
 available: true
 featured: false
-name: Dark Chocolate Powder
+name: بودرة الشوكولاتة الداكنة
+name_en: Dark Chocolate Powder
 category: chocolate
-description: >-
-  Made from high-quality cocoa beans to deliver an intense chocolate flavor,
-  perfect for cafés, bakeries, restaurants, and beverage preparation.
+description:
+  ar: مصنوعة من حبوب الكاكاو عالية الجودة لتقديم نكهة شوكولاتة غنية، مثالية للمقاهي والمخابز والمطاعم وتحضير المشروبات.
+  en: >-
+    Made from high-quality cocoa beans to deliver an intense chocolate flavor,
+    perfect for cafés, bakeries, restaurants, and beverage preparation.
 thumbnail: thumbnail.jpg
 gallery: []
 origin: Colombia

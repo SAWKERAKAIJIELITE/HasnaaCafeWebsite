@@ -1,0 +1,19 @@
+available: true
+featured: true
+name: اكرك عجم
+name_en: karkouk
+category: tea
+description:
+  en: Strong classic taste
+  ar: طعم قوي يعيد الذكريات
+thumbnail: thumbnail.jpg
+gallery: []
+origin: Ceylon
+roastLevel: ''
+packaging:
+  - amount: 100
+    unit: g
+  - amount: 400
+    unit: g
+flavor: []
+specifications: []

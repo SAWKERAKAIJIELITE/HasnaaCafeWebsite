@@ -1,9 +1,60 @@
 import type { Product, ProductCategory } from "@/types/product";
 import { productRepository } from "@/scripts/products/product-repository";
+import { localize } from "@/i18n/localize";
+
+
+const Dictionaries = {
+    roast:
+    {
+        light:
+        {
+            en: "Light",
+            ar: "تحميص خفيف"
+        },
+        medium:
+        {
+            en: "Medium",
+            ar: "تحميص وسط"
+        },
+        dark:
+        {
+            en: "Dark",
+            ar: "تحميص داكن"
+        }
+    },
+    category: {
+        "coffee-beans": {
+            en: "coffee-beans",
+            ar: "بن"
+        },
+        "liquid-coffee": {
+            en: "liquid-coffee",
+            ar: "قهوة سائلة"
+        },
+        tea: {
+            en: "tea",
+            ar: "شاي",
+        },
+        chocolate: {
+            en: "chocolate",
+            ar: "شوكولا",
+        },
+    },
+    filters: {
+        "allRoasts": {
+            en: "All Roasts",
+            ar: "كل أنواع التحميص"
+        },
+        "allOrigins": {
+            en: "All Origins",
+            ar: "كل أنواع المنشأ"
+        }
+    }
+}
+
 
 export class ProductState
 {
-    // private products: Product[] = [];
     category: ProductCategory = "coffee-beans";
     search = "";
     origin = "all";
@@ -11,11 +62,6 @@ export class ProductState
     featured = null;
     loading = false;
     selected = null;
-
-    // setProducts(products: Product[])
-    // {
-    //     this.products = products;
-    // }
 
     setSearch(value: string)
     {
@@ -37,10 +83,6 @@ export class ProductState
         return ["all", ...new Set(
             (await productRepository.getCategory(this.category)).map(p => p.origin).filter(Boolean)
         )];
-        // return [
-        //     "all",
-        //     ...new Set(productMap[this.category].map(p => p.origin).filter(Boolean).map(origin => localize(origin!)))
-        // ];
     }
 
     async getRoasts()
@@ -50,10 +92,9 @@ export class ProductState
         )];
     }
 
-    async getFeatured()
+    async getFeatured(currentLanguage: string)
     {
-        console.log('products')
-        const products = await this.getProducts();
+        const products = await this.getProducts(currentLanguage);
 
         if (products.length === 0)
         {
@@ -64,10 +105,9 @@ export class ProductState
             products.find(p => p.featured)
             ?? products[0]
         );
-        // return (this.getProducts().find(p => p.featured) ?? this.getProducts()[0]);
     }
 
-    async getProducts()
+    async getProducts(currentLanguage: string)
     {
         let products = await productRepository.getCategory(this.category);
 
@@ -76,15 +116,14 @@ export class ProductState
             products = products.filter(product =>
             {
                 return (
-                    product.name.toLowerCase().includes(this.search) ||
-                    product.description.toLowerCase().includes(this.search) ||
-                    product.origin?.toLowerCase().includes(this.search)
-                    // product.applications.some(a =>
-                    //     a.toLowerCase().includes(this.search)
-                    // )
-                    // localize(product.title).toLowerCase().includes(this.search) ||
-                    // localize(product.description).toLowerCase().includes(this.search) ||
-                    // product.origin && localize(product.origin).toLowerCase().includes(this.search) ||
+                    // product.name.toLowerCase().includes(this.search) ||
+                    // product.description.toLowerCase().includes(this.search)
+
+                    localize(
+                        { ar: product.name, en: product.name_en },
+                        currentLanguage
+                    )?.toLowerCase().includes(this.search) ||
+                    localize(product.description, currentLanguage).toLowerCase().includes(this.search)
                     // product.applications.some(a =>
                     //     localize(translations.productApplication[a]).toLowerCase().includes(this.search)
                     // )
@@ -104,9 +143,9 @@ export class ProductState
         return products;
     }
 
-    async getGridProducts()
+    async getGridProducts(currentLanguage: string)
     {
-        return (await this.getProducts()).filter(p => !p.featured);
+        return (await this.getProducts(currentLanguage)).filter(p => !p.featured);
     }
 
     async getProduct(id: string)

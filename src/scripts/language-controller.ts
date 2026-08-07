@@ -41,14 +41,14 @@ export class LanguageController
 
         this.button.addEventListener("click", async () =>
         {
-            const current =document.documentElement.lang === "ar"? "ar": "en";
+            const current = document.documentElement.lang === "ar" ? "ar" : "en";
 
-            const next = current === "en"? "ar": "en";
+            const next = current === "en" ? "ar" : "en";
 
             await fetch("/api/language", {
                 method: "POST",
-                headers: {"Content-Type": "application/json",},
-                body: JSON.stringify({language: next,}),
+                headers: { "Content-Type": "application/json", },
+                body: JSON.stringify({ language: next, }),
             });
 
             location.reload();

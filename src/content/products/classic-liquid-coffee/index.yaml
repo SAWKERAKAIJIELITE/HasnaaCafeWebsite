@@ -1,11 +1,16 @@
 available: true
 featured: true
-name: Classic Liquid Coffee
+name: قهوة سائلة كلاسيكية
+name_en: Classic Liquid Coffee
 category: liquid-coffee
-description: >-
-  A premium liquid coffee concentrate developed for cafés, hotels, restaurants,
-  and beverage manufacturers. Delivers consistent taste while simplifying
-  beverage preparation.
+description:
+  en: >-
+    A premium liquid coffee concentrate developed for cafés, hotels, restaurants,
+    and beverage manufacturers. Delivers consistent taste while simplifying
+    beverage preparation.
+  ar: >-
+    تركيز قهوة سائلة فاخرة تم تطويرها للكافيهات، والفنادق، والمطاعم，
+    ومنشآت مشروبات. تقدم نكهة متسقة أثناء تبسيط إعداد المشروبات.
 thumbnail: thumbnail.jpg
 gallery: []
 origin: Brazil

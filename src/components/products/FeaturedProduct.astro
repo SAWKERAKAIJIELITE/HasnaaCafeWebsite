@@ -1,15 +1,25 @@
 ---
-// import { getFeaturedProduct } from "@/data/products/index";
 import PackageChip from "./PackageChip.astro";
 import ProductBadge from "./ProductBadge.astro";
 import ArrowLink from "./ArrowLink.astro";
-// const featured = getFeaturedProduct("coffee-beans");
+import { localize } from "@/i18n/localize";
 
 const imgs = import.meta.glob(
   "/src/content/products/**/*.{jpg,jpeg,png,gif,webp,avif}",
   { eager: true, import: "default" },
 );
-const {featured}=Astro.props;
+
+const originsDict = {
+  Brazil: { ar: "البرازيل", en: "Brazil" },
+  Colombia: { ar: "كولومبيا", en: "Colombia" },
+  Ceylon: { ar: "سيلان", en: "Ceylon" },
+  Ethiopia: { ar: "إثيوبيا", en: "Ethiopia" },
+  Yemen: { ar: "يمن", en: "Yemen" },
+  Arabic: { ar: "عربي", en: "Arabic" },
+  China: { ar: "الصين", en: "China" },
+  // "": { ar: "", en: "", },
+};
+const { featured } = Astro.props;
 ---
 
 <section class="mt-20 reveal" data-featured-product>
@@ -21,14 +31,14 @@ const {featured}=Astro.props;
     <div class="grid min-h-[420px] lg:h-[520px] lg:grid-cols-[48%_52%]">
       <!-- Image -->
       <div
-        class="relative overflow-hidden bg-slate-100 h-[320px] lg:h-full flex
-    items-center
-    justify-center"
+        class="relative overflow-hidden bg-slate-100 h-[320px] lg:h-full flex items-center justify-center"
       >
         <img
           data-featured-image
-          src={imgs[`/src/content/products/${featured.id}/${featured.thumbnail}`].src}
-          alt={featured.name}
+          src={imgs[
+            `/src/content/products/${featured.id}/${featured.thumbnail}`
+          ].src}
+          alt={featured.name_en}
           class="h-full w-full object-cover transition duration-700 hover:scale-105 object-center"
         />
         <div
@@ -37,8 +47,6 @@ const {featured}=Astro.props;
         </div>
       </div>
 
-      <!-- Content -->
-      <!-- <div class="bg-white"></div> -->
       <div class="flex flex-col justify-center p-8 lg:p-10">
         <!-- <span
           class="text-sm font-bold uppercase tracking-[.3em] text-[#fdb913]"
@@ -51,14 +59,19 @@ const {featured}=Astro.props;
           data-featured-title
           class="mt-5 lg:text-[2rem] text-3xl font-black text-slate-900"
         >
-          {featured.name}
+          {
+            localize(
+              { ar: featured.name, en: featured.name_en },
+              Astro.locals.language,
+            )
+          }
         </h3>
 
         <p
           data-featured-description
           class="mt-5 leading-7 line-clamp-3 text-slate-600"
         >
-          {featured.description}
+          {localize(featured.description, Astro.locals.language)}
         </p>
 
         <div class="mt-10 grid gap-6 sm:grid-cols-2">
@@ -68,7 +81,7 @@ const {featured}=Astro.props;
             </p>
 
             <p data-featured-origin class="mt-2 font-semibold text-slate-800">
-              {featured.origin}
+              {featured.origin ? localize(originsDict[featured.origin], Astro.locals.language) : "-"}
             </p>
           </div>
 
@@ -93,9 +106,6 @@ const {featured}=Astro.props;
           <div data-featured-packages class="flex flex-wrap gap-3">
             {
               featured.packaging.map((pkg) => (
-                // <span class="rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700">
-                //   {pkg.weight}
-                // </span>
                 <PackageChip label={`${pkg.amount} ${pkg.unit}`} />
               ))
             }
@@ -119,26 +129,6 @@ const {featured}=Astro.props;
             }
           </div>
         </div> -->
-
-        <!-- <a
-          href="#contact"
-          class="mt-12
-inline-flex
-w-fit
-items-center
-rounded-full
-bg-[#005826]
-px-8
-py-4
-font-bold
-text-white
-transition
-duration-300
-hover:-translate-y-1
-hover:bg-[#3c9339]"
-        >
-          Request Catalogue
-        </a> -->
         <ArrowLink href="#contact" label="View Details →" />
       </div>
     </div>

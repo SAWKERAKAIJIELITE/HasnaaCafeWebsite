@@ -14,14 +14,18 @@
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import "@/styles/global.css";
-const entries = await getCollection("event", ({ data }) => data.published);
-const items = entries.sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
-);
+import { localize } from "@/i18n/localize";
+
 const imgs = import.meta.glob(
   "/src/content/news-events/**/*.{jpg,jpeg,png,gif,webp,avif}",
   { eager: true, import: "default" },
 );
+
+const entries = await getCollection("event", ({ data }) => data.published);
+const items = entries.sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
 // Format as UTC explicitly — these are date-only values (no time component),
 // so formatting in the reader's local timezone can shift the day by one.
 function formatDateParts(date: Date) {
@@ -244,7 +248,7 @@ const items: NewsItem[] = [
 </section> -->
 <section
   id="news"
-  class="relative scroll-mt-24 overflow-hidden bg-[#1C1410] px-6 py-20 md:py-28"
+  class="relative scroll-mt-24 overflow-hidden px-6 py-10 md:py-18"
 >
   <div
     class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(172,135,89,0.10),_transparent_60%)]"
@@ -254,25 +258,23 @@ const items: NewsItem[] = [
 
   <div class="relative mx-auto max-w-6xl">
     <div
-      class="mb-14 flex flex-col gap-4 md:mb-20 md:flex-row md:items-end md:justify-between"
+      class="mb-10 flex flex-col gap-4 md:mb-10 md:flex-row md:items-end md:justify-between"
     >
       <div class="max-w-xl">
-        <p class="font-mono text-xs uppercase tracking-[0.25em] text-[#AC8759]">
+        <p class="text-xl uppercase tracking-[0.25em] text-[#3c9339]">
           From the Roastery
         </p>
-        <h2
-          class="mt-4 font-serif text-4xl leading-tight text-[#F2E8D8] md:text-5xl"
-        >
-          What's <em class="text-[#AC8759] not-italic">brewing</em> lately.
+        <h2 class="mt-4 text-4xl leading-tight text-slate-600 md:text-5xl">
+          What's <em class="text-[#3c9339] not-italic">brewing</em> lately.
         </h2>
-        <p class="mt-4 font-sans text-base leading-relaxed text-[#F2E8D8]/70">
+        <p class="mt-4 text-2xl leading-relaxed text-slate-800/70">
           Product launches, press, and the odd excuse to get the whole
           neighborhood in one room.
         </p>
       </div>
     </div>
 
-    <ul class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    <ul class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2">
       {
         items.map((item) => {
           const isEvent = item.data.type === "event";
@@ -283,7 +285,7 @@ const items: NewsItem[] = [
           const { day, month } = formatDateParts(item.data.date);
           return (
             <li class="list-none">
-              <article class="group flex h-full flex-col overflow-hidden rounded-lg border border-[#AC8759]/15 bg-[#241A14] shadow-[0_18px_40px_-24px_rgba(0,0,0,0.7)] transition-transform duration-300 hover:-translate-y-1 motion-reduce:transition-none">
+              <article class="group flex h-full flex-col overflow-hidden rounded-lg border border-[#3c9339]/15 bg-[#005826] shadow-[0_18px_40px_-24px_rgba(0,0,0,0.7)] transition-transform duration-300 hover:-translate-y-1 motion-reduce:transition-none">
                 <div class="relative aspect-[16/10] overflow-hidden">
                   <img
                     src={
@@ -291,7 +293,7 @@ const items: NewsItem[] = [
                         `/src/content/news-events/${item.id}/${item.data.image}`
                       ].src
                     }
-                    alt={item.data.title}
+                    alt={item.data.title_en}
                     sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                     class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                   />
@@ -315,26 +317,29 @@ const items: NewsItem[] = [
                   </div>
 
                   <span
-                    class={`absolute right-3 top-3 rounded-full px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest ${typeClasses}`}
+                    class={`absolute right-3 top-3 rounded-full px-3 py-1 font-mono text-[25px] font-bold uppercase tracking-widest ${typeClasses}`}
                   >
                     {item.data.type}
                   </span>
                 </div>
 
                 <div class="flex flex-1 flex-col gap-3 px-6 pb-6 pt-5">
-                  <h3 class="line-clamp-2 font-serif text-lg font-semibold leading-snug text-[#F2E8D8]">
-                    {item.data.title}
+                  <h3 class="line-clamp-2 text-3xl font-semibold leading-snug text-[#F2E8D8]">
+                    {localize(
+                      { ar: item.data.title, en: item.data.title_en },
+                      Astro.locals.language,
+                    )}
                   </h3>
-                  <p class="line-clamp-3 flex-1 font-sans text-sm leading-relaxed text-[#F2E8D8]/70">
-                    {item.data.excerpt}
+                  <p class="line-clamp-3 flex-1 font-sans text-xl leading-relaxed text-[#F2E8D8]/70">
+                    {localize(item.data.excerpt, Astro.locals.language)}
                   </p>
                   <div class="mt-auto flex items-center justify-between gap-3 border-t border-[#AC8759]/15 pt-3">
-                    <span class="font-mono text-[11px] uppercase tracking-wide text-[#F2E8D8]/50">
-                      {item.data.meta}
+                    <span class="text-[17px] uppercase tracking-wide text-[#F2E8D8]/50">
+                      {localize(item.data.meta, Astro.locals.language)}
                     </span>
                     <a
                       href={item.data.href}
-                      class="inline-flex items-center gap-1 whitespace-nowrap font-sans text-sm font-medium text-[#AC8759] transition-colors hover:text-[#F2E8D8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AC8759]"
+                      class="inline-flex items-center gap-1 whitespace-nowrap font-sans text-md font-medium text-[#AC8759] transition-colors hover:text-[#F2E8D8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AC8759]"
                     >
                       {ctaLabel}
                       <span aria-hidden="true">→</span>

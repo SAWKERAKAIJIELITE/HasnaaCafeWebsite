@@ -43,6 +43,7 @@ export function mapProduct(entry: CollectionEntry<"products">): Product
     return {
         id: entry.id,
         name: entry.data.name,
+        name_en: entry.data.name_en,
         category: entry.data.category,
         description: entry.data.description,
         thumbnail: entry.data.thumbnail,
@@ -62,6 +63,7 @@ export function mapProductSummary(entry: CollectionEntry<"products">): ProductSu
     return {
         id: entry.id,
         name: entry.data.name,
+        name_en: entry.data.name_en,
         category: entry.data.category,
         description: entry.data.description,
         thumbnail: entry.data.thumbnail,

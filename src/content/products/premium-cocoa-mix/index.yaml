@@ -1,10 +1,14 @@
 available: true
 featured: true
-name: Premium Cocoa Mix
+name: مزيج الكاكاو الفاخر
+name_en: Premium Cocoa Mix
 category: chocolate
-description: >-
-  An easy-to-prepare cocoa beverage mix offering a creamy texture and balanced
-  sweetness for hospitality and retail markets.
+description:
+  en: >-
+    An easy-to-prepare cocoa beverage mix offering a creamy texture and balanced
+    sweetness for hospitality and retail markets.
+  ar: >-
+    مزيج شوكولاتة فاخر سهل التحضير يوفر نسيجًا كريميًا وطعمًا متوازنًا مناسبًا لبيئات الضيافة والتجزئة.
 thumbnail: thumbnail.webp
 gallery: []
 origin: Brazil

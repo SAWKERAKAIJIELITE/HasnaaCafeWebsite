@@ -1,18 +1,17 @@
 ---
 import PackageChip from "./PackageChip.astro";
 import ProductBadge from "./ProductBadge.astro";
-import ArrowLink from "./ArrowLink.astro";
-
+import { localize } from "@/i18n/localize";
 import type { Product } from "@/types/product";
-import { getCategoryLabel } from "@/lib/products";
 
-interface Props {
-  product: Product;
-}
 const imgs = import.meta.glob(
   "/src/content/products/**/*.{jpg,jpeg,png,gif,webp,avif}",
   { eager: true, import: "default" },
 );
+
+interface Props {
+  product: Product;
+}
 const { product } = Astro.props;
 ---
 
@@ -29,11 +28,10 @@ const { product } = Astro.props;
         hover:border-[#005826]/20
         hover:shadow-[0_30px_70px_rgba(0,0,0,.12)]"
 >
-  <!-- Image -->
   <div class="relative overflow-hidden bg-slate-100">
     <img
       src={imgs[`/src/content/products/${product.id}/${product.thumbnail}`].src}
-      alt={product.name}
+      alt={product.name_en}
       class="h-72 w-full object-cover transition-transform duration-700 group-hover:scale-110"
     />
 
@@ -43,14 +41,19 @@ const { product } = Astro.props;
 
   <!-- Content -->
   <div class="p-7">
-    <ProductBadge label={getCategoryLabel(product.category)} />
+    <ProductBadge label={product.category} />
 
     <h3 class="mt-5 text-2xl font-black text-slate-900">
-      {product.name}
+      {
+        localize(
+          { ar: product.name, en: product.name_en },
+          Astro.locals.language,
+        )
+      }
     </h3>
 
     <p class="mt-4 line-clamp-3 leading-7 text-slate-600">
-      {product.description}
+      {localize(product.description, Astro.locals.language)}
     </p>
 
     <div class="mt-6 flex flex-wrap gap-2">
@@ -62,7 +65,6 @@ const { product } = Astro.props;
     </div>
 
     <div class="mt-8">
-      <!-- <ArrowLink href="#" label="View Details" /> -->
       <button
         class="group
         inline-flex

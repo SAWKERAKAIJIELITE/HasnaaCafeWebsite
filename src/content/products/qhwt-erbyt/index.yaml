@@ -1,8 +1,13 @@
 available: true
 featured: false
 name: قهوة عربية
+name_en: Arabic Coffee
 category: liquid-coffee
-description: فاخرة للأعياد
+description:
+  en: >-
+    A premium Arabic coffee, perfect for special occasions.
+  ar: >-
+    قهوة عربية فاخرة، مثالية للأعياد.
 thumbnail: thumbnail.jpg
 gallery: []
 origin: Arabic

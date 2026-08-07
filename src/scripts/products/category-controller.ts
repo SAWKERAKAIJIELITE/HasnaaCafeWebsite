@@ -1,6 +1,6 @@
-// import { productStore } from './product-store'
 import type { ProductCategory } from "@/types/product";
 import { productState } from "./product-state";
+
 
 export class ProductCategoryController
 {
@@ -41,7 +41,6 @@ export class ProductCategoryController
 
                 this.update();
 
-                // document.dispatchEvent(new CustomEvent("products:category-changed"));
                 document.dispatchEvent(new CustomEvent("products:category-change"));
                 document.dispatchEvent(new CustomEvent("products:filters-rebuild"));
                 // Refresh everything using the new state

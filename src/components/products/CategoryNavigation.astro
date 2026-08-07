@@ -1,41 +1,40 @@
 ---
+import { localize } from "@/i18n/localize";
+
 const categories = [
   {
     id: "coffee-beans",
     icon: "☕",
-    title: "Coffee Beans",
+    title: { en: "Coffee Beans", ar: "بن" },
   },
   {
     id: "liquid-coffee",
     icon: "🥤",
-    title: "Liquid Coffee",
+    title: { en: "Liquid Coffee", ar: "قهوة سائلة" },
   },
   {
     id: "tea",
     icon: "🍵",
-    title: "Tea",
+    title: { en: "Tea", ar: "شاي" },
   },
   {
     id: "chocolate",
     icon: "🍫",
-    title: "Chocolate",
+    title: { en: "Chocolate", ar: "شوكولا" },
   },
 ];
 ---
 
 <div class="mt-20 flex flex-wrap justify-center gap-4">
-  <!-- <div class="h-14 w-40 rounded-full bg-slate-100"></div>
-  <div class="h-14 w-40 rounded-full bg-slate-100"></div>
-  <div class="h-14 w-40 rounded-full bg-slate-100"></div>
-  <div class="h-14 w-40 rounded-full bg-slate-100"></div> -->
   {
     categories.map((category) => (
-      <button class="product-category group"
+      <button
+        class="product-category group"
         data-category-button
         data-category={category.id}
       >
         <span class="text-2xl">{category.icon}</span>
-        <span>{category.title}</span>
+        <span>{localize(category.title, Astro.locals.language)}</span>
       </button>
     ))
   }

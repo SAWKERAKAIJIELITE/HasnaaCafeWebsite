@@ -1,10 +1,14 @@
 available: true
 featured: false
-name: Espresso Blend
+name: مزيج اسبريسو
+name_en: Espresso Blend
 category: coffee-beans
-description: >-
-  Crafted for espresso lovers seeking full body, balanced acidity, and
-  long-lasting crema.
+description:
+  en: >-
+    Crafted for espresso lovers seeking full body, balanced acidity, and
+    long-lasting crema.
+  ar: >-
+    مصمم لمحبي الشاي المطحون ويقدم نكهة كاملة، حموضة متوازنة، و créma طويلة الأمد.
 thumbnail: thumbnail.png
 gallery: []
 origin: Colombia

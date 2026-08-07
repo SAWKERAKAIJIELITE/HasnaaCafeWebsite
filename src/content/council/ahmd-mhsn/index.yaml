@@ -1,6 +1,11 @@
 name: أحمد محسن
-title: مساعد إداري
-bio: ماجستير إدارة أعمال
+name_en: Ahmad Mousa
+title:
+  en: Administrative Assistant
+  ar: مساعد إداري
+bio:
+  ar: ماجستير إدارة أعمال
+  en: Master of Business Administration
 image: image.jpg
 email: Ahmad@gmail.com
 published: true

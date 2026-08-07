@@ -1,10 +1,14 @@
 available: true
 featured: false
-name: Vanilla Latte Base
+name: قهوة لاتيه فانيليا
+name_en: Vanilla Latte Base
 category: liquid-coffee
-description: >-
-  Designed for premium iced and hot vanilla coffee beverages with consistent
-  flavor and aroma.
+description:
+  en: >-
+    Designed for premium iced and hot vanilla coffee beverages with consistent
+    flavor and aroma.
+  ar: >-
+    مصمم لمشروبات القهوة الفانيليا المميزة الباردة والساخنة مع نكهة ورائحة متسقة.
 thumbnail: thumbnail.jpg
 gallery: []
 origin: Yemen

@@ -29,6 +29,7 @@ export interface Product
     id: string;
     category: ProductCategory;
     name: string;
+    name_en:string;
     description: string;
     thumbnail: string;
     gallery: string[];
@@ -45,6 +46,7 @@ export interface ProductSummary
 {
     id: string;
     name: string;
+    name_en: string;
     category: ProductCategory;
     description: string;
     thumbnail: string;

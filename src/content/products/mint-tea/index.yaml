@@ -1,10 +1,14 @@
 available: true
 featured: false
-name: Mint Tea
+name: شاي بالنعنع
+name_en: Mint Tea
 category: tea
-description: >-
-  A soothing herbal infusion with refreshing mint flavor, ideal for cafés and
-  hospitality environments.
+description:
+  en: >-
+    A soothing herbal infusion with refreshing mint flavor, ideal for cafés and
+    hospitality environments.
+  ar: >-
+    تقطير عطري هادئ مع نكهة النعنع المتجددة، مثالي للمقاهي وبيئات الضيافة.
 thumbnail: thumbnail.jpg
 gallery: []
 origin: ''

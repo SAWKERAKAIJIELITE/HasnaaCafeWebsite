@@ -1,8 +1,11 @@
 available: true
 featured: true
 name: شوكولامو
+name_en: Swiss Chocolate
 category: chocolate
-description: شوكولا لبنانية
+description:
+  en: A delicious Swiss chocolate, perfect for special occasions.
+  ar: شوكولا سويسرية لذيذة، مثالية للأعياد.
 thumbnail: thumbnail.jpg
 gallery: []
 origin: ''

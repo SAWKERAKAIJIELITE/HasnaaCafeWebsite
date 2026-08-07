@@ -1,12 +1,38 @@
 ---
+import { localize } from "@/i18n/localize";
+
 interface Props {
   label: string;
 }
 
 const { label } = Astro.props;
+
+const categories = [
+  {
+    id: "coffee-beans",
+    icon: "☕",
+    title: { en: "Coffee Beans", ar: "بن" },
+  },
+  {
+    id: "liquid-coffee",
+    icon: "🥤",
+    title: { en: "Liquid Coffee", ar: "قهوة سائلة" },
+  },
+  {
+    id: "tea",
+    icon: "🍵",
+    title: { en: "Tea", ar: "شاي" },
+  },
+  {
+    id: "chocolate",
+    icon: "🍫",
+    title: { en: "Chocolate", ar: "شوكولا" },
+  },
+];
 ---
 
-<span class="inline-flex
+<span
+  class="inline-flex
         w-fit
         items-center
         rounded-full
@@ -19,5 +45,6 @@ const { label } = Astro.props;
         tracking-[.18em]
         text-[#005826]"
 >
+  <!-- {localize(categories.find((c) => c.id == label).title, Astro.locals.language)} -->
   {label}
 </span>

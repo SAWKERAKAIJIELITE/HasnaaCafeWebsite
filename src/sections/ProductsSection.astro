@@ -14,12 +14,10 @@ const coffeeProducts = products.filter((p) => p.category === "coffee-beans");
 
 const featured = coffeeProducts.find((p) => p.featured)??coffeeProducts[0];
 
-// const grid = coffeeProducts.filter((p) => !p.featured);
 ---
 
 <section id="products" class="relative overflow-hidden py-24 lg:py-32">
   <!-- Background -->
-
   <div
     aria-hidden="true"
     class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(253,185,19,.08),transparent_45%)]"
@@ -44,9 +42,8 @@ const featured = coffeeProducts.find((p) => p.featured)??coffeeProducts[0];
         and wholesale partners.
       </p>
     </div>
-    <!-- products={coffeeBeans.filter((product) => !product.featured)} -->
     <ProductGrid products={coffeeProducts} />
-    <SectionCTA />
+    <!-- <SectionCTA /> -->
   </div>
 </section>
 <ProductModal />

@@ -1,10 +1,14 @@
 available: true
 featured: true
-name: Earl Grey
+name: الكونت غراي
+name_en: Earl Grey
 category: tea
-description: >-
-  A premium Earl Grey tea offering an elegant citrus aroma and full-bodied taste
-  for refined tea experiences.
+description:
+  en: >-
+    A premium Earl Grey tea offering an elegant citrus aroma and full-bodied taste
+    for refined tea experiences.
+  ar: >-
+    شاي إيرل جراي فاخر يقدم رائحة حمضية أنيقة وطعمًا غنيًا لتجارب شاي راقية.
 thumbnail: thumbnail.jpg
 gallery: []
 origin: China

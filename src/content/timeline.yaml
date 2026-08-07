@@ -1,32 +1,65 @@
 timestamps:
   - enabled: true
-    title: Company Founded
-    year: '2012'
-    description: >-
-      Started as a family-owned coffee supplier dedicated to quality and
-      service.
+    title:
+      en: Company Founded
+      ar: تأسيس الشركة
+    year:
+      en: '2012'
+      ar: '2012'
+    description:
+      en: >-
+        Started as a family-owned coffee supplier dedicated to quality and
+        service.
+      ar: >-
+        بدأت كمورد قهوة عائلي مكرس لجودة الخدمة.
     current: false
   - enabled: true
-    title: Factory Expansion
-    year: '2016'
-    description: Expanded production capacity to meet increasing customer demand..
+    title:
+      en: Factory Expansion
+      ar: توسع المصنع
+    year:
+      en: '2016'
+      ar: '2016'
+    description:
+      en: Expanded production capacity to meet increasing customer demand.
+      ar: وسعت قدرة الإنتاج لتلبية الطلب المتزايد من العملاء.
     current: false
   - enabled: true
-    title: Regional Partnerships
-    year: '2020'
-    description: >-
-      Built strong partnerships with cafés, hotels, and restaurants across the
-      region.
+    title:
+      en: Regional Partnerships
+      ar: الشراكات الإقليمية
+    year:
+      en: '2020'
+      ar: '2020'
+    description:
+      en: >-
+        Built strong partnerships with cafés, hotels, and restaurants across the
+        region.
+      ar: >-
+        أنشأ شراكات قوية مع مقاهي وفنادق ومطاعم في المنطقة.
     current: false
   - enabled: true
-    title: Trusted Coffee Supplier
-    year: Today
-    description: >-
-      Continuing to deliver premium coffee products with innovation and
-      reliability.
+    title:
+      en: Trusted Coffee Supplier
+      ar: مورد القهوة الموثوق
+    year:
+      en: Today
+      ar: حالياً
+    description:
+      en: >-
+        Continuing to deliver premium coffee products with innovation and
+        reliability.
+      ar: >-
+        يستمر في تسليم منتجات قهوة فاخرة مع الابتكار والموثوقية.
     current: true
-  - enabled: false
-    title: The Journey Continues
-    year: Future
-    description: Every partnership we build today is another step toward tomorrow.
+  - enabled: true
+    title:
+      en: The Journey Continues
+      ar: الرحلة تستمر
+    year:
+      en: Future
+      ar: المستقبل
+    description:
+      en: Every partnership we build today is another step toward tomorrow.
+      ar: كل شراكة نبنيها اليوم هي خطوة أخرى نحو الغد.
     current: false

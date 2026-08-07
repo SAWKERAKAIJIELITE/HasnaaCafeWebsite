@@ -12,13 +12,15 @@
 
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
+import { localize } from "@/i18n/localize";
+import "@/styles/global.css";
 
-const members = await getCollection("council", ({ data }) => data.published);
 const imgs = import.meta.glob(
   "/src/content/council/**/*.{jpg,jpeg,png,gif,webp,avif}",
   { eager: true, import: "default" },
 );
-import "@/styles/global.css";
+
+const members = await getCollection("council", ({ data }) => data.published);
 ---
 
 <!-- ---
@@ -189,7 +191,7 @@ const members: Member[] = [
 </section> -->
 <section
   id="council"
-  class="relative scroll-mt-24 overflow-hidden bg-[#1C1410] px-6 py-20 md:py-28"
+  class="relative scroll-mt-24 overflow-hidden px-6 py-10 md:py-18"
 >
   <div
     class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(172,135,89,0.10),_transparent_60%)]"
@@ -198,31 +200,32 @@ const members: Member[] = [
   </div>
 
   <div class="relative mx-auto max-w-6xl">
-    <div class="mb-14 max-w-xl md:mb-20">
-      <p class=" text-xs uppercase tracking-[0.25em] text-[#AC8759]">
+    <div class="mb-14 max-w-xl md:mb-10">
+      <p class="text-xl uppercase tracking-[0.25em] text-[#3c9339]">
         Leadership
       </p>
-      <h2
-        class="mt-4  text-4xl leading-tight text-[#F2E8D8] md:text-5xl"
-      >
-        The council behind <em class="text-[#AC8759] not-italic">the cup</em>.
+      <h2 class="mt-4 text-4xl leading-tight text-[#005826] md:text-5xl">
+        The council behind <em class="text-[#3c9339] not-italic">the cup</em>.
       </h2>
-      <p class="mt-4 font-sans text-base leading-relaxed text-[#F2E8D8]/70">
+      <p class="mt-4 text-xl leading-relaxed text-[#005826]/70">
         A small group of roasters, operators, and organizers who've spent their
         careers making sure every cup meets the same standard.
       </p>
     </div>
 
-    <ul class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    <ul class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
       {
         members.map((member) => (
           <li class="list-none">
-            <article class="group flex h-full flex-col overflow-hidden rounded-lg border border-[#AC8759]/15 bg-[#241A14] shadow-[0_18px_40px_-24px_rgba(0,0,0,0.7)] transition-transform duration-300 hover:-translate-y-1 motion-reduce:transition-none">
-              <div class="relative aspect-[4/5] overflow-hidden">
+            <article class="group flex h-full flex-col overflow-hidden rounded-lg border border-[#3c9339]/15 bg-[#005826] shadow-[0_18px_40px_-24px_rgba(0,0,0,0.7)] transition-transform duration-300 hover:-translate-y-1 motion-reduce:transition-none">
+              <div class="relative aspect-[3/4] overflow-hidden">
                 <img
-                  src={imgs[`/src/content/council/${member.id}/${member.data.image}`].src}
-                  alt={member.data.name}
-
+                  src={
+                    imgs[
+                      `/src/content/council/${member.id}/${member.data.image}`
+                    ].src
+                  }
+                  alt={member.data.name_en}
                   sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   class="h-full w-full object-cover sepia-[0.15] contrast-[1.05] transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                 />
@@ -234,26 +237,35 @@ const members: Member[] = [
 
               {/* brass nameplate, overlapping the photo like a museum placard */}
               <div class="relative -mt-8 mx-6 rounded-md bg-gradient-to-b from-[#D3B27C] to-[#9C7A4C] px-4 py-3 shadow-lg">
-                <p class=" text-base font-semibold leading-snug text-[#1C1410]">
-                  {member.data.name}
+                <p class=" text-4xl font-semibold leading-snug">
+                  {localize(
+                    { ar: member.data.name, en: member.data.name_en },
+                    Astro.locals.language,
+                  )}
                 </p>
-                <p class="mt-0.5  text-[10px] uppercase tracking-[0.15em] text-[#1C1410]/70">
-                  {member.data.title}
+                <p class="mt-0.5  text-[17px] uppercase tracking-[0.15em] text-[#1C1410]/70">
+                  {localize(
+                    { ar: member.data.title.ar, en: member.data.title.en },
+                    Astro.locals.language,
+                  )}
                 </p>
               </div>
 
-              <div class="flex flex-1 flex-col gap-3 px-6 pb-6 pt-4">
+              <div class="flex flex-1 flex-col gap-2 px-6 pb-6 pt-4">
                 <span class="h-px w-6 bg-[#AC8759]/40" aria-hidden="true" />
-                <p class="flex-1 font-sans text-sm leading-relaxed text-[#F2E8D8]/70">
-                  {member.data.bio}
+                <p class="flex-1 text-xl leading-relaxed text-[#F2E8D8]/70">
+                  {localize(
+                    { ar: member.data.bio.ar, en: member.data.bio.en },
+                    Astro.locals.language,
+                  )}
                 </p>
 
                 {member.data.email && (
                   <div class="mt-1 flex justify-end">
                     <a
                       href={`mailto:${member.data.email}`}
-                      aria-label={`Email ${member.data.name}`}
-                      class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#AC8759]/30 text-[#AC8759] transition-colors hover:border-[#AC8759] hover:bg-[#AC8759]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AC8759]"
+                      aria-label={`Email ${member.data.name_en}`}
+                      class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#AC8759]/30 text-[#AC8759] transition-colors hover:border-[#AC8759] hover:bg-[#AC8759]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AC8759]"
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -279,6 +291,3 @@ const members: Member[] = [
     </ul>
   </div>
 </section>
-<!-- {
-  console.log(imgs['/src/content/council/test/image.jpg'])
-} -->

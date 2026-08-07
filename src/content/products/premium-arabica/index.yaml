@@ -1,10 +1,14 @@
 available: true
 featured: false
-name: Premium Arabica
+name: أرابيكا بريميوم
+name_en: Premium Arabica
 category: coffee-beans
-description: >-
-  Premium Arabica beans sourced from high-altitude farms to deliver a smooth,
-  rich, and aromatic cup suitable for cafés, restaurants, and premium retailers.
+description:
+  en: >-
+    Premium Arabica beans sourced from high-altitude farms to deliver a smooth,
+    rich, and aromatic cup suitable for cafés, restaurants, and premium retailers.
+  ar: >-
+    حبوب أرابيكا بريميوم مستخلصة من المزارع على ارتفاعات عالية لتوفير كوب ناعم وغني وعطر، مناسب للمقاهي والمقاهي والمتاجر الفاخرة.
 thumbnail: thumbnail.webp
 gallery:
   - gallery/0.jpg

@@ -1,4 +1,3 @@
-// import { productStore } from "./product-store";
 import { productModalTemplate } from "./modal-template";
 import { productState } from "./product-state";
 
@@ -7,10 +6,12 @@ export class ProductModalController
 {
     private modal!: HTMLElement;
     private content!: HTMLElement;
+    private current: string;
 
     init()
     {
         this.modal = document.querySelector("[data-product-modal]")!;
+        this.current = document.documentElement.lang === "ar" ? "ar" : "en";
 
         document.addEventListener("click", (event) =>
         {
@@ -44,17 +45,19 @@ export class ProductModalController
             }
         });
 
-        this.content =this.modal.querySelector("[data-modal-content]")!;
+        this.content = this.modal.querySelector("[data-modal-content]")!;
     }
 
     private async open(id: string)
     {
+        this.current = document.documentElement.lang === "ar" ? "ar" : "en";
+
         const product = await productState.getProduct(id);
 
         if (!product)
             return;
 
-        this.content.innerHTML = productModalTemplate(product);
+        this.content.innerHTML = productModalTemplate(product, this.current);
 
         this.modal.classList.remove("hidden");
 

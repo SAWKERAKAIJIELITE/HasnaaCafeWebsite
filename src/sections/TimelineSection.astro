@@ -1,9 +1,8 @@
 ---
-// import { timeline } from "@/data/timeline";
 import { getTimeline } from "@/services/home/timeline.service";
+import TimelineItem from "@/components/about/TimelineItem.astro";
 
 const timeline = await getTimeline();
-import TimelineItem from "@/components/about/TimelineItem.astro";
 ---
 
 <section

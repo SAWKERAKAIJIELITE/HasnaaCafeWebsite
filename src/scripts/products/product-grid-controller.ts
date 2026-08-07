@@ -1,7 +1,5 @@
 import { productGridTemplate } from "./grid-template";
-// import { productStore } from './product-store'
 import { productState } from "./product-state";
-import type { ProductCategory } from "@/types/product";
 
 
 export class ProductGridController
@@ -9,20 +7,23 @@ export class ProductGridController
     private grid!: HTMLElement;
 
     private changing = false;
+    private current: string;
 
     init()
     {
         this.grid = document.querySelector("[data-product-grid]")!;
+        this.current = document.documentElement.lang === "ar" ? "ar" : "en";
 
         this.render();
 
-        // document.addEventListener("products:changed", () =>this.render());
-        document.addEventListener("products:category-change", () =>this.render());
-        document.addEventListener("products:filter-change",() => this.render());
+        document.addEventListener("products:category-change", () => this.render());
+        document.addEventListener("products:filter-change", () => this.render());
     }
 
     private async render()
     {
+        this.current = document.documentElement.lang === "ar" ? "ar" : "en";
+
         if (this.changing)
             return;
 
@@ -30,9 +31,12 @@ export class ProductGridController
 
         this.grid.classList.add("opacity-0");
 
-        await new Promise(resolve =>setTimeout(resolve, 180));
+        await new Promise(resolve => setTimeout(resolve, 180));
 
-        this.grid.innerHTML = productGridTemplate(await productState.getProducts());
+        this.grid.innerHTML = productGridTemplate(
+            await productState.getProducts(this.current),
+            this.current
+        );
 
         this.grid.classList.remove("opacity-0");
 
@@ -50,15 +54,15 @@ export class ProductGridController
             const element = card as HTMLElement;
 
             element.animate([
-                    {
-                        opacity: 0,
-                        transform: "translateY(24px)"
-                    },
-                    {
-                        opacity: 1,
-                        transform: "translateY(0)"
-                    }
-                ],
+                {
+                    opacity: 0,
+                    transform: "translateY(24px)"
+                },
+                {
+                    opacity: 1,
+                    transform: "translateY(0)"
+                }
+            ],
                 {
                     duration: 500,
                     delay: index * 80,

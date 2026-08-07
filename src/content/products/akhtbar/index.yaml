@@ -1,8 +1,11 @@
 available: true
 featured: false
 name: اختبار
+name_en: Test
 category: coffee-beans
-description: لا يوجد
+description:
+  ar: لا يوجد
+  en: None
 thumbnail: thumbnail.png
 gallery: []
 origin: ''

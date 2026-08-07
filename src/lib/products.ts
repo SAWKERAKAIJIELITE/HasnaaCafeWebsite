@@ -15,5 +15,8 @@ export function getCategoryLabel(category: ProductCategory)
 
         case "chocolate":
             return "Chocolate";
+
+        case "instant-coffee":
+            return "Instant Coffee";
     }
 }
