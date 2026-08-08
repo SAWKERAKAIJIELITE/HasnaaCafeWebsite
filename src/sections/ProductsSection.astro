@@ -16,7 +16,7 @@ const featured = coffeeProducts.find((p) => p.featured)??coffeeProducts[0];
 
 ---
 
-<section id="products" class="relative overflow-hidden py-24 lg:py-32">
+<section id="products" class="relative overflow-hidden py-14 lg:py-15">
   <!-- Background -->
   <div
     aria-hidden="true"
@@ -29,7 +29,7 @@ const featured = coffeeProducts.find((p) => p.featured)??coffeeProducts[0];
     <CategoryNavigation />
     <ProductFilters />
     <FeaturedProduct featured={featured} />
-    <div class="mt-24">
+    <div class="mt-14">
       <p class="text-sm font-semibold uppercase tracking-[.3em] text-[#fdb913]">
         Explore Collection
       </p>

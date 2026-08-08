@@ -6,7 +6,6 @@ const imgs = import.meta.glob(
     { eager: true, import: "default" },
 );
 
-
 const category = {
     "coffee-beans": { en: "Coffee Beans", ar: "بن" },
     "liquid-coffee": { en: "Liquid Coffee", ar: "قهوة سائلة" },
@@ -60,6 +59,12 @@ export function productModalTemplate(product: Product,currentLanguage:string)
                 <p class="text-xs uppercase tracking-[.25em] text-slate-400"> Roast </p>
                 <p class="mt-2 font-semibold text-slate-800">
                     ${product.roastLevel ? localize(roastDict[product.roastLevel], currentLanguage) : "-"}
+                </p>
+            </div>
+            <div>
+                <p class="text-xs uppercase tracking-[.25em] text-slate-400"> Flavor </p>
+                <p class="mt-2 font-semibold text-slate-800">
+                    ${product.flavor ? localize(product.flavor, currentLanguage) : "-"}
                 </p>
             </div>
         </div>

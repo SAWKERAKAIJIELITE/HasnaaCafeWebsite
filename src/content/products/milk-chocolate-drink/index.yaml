@@ -17,5 +17,6 @@ packaging:
   - amount: 2
     unit: Kg
 flavor:
-  - Milk
+  en: Milk
+  ar: حليب
 specifications: []

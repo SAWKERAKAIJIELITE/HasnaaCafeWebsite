@@ -19,7 +19,6 @@ packaging:
     unit: g
   - amount: 1
     unit: Kg
-flavor: []
 specifications:
   - name: Amount
     value: limited

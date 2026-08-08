@@ -1,14 +1,14 @@
 ---
 import type { socials } from "@/types/contact";
 
-import { Facebook, Instagram, Linkedin } from "lucide-astro";
+import { Facebook, Instagram, Linkedin,Send } from "lucide-astro";
 
 interface Props {
   socials: socials;
 }
 
 const { socials } = Astro.props;
-console.log(socials);
+
 const social = [
   {
     href: socials.find((s) => s.type == "facebook").link,
@@ -19,9 +19,13 @@ const social = [
     icon: Instagram,
   },
   {
-    href: socials.find((s) => s.type == "linkedin").link,
-    icon: Linkedin,
+    href: socials.find((s) => s.type == "telegram").link,
+    icon: Send,
   },
+  // {
+  //   href: socials.find((s) => s.type == "linkedin").link,
+  //   icon: Linkedin,
+  // },
 ];
 ---
 

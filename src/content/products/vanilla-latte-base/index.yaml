@@ -16,7 +16,7 @@ roastLevel: medium
 packaging:
   - amount: 1
     unit: L
-flavor: []
-specifications:
-  - name: flavor
-    value: Vanilla
+flavor: 
+  en: Vanilla
+  ar: فانيللاا
+specifications: []

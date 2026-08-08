@@ -1,5 +1,30 @@
 ---
-import { contactItems } from "@/data/footer";
+import { Phone, Mail, MapPin } from "lucide-astro";
+import { contactRepository } from "@/services/home/contact.service";
+import { localize } from "@/i18n/localize";
+
+const contact = await contactRepository.get();
+
+const contactItems = [
+  {
+    label: "Phone",
+    value: contact.phone,
+    href: `tel:${contact.phone}`,
+    icon: Phone,
+  },
+  {
+    label: "Email",
+    value: contact.email,
+    href: `mailto:${contact.email}`,
+    icon: Mail,
+  },
+  {
+    label: "Address",
+    value: localize(contact.address, Astro.locals.language),
+    href: contact.googleMaps,
+    icon: MapPin,
+  },
+];
 ---
 
 <div>
@@ -33,11 +58,12 @@ import { contactItems } from "@/data/footer";
             </div>
 
             <div>
-              <p class="text-sm text-slate-500">
-                {item.label}
-              </p>
+              <p class="text-sm text-slate-500">{item.label}</p>
 
-              <a href={item.href} class="text-slate-300 transition-colors duration-300 hover:text-white">
+              <a
+                href={item.href}
+                class="text-slate-300 transition-colors duration-300 hover:text-white"
+              >
                 {item.value}
               </a>
             </div>

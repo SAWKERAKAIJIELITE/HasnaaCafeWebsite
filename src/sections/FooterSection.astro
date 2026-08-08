@@ -5,12 +5,15 @@ import FooterContact from "@/components/footer/FooterContact.astro";
 import FooterSocial from "@/components/footer/FooterSocial.astro";
 import FooterCTA from "@/components/footer/FooterCTA.astro";
 import FooterBottom from "@/components/footer/FooterBottom.astro";
-import {
-  footerDescription,
-  footerColumns,
-  //   contactItems,
-  socialLinks,
-} from "@/data/footer";
+import { navigation } from "@/data/navigation";
+
+const category = [
+  { label: { en: "Coffee Beans", ar: "بن" }, href: "#products" },
+  { label: { en: "Liquid Coffee", ar: "قهوة سائلة" }, href: "#products" },
+  { label: { en: "Tea", ar: "شاي" }, href: "#products" },
+  { label: { en: "Chocolate", ar: "شوكولا" }, href: "#products" },
+  { label: { ar: "قهوة سريعة التحضير", en: "Instant Coffee" }, href: "#products" },
+];
 ---
 
 <footer class="bg-slate-950 text-white">
@@ -23,14 +26,15 @@ import {
       <div>
         <Logo />
 
-        <p class="mt-8 max-w-sm leading-8 text-slate-300">
+        <!-- <p class="mt-8 max-w-sm leading-8 text-slate-300">
           {footerDescription}
-        </p>
+        </p> -->
         <FooterSocial />
       </div>
 
       <!-- Navigation -->
-      {footerColumns.map((column) => <FooterColumn column={column} />)}
+      <FooterColumn data={navigation} title={"Company"} />
+      <FooterColumn data={category} title="Products" />
 
       <!-- Contact -->
       <!-- <div>
@@ -59,6 +63,6 @@ import {
 
       <FooterContact />
     </div>
-    <FooterBottom/>
+    <FooterBottom />
   </div>
 </footer>

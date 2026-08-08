@@ -1,10 +1,12 @@
 ---
-const services = [
-  "Coffee Beans",
-  "Instant Coffee",
-  "Tea",
-  "Chocolate",
-  "Liquid Coffee",
+import { localize } from "@/i18n/localize";
+
+const category = [
+  { en: "Coffee Beans", ar: "بن" },
+  { en: "Liquid Coffee", ar: "قهوة سائلة" },
+  { en: "Tea", ar: "شاي" },
+  { en: "Chocolate", ar: "شوكولا" },
+  { ar: "قهوة سريعة التحضير", en: "Instant Coffee" },
 ];
 ---
 
@@ -88,7 +90,13 @@ const services = [
         name="service"
         class="w-full rounded-xl border border-slate-300 bg-white px-5 py-4 outline-none transition focus:border-[#005826] focus:ring-2 focus:ring-[#005826]/20"
       >
-        {services.map((service) => <option value={service}>{service}</option>)}
+        {
+          category.map((category) => (
+            <option value={category.en}>
+              {localize(category, Astro.locals.language)}
+            </option>
+          ))
+        }
       </select>
       <p data-error="service" class="mt-2 text-sm text-red-600"></p>
     </div>

@@ -92,6 +92,13 @@ export class ProductState
         )];
     }
 
+    // async getFlavors()
+    // {
+    //     return ["all", ...new Set(
+    //         (await productRepository.getCategory(this.category)).map(p => p.flavor?.en).filter(Boolean)
+    //     )];
+    // }
+
     async getFeatured(currentLanguage: string)
     {
         const products = await this.getProducts(currentLanguage);

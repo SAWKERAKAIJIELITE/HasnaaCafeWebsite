@@ -16,5 +16,6 @@ packaging:
   - amount: 1
     unit: L
 flavor:
-  - هيل
+  en: cardamom
+  ar: هيل
 specifications: []

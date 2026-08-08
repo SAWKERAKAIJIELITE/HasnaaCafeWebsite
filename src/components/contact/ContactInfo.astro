@@ -1,5 +1,6 @@
 ---
 import type { Contact } from "@/types/contact";
+import { localize } from "@/i18n/localize";
 
 import { Phone, Mail, MapPin } from "lucide-astro";
 
@@ -32,7 +33,7 @@ const { contact } = Astro.props;
   <ContactCard
     icon={MapPin}
     title="Address"
-    value={contact.address}
+    value={localize(contact.address, Astro.locals.language)}
     href={contact.googleMaps}
   />
 

@@ -1,7 +1,10 @@
 ---
 import type { Contact } from "@/types/contact";
+import { localize } from "@/i18n/localize";
 
-interface Props {contact: Contact;}
+interface Props {
+  contact: Contact;
+}
 
 const { contact } = Astro.props;
 ---
@@ -11,11 +14,13 @@ const { contact } = Astro.props;
     Contact Us
   </p>
 
-  <h2 class="mt-6 text-4xl font-black tracking-tight text-slate-900 lg:text-6xl">
-    {contact.title}
+  <h2
+    class="mt-6 text-4xl font-black tracking-tight text-slate-900 lg:text-6xl"
+  >
+    {localize(contact.title,Astro.locals.language)}
   </h2>
 
   <p class="mx-auto mt-8 max-w-2xl text-lg leading-8 text-slate-600">
-    {contact.subtitle}
+    {localize(contact.subtitle,Astro.locals.language)}
   </p>
 </header>

@@ -10,14 +10,13 @@ const originsDict = {
     Yemen: { ar: "يمن", en: "Yemen", },
     Arabic: { ar: "عربي", en: "Arabic", },
     China: { ar: "الصين", en: "China", },
-    // "": { ar: "", en: "", },
 }
 const roastDict = {
-    light: {en: "Light",ar: "تحميص خفيف"},
-    medium:{en: "Medium",ar: "تحميص وسط"},
-    dark:{en: "Dark",ar: "تحميص داكن"},
-    // "": { ar: "", en: "", },
+    light: { en: "Light", ar: "تحميص خفيف" },
+    medium: { en: "Medium", ar: "تحميص وسط" },
+    dark: { en: "Dark", ar: "تحميص داكن" },
 }
+
 
 export class ProductFilterController
 {
@@ -66,6 +65,16 @@ export class ProductFilterController
 
         const origins = await productState.getOrigins();
         const roasts = await productState.getRoasts();
+        // const flavors = (
+        //     await productState.getProducts(this.current)
+        // ).map(p => p.flavor).reduce(
+        //     (dict, item) =>
+        //     {
+        //         dict[item.en] = item;
+        //         return dict;
+        //     },
+        //     {}
+        // );
 
         this.origin.innerHTML = origins.map(origin => `
             <option value="${origin}">
@@ -75,7 +84,7 @@ export class ProductFilterController
 
         this.roast.innerHTML = roasts.map(roast => `
             <option value="${roast}">
-            ${roast === "all" ? "All Roasts" : localize(roastDict[roast], this.current) }
+            ${roast === "all" ? "All Roasts" : localize(roastDict[roast], this.current)}
             </option>
         `).join("");
 

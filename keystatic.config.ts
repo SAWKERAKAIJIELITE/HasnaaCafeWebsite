@@ -96,25 +96,19 @@ export default config({
                     }), {
                     label: 'التعبئة',
                     itemLabel: item => `${item.fields.amount.value}: ${item.fields.unit.value}`
-                }
-                ),
-                flavor: fields.array(
-                    fields.text({ label: 'النكهة' }),
-                    {
-                        label: "النكهة",
-                        itemLabel: item => item.value
-                    }
-                ),
-                specifications: fields.array(
-                    fields.object({
-                        name: fields.text({ label: 'الخاصية' }),
-                        value: fields.text({ label: 'القيمة' }),
-                    }),
-                    {
-                        label: "خصائص إضافية",
-                        itemLabel: item => `${item.fields.name.value}: ${item.fields.value.value}`
-                    }
-                ),
+                }),
+                flavor: fields.object({
+                        en: fields.text({ label: "English"}),
+                        ar: fields.text({ label: "عربي"}),
+                    }, { label: "النكهة" }), 
+                // specifications: fields.array(
+                //     fields.object({
+                //         name: fields.text({ label: 'الخاصية' }),
+                //         value: fields.text({ label: 'القيمة' }),
+                //     }), {
+                // label: "خصائص إضافية",
+                // itemLabel: item => `${item.fields.name.value}: ${item.fields.value.value}`
+                // }),
             },
         }),
         offers: collection({
@@ -442,8 +436,14 @@ export default config({
             label: "Contacts",
             path: "src/content/contact",
             schema: {
-                title: fields.text({ label: "Title" }),
-                subtitle: fields.text({ label: "Subtitle", multiline: true }),
+                title: fields.object({
+                    en: fields.text({ label: "English" }),
+                    ar: fields.text({ label: "عربي" }),
+                }, { label: "العنوان" }),
+                subtitle: fields.object({
+                    en: fields.text({ label: "English", multiline: true }),
+                    ar: fields.text({ label: "عربي", multiline: true }),
+                }, { label: "العنوان الفرعي" }),
                 image: fields.image({
                     label: "Image",
                     // directory: "public/images/contact",
@@ -451,8 +451,11 @@ export default config({
                 }),
                 phone: fields.text({ label: "Phone" }),
                 email: fields.text({ label: "Email" }),
-                address: fields.text({ label: "Address", multiline: true }),
-                googleMaps: fields.text({ label: "Google Maps", multiline: true }),
+                address: fields.object({
+                    en: fields.text({ label: "English", multiline: true }),
+                    ar: fields.text({ label: "عربي", multiline: true }),
+                }, { label: "الموقع" }),
+                googleMaps: fields.text({ label: "الموقع على Google Maps" }),
                 workingHours: fields.array(
                     fields.object({
                         day: fields.text({ label: "Days" }),
@@ -472,13 +475,14 @@ export default config({
                                 { label: "facebook", value: "facebook" },
                                 { label: "instagram", value: "instagram" },
                                 { label: "linkedin", value: "linkedin" },
+                                { label: "Telegram", value: "telegram" },
                             ],
                             defaultValue: "facebook",
                         }),
                         link: fields.url({ label: "Link" }),
                     })
                     , {
-                        label: "Social Links",
+                        label: "وسائل التواصل الاجتماعي",
                         itemLabel: item => `${item.fields.type.value} ${item.fields.link.value}`
                     }
                 ),
